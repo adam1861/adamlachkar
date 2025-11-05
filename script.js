@@ -5,27 +5,27 @@
 const projects = [
     {
         id: 1,
-        title: "Prédiction de matchs (Random Forest)",
-        blurb: "Modèle de prédiction des résultats de matchs de football via Random Forest.",
-        description: "Développement d'un modèle de machine learning utilisant l'algorithme Random Forest pour prédire les résultats de matchs de football. Le modèle analyse diverses caractéristiques des équipes et des matchs passés pour générer des prédictions précises.",
+        title: "Match Outcome Prediction (Random Forest)",
+        blurb: "Random Forest model to predict football match results.",
+        description: "Machine learning model using Random Forest to predict football match outcomes. It analyzes team features and historical matches to generate accurate predictions.",
         tags: ["ML/AI", "Classification"],
         filterTags: ["ml-ai", "classification"],
         image: "project-rf.jpg"
     },
     {
         id: 2,
-        title: "Prévision météo (XGBoost)",
-        blurb: "Modèle XGBoost pour prévision météorologique (features météo).",
-        description: "Implémentation d'un modèle XGBoost avancé pour la prévision météorologique. Le modèle utilise des features météorologiques historiques pour prédire les conditions futures avec une grande précision.",
+        title: "Weather Forecasting (XGBoost)",
+        blurb: "XGBoost model for weather forecasting using engineered features.",
+        description: "Advanced XGBoost model for weather forecasting. It uses historical meteorological features to predict future conditions with high accuracy.",
         tags: ["ML/AI", "Time Series"],
         filterTags: ["ml-ai", "time-series"],
         image: "project-xgb.jpg"
     },
     {
         id: 3,
-        title: "Détection maladie cardiaque (Decision Trees)",
-        blurb: "Classification du risque cardiovasculaire à partir de variables cliniques.",
-        description: "Système de classification utilisant des arbres de décision pour détecter les risques de maladies cardiaques. Le modèle analyse des variables cliniques pour identifier les patients à risque élevé.",
+        title: "Heart Disease Detection (Decision Trees)",
+        blurb: "Classifies cardiovascular risk from clinical variables.",
+        description: "Classification system using decision trees to detect heart disease risks. It analyzes clinical variables to identify patients at higher risk.",
         tags: ["ML/AI", "Classification"],
         filterTags: ["ml-ai", "classification"],
         image: "project-heart.jpg"
@@ -33,8 +33,8 @@ const projects = [
     {
         id: 4,
         title: "Spaceship Titanic (Logistic Regression)",
-        blurb: "Projet Kaggle : régression logistique pour la classification des passagers.",
-        description: "Projet de compétition Kaggle utilisant la régression logistique pour classifier les passagers du Spaceship Titanic. Analyse de données et optimisation du modèle pour maximiser la précision des prédictions.",
+        blurb: "Kaggle project: logistic regression for passenger classification.",
+        description: "Kaggle competition project using logistic regression to classify Spaceship Titanic passengers. Data analysis and model optimization to maximize prediction accuracy.",
         tags: ["ML/AI", "Classification"],
         filterTags: ["ml-ai", "classification"],
         image: "project-spaceship.jpg"
@@ -46,21 +46,21 @@ const websites = [
         id: 1,
         title: "Starteady",
         url: "https://www.starteady.com/",
-        purpose: "Plateforme de démarrage et d'accompagnement pour entrepreneurs",
+        purpose: "Launch and support platform for entrepreneurs",
         image: "starteady.png"
     },
     {
         id: 2,
         title: "Auramaking",
         url: "https://www.auramaking.com/",
-        purpose: "Création et développement de solutions web innovantes",
+        purpose: "Creation and development of innovative web solutions",
         image: "auramaking.png"
     },
     {
         id: 3,
         title: "Icodex Academy",
         url: "https://icodex.academy/",
-        purpose: "Académie de formation en développement et technologies",
+        purpose: "Training academy in development and technology",
         image: "icodex.png"
     }
 ];
@@ -103,11 +103,9 @@ const projectDetailImage = document.getElementById('projectDetailImage');
 // Theme Toggle
 // ============================================
 
-// Initialize theme from localStorage or system preference
 function initTheme() {
     const savedTheme = localStorage.getItem('theme');
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
     const theme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
     setTheme(theme);
 }
@@ -115,9 +113,7 @@ function initTheme() {
 function setTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
-    
-    // Update icons
-    const icon = theme === 'dark' ? '☀️' : '🌙';
+    const icon = theme === 'dark' ? '🌙' : '☀️';
     if (themeIcon) themeIcon.textContent = icon;
     if (themeIconFooter) themeIconFooter.textContent = icon;
 }
@@ -145,7 +141,6 @@ function closeMobileNav() {
     navToggle.setAttribute('aria-expanded', 'false');
 }
 
-// Close mobile nav when clicking on a link
 navLinks.forEach(link => {
     link.addEventListener('click', () => {
         closeMobileNav();
@@ -178,6 +173,7 @@ function updateActiveNavLink() {
 // ============================================
 
 function toggleBackToTop() {
+    if (!backToTop) return;
     if (window.scrollY > 300) {
         backToTop.classList.add('show');
     } else {
@@ -186,10 +182,7 @@ function toggleBackToTop() {
 }
 
 function scrollToTop() {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 // ============================================
@@ -197,37 +190,30 @@ function scrollToTop() {
 // ============================================
 
 function renderProjects(filter = 'all') {
+    if (!projectsGrid) return;
     projectsGrid.innerHTML = '';
-    
-    const filteredProjects = filter === 'all' 
-        ? projects 
-        : projects.filter(project => project.filterTags.includes(filter));
-    
+    const filteredProjects = filter === 'all' ? projects : projects.filter(project => project.filterTags.includes(filter));
+
     filteredProjects.forEach(project => {
         const projectCard = document.createElement('div');
         projectCard.className = 'project-card';
         projectCard.setAttribute('data-project-id', project.id);
         projectCard.setAttribute('tabindex', '0');
         projectCard.setAttribute('role', 'group');
-
         const detailsUrl = `${location.pathname}?project=${project.id}`;
-        
         projectCard.innerHTML = `
             <h3 class="project-title">${project.title}</h3>
             <p class="project-blurb">${project.blurb}</p>
             <div class="project-tags">
-                ${project.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('')}
+                ${project.tags.map(tag => `<span class=\"project-tag\">${tag}</span>`).join('')}
             </div>
             <a class="btn btn-ghost" href="${detailsUrl}">View details</a>
         `;
-        
-        // Keyboard open by Enter -> navigate
         projectCard.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
                 window.location.href = detailsUrl;
             }
         });
-        
         projectsGrid.appendChild(projectCard);
     });
 }
@@ -238,12 +224,8 @@ function renderProjects(filter = 'all') {
 
 function handleFilterClick(e) {
     const filter = e.target.getAttribute('data-filter');
-    
-    // Update active filter button
     filterButtons.forEach(btn => btn.classList.remove('active'));
     e.target.classList.add('active');
-    
-    // Render filtered projects
     renderProjects(filter);
 }
 
@@ -251,23 +233,45 @@ function handleFilterClick(e) {
 // Project Modal
 // ============================================
 
+let modalTrapHandler = null;
+
 function openProjectModal(project) {
     modalTitle.textContent = project.title;
     modalBody.textContent = project.description;
-    modalTags.innerHTML = project.tags.map(tag => 
-        `<span class="project-tag">${tag}</span>`
-    ).join('');
-    
+    modalTags.innerHTML = project.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('');
     projectModal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
-    
-    // Focus management
-    modalClose.focus();
+
+    // Focus management + trap
+    const focusable = projectModal.querySelectorAll('button, [href], input, textarea, select, [tabindex]:not([tabindex="-1"])');
+    const focusableArr = Array.from(focusable).filter(el => !el.hasAttribute('disabled'));
+    const firstEl = focusableArr[0];
+    const lastEl = focusableArr[focusableArr.length - 1];
+    modalTrapHandler = function (e) {
+        if (e.key !== 'Tab') return;
+        if (e.shiftKey) {
+            if (document.activeElement === firstEl) {
+                e.preventDefault();
+                lastEl.focus();
+            }
+        } else {
+            if (document.activeElement === lastEl) {
+                e.preventDefault();
+                firstEl.focus();
+            }
+        }
+    };
+    projectModal.addEventListener('keydown', modalTrapHandler);
+    if (modalClose) modalClose.focus();
 }
 
 function closeProjectModal() {
     projectModal.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
+    if (modalTrapHandler) {
+        projectModal.removeEventListener('keydown', modalTrapHandler);
+        modalTrapHandler = null;
+    }
 }
 
 // ============================================
@@ -283,7 +287,6 @@ function getProjectFromUrl() {
 
 function showProjectDetail(project) {
     if (!projectDetailSection) return;
-    // Fill content
     projectDetailTitle.textContent = project.title;
     projectDetailBody.textContent = project.description;
     projectDetailTags.innerHTML = project.tags.map(t => `<span class="project-tag">${t}</span>`).join('');
@@ -293,30 +296,17 @@ function showProjectDetail(project) {
     } else {
         projectDetailImage.removeAttribute('src');
     }
-
-    // Show section and hide list sections visually
     projectDetailSection.hidden = false;
-    document.getElementById('projects').style.display = 'none';
-    document.getElementById('websites').style.display = 'none';
-    document.getElementById('about').style.display = 'none';
-    document.getElementById('education').style.display = 'none';
-    document.getElementById('experience').style.display = 'none';
-    document.getElementById('skills').style.display = 'none';
-    document.getElementById('languages').style.display = 'none';
-    document.getElementById('contact').style.display = 'none';
-
-    // Update title
-    document.title = `${project.title} — Adam Lachkar`;
+    const idsToHide = ['projects','websites','about','education','experience','skills','languages','contact'];
+    idsToHide.forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'none'; });
+    document.title = `${project.title} – Adam Lachkar`;
 }
 
 function hideProjectDetail() {
     if (!projectDetailSection) return;
     projectDetailSection.hidden = true;
     const ids = ['projects','websites','about','education','experience','skills','languages','contact'];
-    ids.forEach(id => {
-        const el = document.getElementById(id);
-        if (el) el.style.display = '';
-    });
+    ids.forEach(id => { const el = document.getElementById(id); if (el) el.style.display = ''; });
     document.title = 'Adam Lachkar - Portfolio';
 }
 
@@ -325,8 +315,8 @@ function hideProjectDetail() {
 // ============================================
 
 function renderWebsites() {
+    if (!websitesGrid) return;
     websitesGrid.innerHTML = '';
-    
     websites.forEach(website => {
         const websiteCard = document.createElement('a');
         websiteCard.className = 'website-card';
@@ -334,7 +324,6 @@ function renderWebsites() {
         websiteCard.target = '_blank';
         websiteCard.rel = 'noopener noreferrer';
         websiteCard.setAttribute('aria-label', `Visit ${website.title} - ${website.purpose}`);
-        
         websiteCard.innerHTML = `
             <div class="website-header">
                 <h3 class="website-title">${website.title}</h3>
@@ -343,7 +332,6 @@ function renderWebsites() {
             <p class="website-purpose">${website.purpose}</p>
             <div class="website-screenshot">${website.image ? `<img src="${website.image}" alt="${website.title} screenshot" style="width:100%;height:100%;object-fit:cover;border-radius:12px;" />` : 'Screenshot placeholder'}</div>
         `;
-        
         websitesGrid.appendChild(websiteCard);
     });
 }
@@ -354,21 +342,12 @@ function renderWebsites() {
 
 function handleContactSubmit(e) {
     e.preventDefault();
-    
-    // Get form data
     const formData = new FormData(e.target);
     const name = formData.get('name');
     const email = formData.get('email');
     const message = formData.get('message');
-    
-    // In a real application, you would send this data to a server
-    // For now, we'll just show a success message
     console.log('Form submitted:', { name, email, message });
-    
-    // Show toast notification
     showToast("Thanks! I'll get back to you.");
-    
-    // Reset form
     e.target.reset();
 }
 
@@ -377,12 +356,10 @@ function handleContactSubmit(e) {
 // ============================================
 
 function showToast(message) {
+    if (!toast) return;
     toastMessage.textContent = message;
     toast.classList.add('show');
-    
-    setTimeout(() => {
-        toast.classList.remove('show');
-    }, 3000);
+    setTimeout(() => { toast.classList.remove('show'); }, 3000);
 }
 
 // ============================================
@@ -392,12 +369,10 @@ function showToast(message) {
 async function copyEmailToClipboard(e) {
     e.preventDefault();
     const email = 'adam.lachkar@emines.um6p.ma';
-    
     try {
         await navigator.clipboard.writeText(email);
         showToast('Email copied to clipboard!');
     } catch (err) {
-        // Fallback for older browsers
         const textArea = document.createElement('textarea');
         textArea.value = email;
         textArea.style.position = 'fixed';
@@ -414,13 +389,11 @@ async function copyEmailToClipboard(e) {
     }
 }
 
-// Copy email on Ctrl/Cmd+Click
 function handleEmailLinkClick(e) {
     if (e.ctrlKey || e.metaKey) {
         e.preventDefault();
         copyEmailToClipboard(e);
     }
-    // Otherwise, let the default mailto: behavior work
 }
 
 // ============================================
@@ -432,18 +405,13 @@ function initSmoothScrolling() {
         anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
             if (href === '#' || href === '#!') return;
-            
             const target = document.querySelector(href);
             if (target) {
                 e.preventDefault();
                 const headerOffset = 80;
                 const elementPosition = target.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
+                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
             }
         });
     });
@@ -455,8 +423,6 @@ function initSmoothScrolling() {
 
 function handleDownloadCV(e) {
     e.preventDefault();
-    // In a real application, this would link to an actual PDF file
-    // For now, we'll show a message
     showToast('CV download coming soon! You can contact me for a copy.');
 }
 
@@ -475,40 +441,24 @@ function handleEscapeKey(e) {
 // ============================================
 
 // Theme toggle
-if (themeToggle) {
-    themeToggle.addEventListener('click', toggleTheme);
-}
-if (themeToggleFooter) {
-    themeToggleFooter.addEventListener('click', toggleTheme);
-}
+if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+if (themeToggleFooter) themeToggleFooter.addEventListener('click', toggleTheme);
 
 // Navigation
-if (navToggle) {
-    navToggle.addEventListener('click', toggleMobileNav);
-}
+if (navToggle) navToggle.addEventListener('click', toggleMobileNav);
 
 // Filter buttons
-filterButtons.forEach(btn => {
-    btn.addEventListener('click', handleFilterClick);
-});
+filterButtons.forEach(btn => btn.addEventListener('click', handleFilterClick));
 
 // Modal
-if (modalClose) {
-    modalClose.addEventListener('click', closeProjectModal);
-}
-if (modalOverlay) {
-    modalOverlay.addEventListener('click', closeProjectModal);
-}
+if (modalClose) modalClose.addEventListener('click', closeProjectModal);
+if (modalOverlay) modalOverlay.addEventListener('click', closeProjectModal);
 
 // Contact form
-if (contactForm) {
-    contactForm.addEventListener('submit', handleContactSubmit);
-}
+if (contactForm) contactForm.addEventListener('submit', handleContactSubmit);
 
 // Back to top
-if (backToTop) {
-    backToTop.addEventListener('click', scrollToTop);
-}
+if (backToTop) backToTop.addEventListener('click', scrollToTop);
 
 // Scroll events
 window.addEventListener('scroll', () => {
@@ -519,7 +469,7 @@ window.addEventListener('scroll', () => {
 // Keyboard events
 document.addEventListener('keydown', handleEscapeKey);
 
-// Copy email - contact button copies, hero link uses Ctrl/Cmd+Click to copy
+// Email handling
 if (emailLink) {
     emailLink.addEventListener('click', handleEmailLinkClick);
     emailLink.title = 'Click to email, Ctrl+Click to copy';
@@ -531,14 +481,11 @@ if (contactEmailBtn) {
 
 // Download CV
 const downloadCVBtn = document.getElementById('downloadCV');
-if (downloadCVBtn) {
-    downloadCVBtn.addEventListener('click', handleDownloadCV);
-}
+if (downloadCVBtn) downloadCVBtn.addEventListener('click', handleDownloadCV);
 
 // Project detail back button
 if (projectBack) {
     projectBack.addEventListener('click', (e) => {
-        // clear param and show list
         e.preventDefault();
         history.pushState({}, '', location.pathname + '#projects');
         hideProjectDetail();
@@ -550,31 +497,14 @@ if (projectBack) {
 // ============================================
 
 function init() {
-    // Set current year
-    if (currentYear) {
-        currentYear.textContent = new Date().getFullYear();
-    }
-    
-    // Initialize theme
+    if (currentYear) currentYear.textContent = new Date().getFullYear();
     initTheme();
-    
-    // Render projects and websites
     renderProjects();
     renderWebsites();
-    
-    // Initialize smooth scrolling
     initSmoothScrolling();
-    
-    // Initial scroll spy update
     updateActiveNavLink();
-
-    // If URL contains ?project=, open detail view
     const initialProject = getProjectFromUrl();
-    if (initialProject) {
-        showProjectDetail(initialProject);
-    }
-
-    // Handle browser navigation
+    if (initialProject) showProjectDetail(initialProject);
     window.addEventListener('popstate', () => {
         const proj = getProjectFromUrl();
         if (proj) {
@@ -585,7 +515,6 @@ function init() {
     });
 }
 
-// Run initialization when DOM is ready
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
 } else {
