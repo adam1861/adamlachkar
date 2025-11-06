@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Adam Lachkar — Offensive Security & Data/ML</title>
+    <meta name="description" content="Portfolio of Adam Lachkar — Engineering student (EMINES – UM6P). Offensive Security & Data/ML projects, websites, and contact." />
+    <link rel="canonical" href="https://adamlachkar.com" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#0ea5a0" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="Adam Lachkar — Offensive Security & Data/ML" />
+    <meta property="og:description" content="Projects, websites, and contact for Adam Lachkar (EMINES – UM6P)." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://adamlachkar.com" />
+    <meta property="og:image" content="adam.png" />
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Adam Lachkar — Offensive Security & Data/ML" />
+    <meta name="twitter:description" content="Projects, websites, and contact for Adam Lachkar (EMINES – UM6P)." />
+    <meta name="twitter:image" content="assets/og-image.svg" />
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="script.js"></script>
+
+    <!-- Structured data (JSON-LD) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Adam Lachkar",
+        "jobTitle": "Engineering student",
+        "affiliation": {
+          "@type": "CollegeOrUniversity",
+          "name": "EMINES – UM6P"
+        },
+        "email": "mailto:adam.lachkar@emines.um6p.ma",
+        "telephone": "+212770282379",
+        "url": "https://adamlachkar.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Benguerir",
+          "addressCountry": "MA"
+        },
+        "sameAs": [
+          "https://www.linkedin.com/in/adam-lachkar-630010305"
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Adam Lachkar Portfolio",
+        "url": "https://adamlachkar.com"
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#projects">Skip to Projects</a>
+
+    <header class="site-header" id="top">
+      <div class="container header-inner">
+        <a class="brand" href="#top" aria-label="Home">Adam Lachkar</a>
+        <nav class="main-nav" aria-label="Primary">
+          <ul>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#websites">Websites</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#languages">Languages</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+        <button id="theme-toggle" class="btn btn-ghost" type="button" aria-label="Toggle theme" title="Toggle theme">🌗</button>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <!-- Hero -->
+      <section class="hero" aria-label="Introduction">
+        <div class="container hero-inner">
+          <div class="hero-copy">
+            <h1 class="title">Adam Lachkar</h1>
+            <p class="tagline">Engineering student (EMINES – UM6P) • Offensive Security &amp; Data/ML</p>
+            <p class="location">Benguerir, Morocco</p>
+            <div class="hero-ctas">
+              <a class="btn btn-primary" href="#projects">Projects</a>
+              <a class="btn btn-primary" href="#websites">Websites</a>
+              <a class="btn btn-ghost" id="download-cv" href="Adam Lachkar.pdf" download target="_blank" rel="noopener">Download CV (PDF)</a>
+              <a class="btn btn-ghost" href="#contact">Contact</a>
+            </div>
+            <ul class="contact-list" aria-label="Quick contacts">
+              <li>
+                <a href="tel:+212770282379" class="contact-link">📞 +212 770 282 379</a>
+                <button class="link-like" id="copy-phone" type="button" aria-label="Copy phone">Copy</button>
+              </li>
+              <li>
+                <a href="mailto:adam.lachkar@emines.um6p.ma" class="contact-link" id="email-link">✉️ adam.lachkar@emines.um6p.ma</a>
+                <button class="link-like" id="copy-email" type="button" aria-label="Copy email">Copy</button>
+              </li>
+              <li>
+                <a class="contact-link" href="https://github.com/adam1861" target="_blank" rel="noreferrer noopener">
+                  <img class="icon" src="assets/linkedin-blue.svg" alt="Github" width="16" height="16" />
+                  adam-lachkar
+                </a>
+              </li>
+              <li>
+                <a class="contact-link" href="https://www.linkedin.com/in/adam-lachkar-630010305" target="_blank" rel="noreferrer noopener">
+                  <img class="icon" src="assets/github.png" alt="Github" width="16" height="16" />
+                  adam1861
+                </a>
+              </li>
+            </ul>
+
+            <!-- Inline About moved here -->
+            <div class="about-inline">
+              <h2 id="about">About</h2>
+              <p>
+                Étudiant ingénieur (3ᵉ année) à EMINES – UM6P. Auto-formation en cybersécurité offensive. Parcours orienté Data, ML &amp; IA. Vice-président du club informatique E++ (leadership, projets, ateliers).
+              </p>
+            </div>
+          </div>
+          <div class="hero-preview">
+            <img class="avatar" src="adam.png" alt="Portrait of Adam Lachkar" loading="eager" />
+            <div class="hero-card">
+              <p class="muted">Focus areas</p>
+              <ul>
+                <li>Offensive Security</li>
+                <li>Data, ML &amp; AI</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Primary: Projects -->
+      <section id="projects" class="section" aria-labelledby="projects-title">
+        <div class="container">
+          <div class="section-header">
+            <h2 id="projects-title">Projects</h2>
+            <div class="filters" role="tablist" aria-label="Project filters">
+              <button class="chip active" data-filter="All" role="tab" aria-selected="true">All</button>
+              <button class="chip" data-filter="ML/AI" role="tab">ML/AI</button>
+              <button class="chip" data-filter="Classification" role="tab">Classification</button>
+              <button class="chip" data-filter="Time Series" role="tab">Time Series</button>
+              <button class="chip" data-filter="Robotics" role="tab">Robotics</button>
+              <button class="chip" data-filter="Physics" role="tab">Physics</button>
+            </div>
+          </div>
+          <div id="projects-grid" class="card-grid" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <!-- Primary: Websites -->
+      <section id="websites" class="section" aria-labelledby="websites-title">
+        <div class="container">
+          <div class="section-header">
+            <h2 id="websites-title">Websites</h2>
+          </div>
+          <div id="websites-grid" class="card-grid"></div>
+        </div>
+      </section>
+
+      <!-- About moved inline in hero -->
+
+      <!-- Education -->
+      <section id="education" class="section" aria-labelledby="education-title">
+        <div class="container">
+          <h2 id="education-title">Education</h2>
+          <article class="edu-card card">
+            <h3>EMINES – UM6P (2023–2028) — Ingénieur en management industriel</h3>
+            <ul>
+              <li>Formation généraliste en ingénierie, Data, IA &amp; systèmes industriels</li>
+              <li>Projets Java/Python/ML</li>
+              <li>Gestion de projets &amp; analyse technique</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- Experience -->
+      <section id="experience" class="section" aria-labelledby="experience-title">
+        <div class="container">
+          <h2 id="experience-title">Experience</h2>
+          <div class="card-grid small">
+            <article class="card">
+              <h3>E++ — Vice-President (2024–Present)</h3>
+              <p>Supervision d’activités tech &amp; coordination du club • Ateliers Python/C/Data science • Compétitions &amp; hackathons • Leadership &amp; gestion d’équipe</p>
+            </article>
+            <article class="card">
+              <h3>Math &amp; Maroc — Membre adhérent (2024–Present)</h3>
+              <p>Résolution de problèmes avancés • Rigueur analytique • Sessions &amp; challenges</p>
+            </article>
+            <article class="card">
+              <h3>E-tech — matriel manager(2024–2025)</h3>
+              <p>Gestion du matériel robotique & logistique • Support aux équipes projets/compétitions • Rigueur, organisation & esprit d’équipe.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills -->
+      <section id="skills" class="section" aria-labelledby="skills-title">
+        <div class="container">
+          <h2 id="skills-title">Tech Skills</h2>
+          <div class="skills-grid">
+            <article class="skill-card">
+              <div class="skill-header"><span class="skill-ico" aria-hidden="true">🧠</span><h3>AI &amp; Data</h3></div>
+              <ul class="skill-list" aria-label="AI and Data tools">
+                <li class="skill-pill"><span class="dot" aria-hidden="true"></span>Scikit‑Learn</li>
+                <li class="skill-pill"><span class="dot" aria-hidden="true"></span>Pandas</li>
+                <li class="skill-pill"><span class="dot" aria-hidden="true"></span>NumPy</li>
+                <li class="skill-pill"><span class="dot" aria-hidden="true"></span>Matplotlib</li>
+                <li class="skill-pill"><span class="dot" aria-hidden="true"></span>Seaborn</li>
+              </ul>
+            </article>
+
+            <article class="skill-card">
+              <div class="skill-header"><span class="skill-ico" aria-hidden="true">&lt;/&gt;</span><h3>Programming Languages</h3></div>
+              <ul class="skill-list" aria-label="Programming languages">
+                <li class="skill-pill"><span class="dot" aria-hidden="true"></span>Python</li>
+                <li class="skill-pill"><span class="dot" aria-hidden="true"></span>C</li>
+                <li class="skill-pill"><span class="dot" aria-hidden="true"></span>Java</li>
+                <li class="skill-pill"><span class="dot" aria-hidden="true"></span>SQL</li>
+                <li class="skill-pill"><span class="dot" aria-hidden="true"></span>Latex</li>
+              </ul>
+            </article>
+
+            <article class="skill-card">
+              <div class="skill-header"><span class="skill-ico" aria-hidden="true">🛠️</span><h3>Engineering &amp; Design</h3></div>
+              <ul class="skill-list" aria-label="Engineering tools">
+                <li class="skill-pill"><span class="dot" aria-hidden="true"></span>SolidWorks</li>
+                <li class="skill-pill"><span class="dot" aria-hidden="true"></span>Arduino</li>
+                <li class="skill-pill"><span class="dot" aria-hidden="true"></span>Processing</li>
+                <li class="skill-pill"><span class="dot" aria-hidden="true"></span>LatisPro</li>
+                <li class="skill-pill"><span class="dot" aria-hidden="true"></span>Matlab</li>
+                <li class="skill-pill"><span class="dot" aria-hidden="true"></span>Scilab</li>
+              </ul>
+            </article>
+
+            <article class="skill-card">
+              <div class="skill-header"><span class="skill-ico" aria-hidden="true">🧰</span><h3>Tools</h3></div>
+              <ul class="skill-list" aria-label="Developer tools">
+                <li class="skill-pill"><span class="dot" aria-hidden="true"></span>Linux</li>
+                <li class="skill-pill"><span class="dot" aria-hidden="true"></span>Git</li>
+                <li class="skill-pill"><span class="dot" aria-hidden="true"></span>Notion</li>
+                <li class="skill-pill"><span class="dot" aria-hidden="true"></span>n8n</li>
+                <li class="skill-pill"><span class="dot" aria-hidden="true"></span>Power Bi</li>
+                <li class="skill-pill"><span class="dot" aria-hidden="true"></span>Figma</li>
+              </ul>
+            </article>
+
+            <article class="skill-card">
+              <div class="skill-header"><span class="skill-ico" aria-hidden="true">🌐</span><h3>Web / CMS</h3></div>
+              <ul class="skill-list" aria-label="Web & CMS">
+                <li class="skill-pill"><span class="dot" aria-hidden="true"></span>WordPress</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Languages -->
+      <section id="languages" class="section" aria-labelledby="languages-title">
+        <div class="container">
+          <h2 id="languages-title">Languages</h2>
+          <div class="lang-grid" role="list">
+            <div class="lang-item" role="listitem">
+              <span class="lang-name">Arabic</span>
+              <div class="lang-meter" role="progressbar" aria-label="Arabic proficiency" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100">
+                <span class="lang-fill" style="width:100%"></span>
+              </div>
+              <span class="lang-level">Native</span>
+            </div>
+            <div class="lang-item" role="listitem">
+              <span class="lang-name">French</span>
+              <div class="lang-meter" role="progressbar" aria-label="French proficiency" aria-valuemin="0" aria-valuemax="100" aria-valuenow="80">
+                <span class="lang-fill" style="width:80%"></span>
+              </div>
+              <span class="lang-level">Advanced</span>
+            </div>
+            <div class="lang-item" role="listitem">
+              <span class="lang-name">English</span>
+              <div class="lang-meter" role="progressbar" aria-label="English proficiency" aria-valuemin="0" aria-valuemax="100" aria-valuenow="80">
+                <span class="lang-fill" style="width:80%"></span>
+              </div>
+              <span class="lang-level">Advanced</span>
+            </div>
+            <div class="lang-item" role="listitem">
+              <span class="lang-name">Spanish</span>
+              <div class="lang-meter" role="progressbar" aria-label="Spanish proficiency" aria-valuemin="0" aria-valuemax="100" aria-valuenow="20">
+                <span class="lang-fill" style="width:20%"></span>
+              </div>
+              <span class="lang-level">Basic</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="section" aria-labelledby="contact-title">
+        <div class="container">
+          <h2 id="contact-title">Contact</h2>
+          <form id="contact-form" class="contact-form" aria-describedby="contact-hint">
+            <div class="grid-2">
+              <label>
+                <span>Name</span>
+                <input type="text" name="name" autocomplete="name" required />
+              </label>
+              <label>
+                <span>Email</span>
+                <input type="email" name="email" autocomplete="email" required />
+              </label>
+              <label>
+                <span>Phone number</span>
+                <input type="Phone number" name="Phone number" autocomplete="Phone number" required />
+              </label>
+            </div>
+            <label>
+              <span>Message</span>
+              <textarea name="message" rows="5" required></textarea>
+            </label>
+            <div class="form-actions">
+              <button class="btn btn-primary" type="submit">Send</button>
+              <a class="btn btn-ghost" href="mailto:adam.lachkar@emines.um6p.ma">Email</a>
+              <a class="btn btn-ghost" href="tel:+212770282379">Call</a>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- Modal for Project Details -->
+      <div id="project-modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modal-title">
+        <div class="modal-backdrop" data-modal-close></div>
+        <div class="modal-content" role="document">
+          <button class="modal-close btn btn-ghost" type="button" aria-label="Close" data-modal-close>✕</button>
+          <h3 id="modal-title"></h3>
+          <p id="modal-desc" class="modal-desc"></p>
+          <div id="modal-tags" class="chips"></div>
+          <img id="modal-img" alt="Project image" class="modal-img" />
+        </div>
+      </div>
+
+      <!-- Toast -->
+      <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+      <!-- Back to top -->
+      <button id="back-to-top" class="back-to-top" aria-label="Back to top">↑</button>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© <span id="year"></span> Adam Lachkar</p>
+        <nav aria-label="Footer">
+          <ul class="footer-links">
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#websites">Websites</a></li>
+            <li><a href="https://www.linkedin.com/in/adam-lachkar-630010305" target="_blank" rel="noreferrer noopener">LinkedIn</a></li>
+            <li><a href="mailto:adam.lachkar@emines.um6p.ma">Email</a></li>
+          </ul>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>
