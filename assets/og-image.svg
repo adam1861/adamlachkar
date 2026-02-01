@@ -7,12 +7,11 @@
   </defs>
   <rect width="1200" height="630" fill="#0b0e14"/>
   <rect x="48" y="48" width="1104" height="534" rx="24" fill="#121722" stroke="#1e2635"/>
-  <text x="96" y="180" font-family="system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell" font-size="72" fill="#e6eaf0" font-weight="700">Adam Lachkar</text>
-  <text x="96" y="240" font-family="system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell" font-size="36" fill="#9aa3b2">Engineering student (EMINES – UM6P)</text>
-  <text x="96" y="284" font-family="system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell" font-size="36" fill="#9aa3b2">Offensive Security &amp; Data/ML</text>
+  <text x="96" y="180" font-family="system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell" font-size="72" fill="#e6eaf0" font-weight="700">Hakima Oubouh</text>
+  <text x="96" y="240" font-family="system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell" font-size="36" fill="#9aa3b2">Industrial Operations &amp; Digitalization (UM6P)</text>
+  <text x="96" y="284" font-family="system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell" font-size="36" fill="#9aa3b2">Industrial IoT • Data • Automation</text>
   <g transform="translate(96,340)">
     <path d="M0 50 L50 0 L100 50" stroke="url(#grad)" stroke-width="10" fill="none" stroke-linecap="round"/>
     <path d="M160 0 L160 50 L220 50" stroke="#88f1e6" stroke-width="10" fill="none" stroke-linecap="round"/>
   </g>
 </svg>
-

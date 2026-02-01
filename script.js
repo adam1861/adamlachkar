@@ -1,6 +1,6 @@
 /*
-  script.js — Adam Lachkar Portfolio
-  - Dynamic rendering for Projects & Websites
+  script.js — Hakima Oubouh Portfolio
+  - Dynamic rendering for Projects & Highlights
   - Filter logic for Projects
   - Accessible modal for project details
   - Theme toggle with localStorage and prefers-color-scheme
@@ -12,109 +12,94 @@
 // ---------- Data (edit here) ----------
 const projects = [
   {
-    id: 'proj-rf-matches',
-    title: 'Prédiction de matchs (Random Forest)',
-    blurb: 'Modèle de prédiction des résultats de matchs de football via Random Forest.',
-    details: 'Construction de features (forme des équipes, domicile/extérieur, historiques) et entraînement d’un Random Forest pour prédire les résultats des matchs. Évaluation via validation croisée et métriques de précision/recall.',
-    tags: ['ML/AI', 'Classification'],
-    image: 'football_prediction.jpg'
+    id: 'proj-mqtt-gateway',
+    title: 'Industrial MQTT Gateway: OPC–IoT Data Pipeline',
+    blurb: 'Real-time OPC UA to MQTT pipeline for industrial monitoring.',
+    details: 'Configured KEPServerEX to simulate a binary sensor variable and publish via MQTT, validating the OPC UA stream in UA Expert. Built a Node-RED subscriber with linear and step-interpolated charts for real-time visualization.',
+    tags: ['Industrial IoT', 'SCADA'],
+    image: 'assets/projects/hakima-project-01.png'
   },
   {
-    id: 'proj-xgb-weather',
-    title: 'Prévision météo (XGBoost)',
-    blurb: 'Modèle XGBoost pour prévision météorologique (features météo).',
-    details: 'Pré-traitement des données météo et ingénierie de variables (tendances, moyennes mobiles) pour entraîner un XGBoost sur des séries temporelles. Validation glissante et optimisation d’hyperparamètres.',
-    tags: ['ML/AI', 'Time Series'],
-    image: 'weather_forcasting.avif'
+    id: 'proj-water-scada',
+    title: 'Water Treatment Plant SCADA Supervision System',
+    blurb: 'End-to-end SCADA system with PLC control and WinCC supervision.',
+    details: 'Programmed a Siemens S7-1500 PLC with PROFINET/PROFIBUS networks, AUTO/MANUAL control logic, and GRAFCET sequences. Designed a modular WinCC HMI for alarms, visualization, and historical logging.',
+    tags: ['SCADA', 'Automation'],
+    image: 'assets/projects/hakima-project-02.png'
   },
   {
-    id: 'proj-heart-dtree',
-    title: 'Détection maladie cardiaque (Decision Trees)',
-    blurb: 'Classification du risque cardiovasculaire à partir de variables cliniques.',
-    details: 'Nettoyage de données cliniques, encodage de variables, et entraînement d’arbres de décision pour estimer le risque cardiovasculaire. Interprétabilité via importance des features.',
-    tags: ['ML/AI', 'Classification'],
-    image: 'heart_desease.jpg'
+    id: 'proj-normality-pipeline',
+    title: 'Statistical Normality Analysis & Data Transformation Pipeline',
+    blurb: 'Three-step transformation pipeline for skewed obesity data.',
+    details: 'Applied Anderson-Darling, Jarque-Bera, and Q-Q diagnostics to detect non-normality and outliers. Built a transformation pipeline that improved symmetry and produced normalized data suitable for modeling.',
+    tags: ['Data Science', 'Quality'],
+    image: 'assets/projects/hakima-project-03.png'
   },
   {
-    id: 'proj-spaceship-logreg',
-    title: 'Spaceship Titanic (Logistic Regression)',
-    blurb: 'Projet Kaggle : régression logistique pour la classification des passagers.',
-    details: 'Participation Kaggle : pipeline de prétraitement (imputation, standardisation) et régression logistique avec validation croisée. Analyse des coefficients et tuning du seuil.',
-    tags: ['ML/AI', 'Classification'],
-    image: 'titanic_space.jpg'
-  },
-  // Robotics
-  {
-    id: 'proj-line-follower',
-    title: 'Robot suiveur de ligne (Arduino)',
-    blurb: "Robot mobile suivant une ligne via capteurs IR et PID.",
-    details: "Conception d’un robot différentiel basé sur Arduino avec capteurs infrarouges, commande PID pour l’asservissement et réglage des gains. Châssis léger et essais sur pistes complexes.",
-    tags: ['Robotics'],
-    image: 'robotic_1.png'
+    id: 'proj-robot-pickplace',
+    title: 'Industrial Robot Programming: Pick-and-Place Path Optimization',
+    blurb: 'Optimized motion paths for a KUKA pick-and-place cell.',
+    details: 'Defined coordinate frames, approach points, and safe zones to ensure collision-free operation. Iteratively refined trajectories to reduce cycle time while maintaining safety constraints.',
+    tags: ['Robotics', 'Automation'],
+    image: 'assets/projects/hakima-project-04.jpeg'
   },
   {
-    id: 'proj-robotic-arm',
-    title: 'Bras robotique 4‑DOF ( cinématique inverse )',
-    blurb: "Bras 4 axes avec servomoteurs, calcul de cinématique inverse.",
-    details: "Modélisation DH, résolution de la cinématique inverse et génération de trajectoires lissées. Pilotage joystick/série, calibration mécanique et limites de couple.",
-    tags: ['Robotics'],
-    image: 'robotic_2.jpg'
+    id: 'proj-um6p-game',
+    title: 'UM6P Campus Adventure: 3D Survival Game',
+    blurb: 'Unity 3D game with state management and checkpoints.',
+    details: 'Built multi-scene gameplay with animated doors, AI pursuit, and a robust player state system tracking health, collectibles, and checkpoint persistence. Applied interactive simulation principles for training-style scenarios.',
+    tags: ['Simulation'],
+    image: 'assets/projects/hakima-project-05.png'
   },
   {
-    id: 'proj-ros-nav',
-    title: 'Robot mobile autonome (ROS)',
-    blurb: "Navigation autonome avec ROS: odométrie, LIDAR et évitement d’obstacles.",
-    details: "Intégration ROS (mapping/SLAM), planification locale (DWA) et suivi de trajectoires. Simulation Gazebo et validation terrain avec capteurs LIDAR/IMU.",
-    tags: ['Robotics'],
-    image: 'robotic_3.jpg'
+    id: 'proj-traceability-dashboard',
+    title: 'Industrial Traceability & Quality Analytics Dashboard',
+    blurb: 'Real-time traceability platform for automotive manufacturing.',
+    details: 'Implemented smart filtering, component traceability, and interactive dashboards for pass rates and quality KPIs. Enabled rapid exploration of leak, continuity, and locking test data for decision support.',
+    tags: ['Quality', 'Industrial IoT'],
+    image: 'assets/projects/hakima-project-06.png'
   },
   {
-    id: 'proj-vision-sorter',
-    title: 'Tri d’objets par vision',
-    blurb: "Système de vision détectant formes/couleurs pour un convoyeur de tri.",
-    details: "Acquisition caméra, segmentation couleur et détection de contours pour classer les objets; commande des actionneurs pour aiguillage. Mesure du débit et de la précision.",
-    tags: ['Robotics'],
-    image: 'robotic_4.jpg'
-  },
-  // Physics
-  {
-    id: 'phys-double-pendulum',
-    title: 'Electromagnetic Induction Analysis',
-    blurb: "Induction électromagnétique : solénoïde, champ magnétique et loi de Faraday-Lenz.",
-    details: "Comprehensive study of electromagnetic induction phenomena through systematic experimentation and measurement. This project involved analyzing magnetic field interactions, inductance characteristics, and electromagnetic wave propagation to validate theoretical principles and explore practical applications.",
-    tags: ['Physics'],
-    image: 'physique_1.jpg'
+    id: 'proj-cable-sim',
+    title: '3D Industrial Process Modeling: Cable Assembly Line Simulation',
+    blurb: 'Animated discrete-event simulation in Arena Visual Designer.',
+    details: 'Modeled end-to-end production flow, resources, and routing paths with 3D visualization. Used the simulation to analyze throughput, utilization, and bottlenecks.',
+    tags: ['Simulation', 'Automation'],
+    image: 'assets/projects/hakima-project-07.png'
   },
   {
-    id: 'phys-projectile-drag',
-    title: 'Solar Energy Testing System',
-    blurb: "mesures, rendement, charge variable et conditions lumineuses",
-    details: "Comprehensive photovoltaic analysis setup with data acquisition systems. Features load testing equipment and precision measurement instruments for efficiency optimization studies and performance characterization of solar panels under various conditions.",
-    tags: ['Physics'],
-    image: 'physique_2.jpg'
+    id: 'proj-spc-capability',
+    title: 'SPC & Capability Analysis for Manufacturing',
+    blurb: 'Control charts and capability assessment for machining quality.',
+    details: 'Analyzed measurements across production lots, built control charts, and quantified defect rates. Modeled tool wear to recommend machine adjustments and preventive maintenance cadence.',
+    tags: ['Quality', 'Data Science'],
+    image: 'assets/projects/hakima-project-08.png'
   },
   {
-    id: 'phys-ray-tracing',
-    title: 'Solénoïde & Induction : Analyse expérimentale',
-    blurb: "flux magnétique, tension induite et validation théorique",
-    details: "Montage expérimental complet destiné à étudier l’induction électromagnétique à l’aide d’un solénoïde de grande dimension, d’un oscilloscope et de bancs de résistances/inductances. Ce système permet de générer, mesurer et analyser les variations du champ magnétique, la réponse inductive du circuit, ainsi que les signaux induits. Les mesures sont réalisées sous différentes charges et conditions d’excitation afin de valider les lois de Faraday-Lenz et d’explorer le comportement dynamique des circuits inductifs.",
-    tags: ['Physics'],
-    image: 'physique_3.jpg'
+    id: 'proj-vibration-analysis',
+    title: 'Vibration Analysis of an Electric Motor',
+    blurb: 'FFT-based fault diagnosis for predictive maintenance.',
+    details: 'Captured vibration signals with piezoelectric accelerometers and analyzed frequency signatures to detect unbalance, misalignment, and looseness. Compared results with theoretical vibration models.',
+    tags: ['Quality', 'Automation'],
+    image: 'assets/projects/hakima-project-09.jpeg'
   },
   {
-    id: 'phys-coupled-oscillators',
-    title: 'Acoustic Properties Analysis',
-    blurb: "chambre anéchoïque, absorption sonore, réflexion et réponses fréquentielles",
-    details: "Modèle masses–ressorts; résolution des EDO analytiquement et numériquement (RK4) pour extraire fréquences propres et modes normaux. Visualisation des battements et du transfert d’énergie.",
-    tags: ['Physics'],
-    image: 'physique_4.jpg'
+    id: 'proj-mes-line',
+    title: 'MES-Controlled Modular Production Line (Siemens PLC)',
+    blurb: 'Multi-station production line coordinated by MES.',
+    details: 'Programmed Siemens PLC station logic and integrated MES control with SIMATIC HMI for mode selection and system operation. Implemented sensor/actuator sequencing for automated flow.',
+    tags: ['Automation', 'SCADA'],
+    image: 'assets/projects/hakima-project-10.jpeg'
   }
 ];
 
 const websites = [
-  { title: 'Starteady', url: 'https://www.starteady.com/', desc: 'Plateforme de lancement et de croissance.', image: 'starteady.png' },
-  { title: 'Auramaking', url: 'https://www.auramaking.com/', desc: 'Création de marques et de sites web.', image: 'auramaking.png' },
-  { title: 'Icodex Academy', url: 'https://icodex.academy/', desc: 'Apprentissage du code et de l’IA.', image: 'icodex.png' },
+  {
+    title: 'ArSL Bridge Pitch Video',
+    url: 'https://youtu.be/XyxX-wTjO5s',
+    desc: 'People’s Choice Award-winning accessibility project pitch.',
+    image: 'assets/projects/hakima-project-05.png'
+  }
 ];
 
 // ---------- Helpers ----------
@@ -299,7 +284,7 @@ function initBackToTop() {
 
 function initCopyEmail() {
   const btn = $('#copy-email');
-  const email = 'adam.lachkar@emines.um6p.ma';
+  const email = 'hakima.oubouh@um6p.ma';
   btn?.addEventListener('click', async () => {
     try {
       await navigator.clipboard.writeText(email);
@@ -312,7 +297,7 @@ function initCopyEmail() {
 
 function initCopyPhone() {
   const btn = $('#copy-phone');
-  const phone = '+212770282379';
+  const phone = '+212645191694';
   btn?.addEventListener('click', async () => {
     try {
       await navigator.clipboard.writeText(phone);
