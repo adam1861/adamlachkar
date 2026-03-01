@@ -46,11 +46,12 @@ button, input, textarea, select { font: inherit; color: inherit; }
 
 /* Header / nav */
 .site-header { position: sticky; top: 0; z-index: 50; backdrop-filter: saturate(120%) blur(8px); background: color-mix(in hsl, var(--bg), transparent 12%); border-bottom: 1px solid var(--border); overflow: hidden; }
-.header-inner { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 16px; align-items: center; padding: 14px 0; }
+.header-inner { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 16px; align-items: center; padding: 14px 0; overflow: hidden; }
 .brand { font-weight: 700; letter-spacing: -0.01em; font-size: 1.2rem; }
-.main-nav { min-width: 0; }
-.main-nav { overflow: hidden; }
-.main-nav ul { display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: 10px 12px; list-style: none; padding: 0; margin: 0; overflow: hidden; }
+.main-nav { min-width: 0; overflow: hidden; scrollbar-width: none; }
+.main-nav ul { display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: 10px 12px; list-style: none; padding: 0; margin: 0; overflow: hidden; scrollbar-width: none; }
+.main-nav::-webkit-scrollbar,
+.main-nav ul::-webkit-scrollbar { width: 0; height: 0; }
 .main-nav a { padding: 6px 8px; border-radius: 10px; color: var(--muted); font-size: clamp(0.84rem, 0.7rem + 0.4vw, 0.98rem); line-height: 1.1; white-space: nowrap; flex: 0 1 auto; }
 .main-nav a.active, .main-nav a[aria-current="true"] { color: var(--text); background: var(--card); }
 
@@ -83,7 +84,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .hero-card ul { margin: 8px 0 0; padding-left: 18px; }
 
 /* Cards & grids */
-.card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.card-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 .card-grid.small { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
 .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); padding: 16px; transition: transform .2s ease, box-shadow .2s ease; }
 .card:hover { transform: translateY(-3px); }

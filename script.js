@@ -116,6 +116,9 @@ const websites = [
   { title: 'Auramaking', url: 'https://www.auramaking.com/', desc: 'Création de marques et de sites web.', image: 'auramaking.png' },
   { title: 'Icodex Academy', url: 'https://icodex.academy/', desc: 'Apprentissage du code et de l’IA.', image: 'icodex.png' },
   { title: 'Efaix Academy', url: 'https://academy.efaix.com/', desc: 'Académie de formation en ligne.', image: 'efaix_academy.png' },
+  { title: 'Efaix Eval', url: 'https://eval.efaix.com/', desc: 'Plateforme d’évaluation en ligne.', image: 'efaix_eval.png' },
+  { title: 'Efaix LMS', url: 'https://lms.efaix.com/', desc: 'Plateforme d’évaluation en ligne.', image: 'efaix_lms.png' },
+  { title: 'Efaix E-learning', url: 'https://elearning.efaix.com/', desc: 'Plateforme d’évaluation en ligne.', image: 'efaix_elearning.png' },
 ];
 
 // ---------- Helpers ----------
