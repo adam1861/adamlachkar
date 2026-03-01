@@ -115,6 +115,7 @@ const websites = [
   { title: 'Starteady', url: 'https://www.starteady.com/', desc: 'Plateforme de lancement et de croissance.', image: 'starteady.png' },
   { title: 'Auramaking', url: 'https://www.auramaking.com/', desc: 'Création de marques et de sites web.', image: 'auramaking.png' },
   { title: 'Icodex Academy', url: 'https://icodex.academy/', desc: 'Apprentissage du code et de l’IA.', image: 'icodex.png' },
+  { title: 'Efaix Academy', url: 'https://academy.efaix.com/', desc: 'Académie de formation en ligne.', image: 'efaix_academy.png' },
 ];
 
 // ---------- Helpers ----------
