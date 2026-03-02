@@ -119,6 +119,7 @@ const websites = [
   { title: 'Efaix Eval', url: 'https://eval.efaix.com/', desc: 'Plateforme d’évaluation en ligne.', image: 'efaix_eval.png' },
   { title: 'Efaix LMS', url: 'https://lms.efaix.com/', desc: 'Plateforme d’évaluation en ligne.', image: 'efaix_lms.png' },
   { title: 'Efaix E-learning', url: 'https://elearning.efaix.com/', desc: 'Plateforme d’évaluation en ligne.', image: 'efaix_elearning.png' },
+  { title: 'Efaix', url: 'https://efaix.com/', desc: 'Plateforme d’évaluation en ligne.', image: 'efaix.png' },
 ];
 
 // ---------- Helpers ----------
