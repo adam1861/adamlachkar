@@ -1,22 +1,7 @@
 const proofPoints = [
-  { value: "17+", label: "public GitHub repositories" },
-  { value: "6", label: "recent AI and data projects highlighted here" },
-  { value: "6", label: "live web builds and product surfaces featured" }
-];
-
-const focusAreas = [
-  {
-    title: "Applied AI",
-    text: "Classification, forecasting, segmentation, and decision-support projects that stay readable and testable."
-  },
-  {
-    title: "Education products",
-    text: "Building EFAIX across brand, academy, and LMS surfaces with product-minded execution."
-  },
-  {
-    title: "Opportunity fit",
-    text: "Looking for internships and collaborations where AI, product thinking, and shipping discipline all matter."
-  }
+  { value: "17+", label: "public repos" },
+  { value: "6", label: "AI projects selected" },
+  { value: "6", label: "live web builds shown" }
 ];
 
 const featuredProject = {
@@ -260,25 +245,6 @@ const stack = [
   }
 ];
 
-const principles = [
-  {
-    title: "Useful over flashy",
-    text: "I prefer systems that can be tested, explained, and improved after launch."
-  },
-  {
-    title: "Product thinking matters",
-    text: "Even in technical projects, I care about the user path, the structure, and whether the result is legible."
-  },
-  {
-    title: "Range with discipline",
-    text: "I work across AI, web, and systems work, but I still want each project to feel coherent and grounded."
-  },
-  {
-    title: "Build in public",
-    text: "GitHub projects, shipped sites, club work, and startup execution all help me learn faster and show real progress."
-  }
-];
-
 const $ = (selector, scope = document) => scope.querySelector(selector);
 const $$ = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
 const projectFilters = ["All", ...new Set(projects.map((project) => project.type))];
@@ -312,22 +278,6 @@ function renderProofPoints() {
         <article class="proof-card">
           <strong>${item.value}</strong>
           <span>${item.label}</span>
-        </article>
-      `
-    )
-    .join("");
-}
-
-function renderFocusAreas() {
-  const container = $("#focus-grid");
-  if (!container) return;
-
-  container.innerHTML = focusAreas
-    .map(
-      (item) => `
-        <article class="focus-card">
-          <span>${item.title}</span>
-          <p>${item.text}</p>
         </article>
       `
     )
@@ -523,22 +473,6 @@ function renderStack() {
     .join("");
 }
 
-function renderPrinciples() {
-  const container = $("#principles-grid");
-  if (!container) return;
-
-  container.innerHTML = principles
-    .map(
-      (item) => `
-        <article>
-          <span>${item.title}</span>
-          <p>${item.text}</p>
-        </article>
-      `
-    )
-    .join("");
-}
-
 function openLightbox(index) {
   const project = projects[index];
   const box = $("#lightbox");
@@ -706,7 +640,6 @@ function initImages() {
 
 function init() {
   renderProofPoints();
-  renderFocusAreas();
   renderFeaturedProject();
   renderProjectFilters();
   renderProjects();
@@ -714,7 +647,6 @@ function init() {
   renderAboutCards();
   renderSites();
   renderStack();
-  renderPrinciples();
   initSwitcher();
   initLightbox();
   initNav();

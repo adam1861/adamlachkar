@@ -27,10 +27,7 @@ body {
   margin: 0;
   min-width: 320px;
   color: var(--text);
-  background:
-    radial-gradient(circle at top left, rgba(216, 104, 45, 0.08), transparent 28%),
-    radial-gradient(circle at top right, rgba(18, 18, 18, 0.04), transparent 24%),
-    var(--bg);
+  background: var(--bg);
   font-family: "Inter", system-ui, sans-serif;
 }
 
@@ -134,14 +131,14 @@ button {
 
 .hero,
 .section {
-  padding: 36px 0 96px;
+  padding: 28px 0 80px;
 }
 
 .hero-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
   gap: 32px;
-  align-items: center;
+  align-items: start;
 }
 
 .kicker {
@@ -262,7 +259,6 @@ button {
 }
 
 .proof-grid,
-.focus-grid,
 .about-cards {
   display: grid;
   gap: 14px;
@@ -274,7 +270,6 @@ button {
 }
 
 .proof-card,
-.focus-card,
 .feature-shell,
 .project-card,
 .experience-card,
@@ -289,10 +284,9 @@ button {
 }
 
 .proof-card,
-.focus-card,
 .about-card {
   border-radius: var(--radius-md);
-  padding: 18px;
+  padding: 16px;
 }
 
 .proof-card strong {
@@ -302,7 +296,6 @@ button {
 }
 
 .proof-card span,
-.focus-card span,
 .about-card span,
 .experience-card span,
 .feature-metrics span,
@@ -325,20 +318,15 @@ button {
   text-transform: none;
 }
 
-.focus-card span,
 .about-card span {
   display: inline-block;
   margin-bottom: 8px;
 }
 
-.focus-grid {
-  margin-top: 2px;
-}
-
 .hero-media {
   display: grid;
-  gap: 14px;
-  width: min(100%, 520px);
+  gap: 12px;
+  width: min(100%, 440px);
   justify-self: end;
 }
 
@@ -352,7 +340,7 @@ button {
 
 .hero-note {
   border-radius: var(--radius-md);
-  padding: 18px;
+  padding: 16px;
   display: grid;
   gap: 6px;
   background: var(--panel);
@@ -370,7 +358,7 @@ button {
 }
 
 .section-head {
-  margin-bottom: 26px;
+  margin-bottom: 20px;
 }
 
 .section-head h2,
@@ -380,8 +368,8 @@ button {
 }
 
 .section-intro {
-  max-width: 62ch;
-  margin: 12px 0 0;
+  max-width: 58ch;
+  margin: 10px 0 0;
   color: var(--muted);
   line-height: 1.7;
 }
@@ -392,23 +380,24 @@ button {
 
 .feature-shell {
   border-radius: var(--radius-lg);
-  overflow: hidden;
   display: grid;
   grid-template-columns: minmax(320px, 0.95fr) minmax(0, 1.05fr);
+  gap: 20px;
+  padding: 20px;
 }
 
 .feature-media img {
   width: 100%;
-  height: 100%;
   object-fit: cover;
   aspect-ratio: 16 / 11;
+  border-radius: 18px;
 }
 
 .feature-copy {
-  padding: 28px;
+  padding: 6px 2px;
   display: grid;
   align-content: start;
-  gap: 18px;
+  gap: 14px;
 }
 
 .feature-copy h3 {
@@ -419,7 +408,7 @@ button {
 
 .feature-summary {
   margin: 0;
-  font-size: 1.02rem;
+  font-size: 1rem;
 }
 
 .feature-metrics {
@@ -430,7 +419,7 @@ button {
 
 .feature-metrics div,
 .detail-grid div {
-  padding: 14px;
+  padding: 12px;
   border-radius: 14px;
   background: rgba(18, 18, 18, 0.03);
 }
@@ -513,7 +502,7 @@ button {
 
 .project-list {
   display: grid;
-  gap: 16px;
+  gap: 14px;
 }
 
 .project-card {
@@ -532,6 +521,7 @@ button {
 .project-layout {
   display: grid;
   grid-template-columns: minmax(240px, 340px) minmax(0, 1fr);
+  align-items: stretch;
 }
 
 .project-layout img,
@@ -548,10 +538,10 @@ button {
 
 .project-copy,
 .site-copy {
-  padding: 24px;
+  padding: 20px;
   display: grid;
   align-content: start;
-  gap: 12px;
+  gap: 10px;
 }
 
 .project-meta,
@@ -592,56 +582,33 @@ button {
 .chip-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 7px;
 }
 
 .chip {
-  min-height: 30px;
+  min-height: 28px;
   padding: 0 10px;
   border-radius: 999px;
   display: inline-flex;
   align-items: center;
   background: var(--accent-soft);
   color: var(--text);
-  font-size: 0.84rem;
+  font-size: 0.8rem;
 }
 
 .experience-grid {
   display: grid;
-  gap: 18px;
-  position: relative;
-}
-
-.experience-grid::before {
-  content: "";
-  position: absolute;
-  left: 18px;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background: rgba(18, 18, 18, 0.12);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
 }
 
 .experience-card {
-  position: relative;
   border-radius: var(--radius-md);
-  padding: 24px 24px 24px 52px;
-}
-
-.experience-card::before {
-  content: "";
-  position: absolute;
-  left: 12px;
-  top: 28px;
-  width: 14px;
-  height: 14px;
-  border-radius: 999px;
-  background: var(--accent);
-  box-shadow: 0 0 0 6px rgba(216, 104, 45, 0.12);
+  padding: 20px;
 }
 
 .experience-card ul {
-  margin: 14px 0 0;
+  margin: 12px 0 0;
   padding-left: 18px;
   color: var(--muted);
   line-height: 1.7;
@@ -659,7 +626,7 @@ button {
 
 .about-body {
   display: grid;
-  gap: 20px;
+  gap: 16px;
 }
 
 .about-copy p {
@@ -683,7 +650,7 @@ button {
 .site-list,
 .rhythm-grid {
   display: grid;
-  gap: 16px;
+  gap: 14px;
 }
 
 .site-list {
@@ -714,8 +681,8 @@ button {
 
 .stack-card {
   border-radius: var(--radius-md);
-  padding: 20px;
-  min-height: 220px;
+  padding: 18px;
+  min-height: 0;
 }
 
 .stack-card h3 {
@@ -741,23 +708,24 @@ button {
   background: var(--accent-soft);
 }
 
-.rhythm-grid {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+.compact-band {
+  max-width: 760px;
 }
 
-.rhythm-grid article {
-  border-radius: var(--radius-md);
-  padding: 20px;
-  min-height: 200px;
+.compact-band p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.8;
 }
 
 .contact-card {
   border-radius: var(--radius-lg);
-  padding: 28px;
+  padding: 24px;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 24px;
-  align-items: end;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  align-items: start;
 }
 
 .contact-links {
@@ -766,14 +734,14 @@ button {
 
 .contact-note {
   margin-top: 16px;
-  max-width: 58ch;
+  max-width: 56ch;
 }
 
 .contact-icons {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-start;
   gap: 12px;
 }
 
@@ -876,8 +844,9 @@ button {
 @media (max-width: 1080px) {
   .proof-grid,
   .feature-metrics,
+  .experience-grid,
   .stack-cards,
-  .rhythm-grid {
+  .site-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -895,7 +864,6 @@ button {
     justify-self: start;
   }
 
-  .site-list,
   .about-cards {
     grid-template-columns: 1fr;
   }
@@ -939,13 +907,14 @@ button {
 
   .hero,
   .section {
-    padding: 26px 0 72px;
+    padding: 24px 0 64px;
   }
 
   .proof-grid,
   .project-layout,
+  .experience-grid,
   .stack-cards,
-  .rhythm-grid,
+  .site-list,
   .feature-metrics,
   .detail-grid {
     grid-template-columns: 1fr;
@@ -955,16 +924,8 @@ button {
     aspect-ratio: 16 / 10;
   }
 
-  .experience-card {
-    padding-left: 44px;
-  }
-
-  .experience-grid::before {
-    left: 14px;
-  }
-
-  .experience-card::before {
-    left: 8px;
+  .feature-shell {
+    padding: 16px;
   }
 }
 
