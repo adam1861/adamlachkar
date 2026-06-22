@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="640" height="400" viewBox="0 0 640 400" role="img" aria-label="Pricing Engine project thumbnail">
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="400" viewBox="0 0 640 400" role="img" aria-label="Pricing engine project thumbnail">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#f6deca"/>
@@ -7,14 +7,12 @@
   </defs>
   <rect width="640" height="400" fill="#f4efe8"/>
   <rect x="24" y="24" width="592" height="352" rx="28" fill="url(#bg)"/>
-  <g fill="none" stroke="#d8682d" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M118 270 208 228 306 184 400 146 506 102"/>
-    <path d="M106 116h34v154h-34zM194 166h34v104h-34zM282 202h34v68h-34z"/>
-  </g>
-  <g fill="#121212" font-family="Inter, Arial, sans-serif">
-    <text x="84" y="86" font-size="18" font-weight="700" letter-spacing="2">AI AND DATA</text>
-    <text x="84" y="146" font-size="44" font-weight="800">Pricing</text>
-    <text x="84" y="192" font-size="44" font-weight="800">Engine</text>
-    <text x="84" y="232" font-size="20" opacity=".72">Machine learning for smarter pricing decisions</text>
+  <g fill="none" stroke="#d8682d" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M110 286h420" stroke-width="10"/>
+    <path d="M136 256 208 230 290 198 376 162 504 108" stroke-width="11"/>
+    <circle cx="208" cy="230" r="12" fill="#d8682d" stroke-width="0"/>
+    <circle cx="376" cy="162" r="12" fill="#d8682d" stroke-width="0"/>
+    <circle cx="504" cy="108" r="12" fill="#d8682d" stroke-width="0"/>
+    <path d="M122 146h32v140h-32zM204 188h32v98h-32zM286 218h32v68h-32z" stroke-width="8"/>
   </g>
 </svg>

@@ -7,16 +7,11 @@
   </defs>
   <rect width="640" height="400" fill="#f4efe8"/>
   <rect x="24" y="24" width="592" height="352" rx="28" fill="url(#bg)"/>
-  <g fill="none" stroke="#8d3f22" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M164 262V152l156-62 156 62v110"/>
-    <path d="M214 198h212"/>
-    <path d="M320 166v128"/>
-    <circle cx="320" cy="234" r="34"/>
-  </g>
-  <g fill="#121212" font-family="Inter, Arial, sans-serif">
-    <text x="84" y="86" font-size="18" font-weight="700" letter-spacing="2">RISK MODELING</text>
-    <text x="84" y="146" font-size="42" font-weight="800">Credit Card</text>
-    <text x="84" y="192" font-size="42" font-weight="800">Fraud Detection</text>
-    <text x="84" y="232" font-size="20" opacity=".72">Imbalanced classification and model evaluation</text>
+  <g fill="none" stroke="#9b4725" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M178 282V176l142-66 142 66v106"/>
+    <path d="M202 230h236"/>
+    <circle cx="320" cy="240" r="42"/>
+    <path d="M320 212v56M292 240h56"/>
+    <path d="M132 122h74M132 152h110" stroke-width="8" opacity=".55"/>
   </g>
 </svg>

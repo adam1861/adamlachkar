@@ -7,16 +7,11 @@
   </defs>
   <rect width="640" height="400" fill="#f4efe8"/>
   <rect x="24" y="24" width="592" height="352" rx="28" fill="url(#bg)"/>
-  <g fill="none" stroke="#335c4b" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M106 274h432"/>
-    <path d="M136 254c44-76 84-84 122-44 42 46 78 38 120-12 42-50 88-62 136-18"/>
-    <circle cx="258" cy="208" r="14" fill="#335c4b"/>
-    <circle cx="378" cy="196" r="14" fill="#335c4b"/>
-  </g>
-  <g fill="#121212" font-family="Inter, Arial, sans-serif">
-    <text x="84" y="86" font-size="18" font-weight="700" letter-spacing="2">RETENTION MODELING</text>
-    <text x="84" y="146" font-size="40" font-weight="800">Customer Churn</text>
-    <text x="84" y="192" font-size="40" font-weight="800">Prediction</text>
-    <text x="84" y="232" font-size="20" opacity=".72">Classification work for understanding churn risk</text>
+  <g fill="none" stroke="#335c4b" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M92 290h456"/>
+    <path d="M124 254c44-68 96-86 144-34 40 42 72 44 118-4 48-52 94-58 142-16"/>
+    <circle cx="228" cy="206" r="12" fill="#335c4b" stroke-width="0"/>
+    <circle cx="410" cy="188" r="12" fill="#335c4b" stroke-width="0"/>
+    <path d="M120 120h82M120 150h126" stroke-width="8" opacity=".55"/>
   </g>
 </svg>

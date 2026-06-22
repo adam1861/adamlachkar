@@ -7,16 +7,13 @@
   </defs>
   <rect width="640" height="400" fill="#f4efe8"/>
   <rect x="24" y="24" width="592" height="352" rx="28" fill="url(#bg)"/>
-  <g fill="none" stroke="#c0622f" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="214" cy="188" r="48"/>
-    <circle cx="332" cy="218" r="58"/>
-    <circle cx="448" cy="170" r="42"/>
-    <path d="M178 266h300"/>
-  </g>
-  <g fill="#121212" font-family="Inter, Arial, sans-serif">
-    <text x="84" y="86" font-size="18" font-weight="700" letter-spacing="2">CLUSTERING</text>
-    <text x="84" y="146" font-size="40" font-weight="800">Customer</text>
-    <text x="84" y="192" font-size="40" font-weight="800">Segmentation</text>
-    <text x="84" y="232" font-size="20" opacity=".72">Exploratory analysis for smarter targeting</text>
+  <g fill="none" stroke="#c0622f" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="210" cy="206" r="56"/>
+    <circle cx="328" cy="224" r="64"/>
+    <circle cx="446" cy="180" r="48"/>
+    <path d="M168 286h320"/>
+    <circle cx="210" cy="206" r="10" fill="#c0622f" stroke-width="0"/>
+    <circle cx="328" cy="224" r="10" fill="#c0622f" stroke-width="0"/>
+    <circle cx="446" cy="180" r="10" fill="#c0622f" stroke-width="0"/>
   </g>
 </svg>
