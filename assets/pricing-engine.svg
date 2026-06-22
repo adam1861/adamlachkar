@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="400" viewBox="0 0 640 400" role="img" aria-label="Pricing Engine project thumbnail">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f6deca"/>
+      <stop offset="100%" stop-color="#f2b98f"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="400" fill="#f4efe8"/>
+  <rect x="24" y="24" width="592" height="352" rx="28" fill="url(#bg)"/>
+  <g fill="none" stroke="#d8682d" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M118 270 208 228 306 184 400 146 506 102"/>
+    <path d="M106 116h34v154h-34zM194 166h34v104h-34zM282 202h34v68h-34z"/>
+  </g>
+  <g fill="#121212" font-family="Inter, Arial, sans-serif">
+    <text x="84" y="86" font-size="18" font-weight="700" letter-spacing="2">AI AND DATA</text>
+    <text x="84" y="146" font-size="44" font-weight="800">Pricing</text>
+    <text x="84" y="192" font-size="44" font-weight="800">Engine</text>
+    <text x="84" y="232" font-size="20" opacity=".72">Machine learning for smarter pricing decisions</text>
+  </g>
+</svg>

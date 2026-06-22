@@ -1,125 +1,139 @@
 const projects = [
   {
-    title: "Football Match Prediction",
+    title: "Pricing Engine",
     type: "AI and data",
-    image: "football_prediction.jpg",
-    summary: "A classification workflow using structured sports data and model evaluation.",
+    image: "assets/pricing-engine.svg",
+    url: "https://github.com/adam1861/Pricing-Engine",
+    summary: "Machine learning pricing workflow for estimating stronger product pricing decisions.",
     details:
-      "Built around feature engineering, model comparison, and result interpretation. The project was less about chasing novelty and more about turning raw match context into a cleaner prediction pipeline."
+      "Built as an intelligent pricing engine that combines analytics and prediction to estimate optimal prices. The strength of the project is that it treats machine learning as a business decision tool, not just a notebook exercise."
   },
   {
-    title: "Weather Forecast Modeling",
+    title: "Telecom Customer Churn Prediction",
+    type: "AI and data",
+    image: "assets/churn-prediction.svg",
+    url: "https://github.com/adam1861/Telecom-Customer-Churn-Prediction",
+    summary: "Retention-focused classification project built around churn signals and customer behavior.",
+    details:
+      "A structured churn modeling workflow covering cleaning, exploratory analysis, feature encoding, train-test splitting, and classification. It is a good example of end-to-end practical machine learning aimed at a real business problem."
+  },
+  {
+    title: "Credit Card Fraud Detection",
+    type: "AI and data",
+    image: "assets/fraud-detection.svg",
+    url: "https://github.com/adam1861/Credit-Card-Fraud-Detection",
+    summary: "Fraud detection workflow centered on imbalance handling, feature work, and evaluation.",
+    details:
+      "This project walks through exploratory analysis, data cleaning, feature engineering, imbalance handling, and model comparison in Python notebooks. It shows careful attention to the practical challenges of anomaly-heavy classification."
+  },
+  {
+    title: "Weather Forecasting System",
     type: "AI and data",
     image: "weather_forcasting.avif",
-    summary: "Forecast-oriented modeling work using weather signals and time-aware reasoning.",
+    url: "https://github.com/adam1861/weather_forcasting",
+    summary: "Forecasting project using XGBoost, NASA weather data, and an interactive web layer.",
     details:
-      "This project focused on preparing data carefully, shaping useful forecasting signals, and testing how predictive models respond when the structure of time actually matters."
+      "An AI-powered weather forecasting system built around time-aware signals, XGBoost modeling, and a location-based interface. It is one of the clearest examples of combining data work with a user-facing product."
   },
   {
-    title: "Heart Disease Classification",
+    title: "E-Commerce Customer Segmentation",
     type: "AI and data",
-    image: "heart_desease.jpg",
-    summary: "Clinical data classification with emphasis on readable modeling choices.",
+    image: "assets/customer-segmentation.svg",
+    url: "https://github.com/adam1861/E-Commerce-Customer-Segmentation",
+    summary: "Clustering-driven segmentation project built to support sharper targeting decisions.",
     details:
-      "The interesting part here was not only the prediction result, but keeping the workflow understandable, structured, and grounded in interpretable features."
+      "Focused on exploratory analysis and customer clustering to identify groups with different behaviors. The project reflects a more business-aware use of machine learning, where the point is insight and action rather than prediction alone."
   },
   {
-    title: "Line-Following Robot",
-    type: "Robotics",
-    image: "robotic_1.png",
-    summary: "Embedded robotics build using sensing and control for stable path tracking.",
+    title: "Metal Quality Control",
+    type: "Computer vision",
+    image: "assets/metal-quality.svg",
+    url: "https://github.com/adam1861/metal_quality_control",
+    summary: "Computer vision system for defect detection and segmentation in industrial parts.",
     details:
-      "A practical project that connected hardware, control tuning, and iteration. It lived in that useful space where small engineering decisions become visible immediately."
+      "A more applied AI project focused on visual quality control for metal nuts, including segmentation of scratches and color anomalies. It adds a stronger computer vision and industrial quality angle to the portfolio."
+  }
+];
+
+const experiences = [
+  {
+    role: "Founder",
+    org: "EFAIX",
+    summary:
+      "Building an AI education ecosystem across the main brand, academy, LMS, and evaluation products.",
+    focus: "Product direction, web execution, and AI-first learning workflows"
   },
   {
-    title: "4-DOF Robotic Arm",
-    type: "Robotics",
-    image: "robotic_2.jpg",
-    summary: "Mechanical and control exploration around movement, geometry, and servo behavior.",
-    details:
-      "This work combined physical build constraints with kinematic reasoning. It pushed on the relationship between ideal motion and what hardware actually allows."
+    role: "Engineering student",
+    org: "EMINES - UM6P",
+    summary:
+      "Developing an industrial engineering foundation while leaning hard into applied AI, data science, and technical systems.",
+    focus: "Benguerir, Morocco"
   },
   {
-    title: "Autonomous Mobile Robot",
-    type: "Robotics",
-    image: "robotic_3.jpg",
-    summary: "Navigation-oriented robot concept centered on autonomy and sensor-based movement.",
-    details:
-      "A more system-level robotics project exploring how navigation logic, environmental awareness, and movement decisions can be coordinated into one coherent behavior."
-  },
-  {
-    title: "Electromagnetic Induction Analysis",
-    type: "Physics",
-    image: "physique_1.jpg",
-    summary: "Experimental study of field behavior, induction, and measurement discipline.",
-    details:
-      "This project was about making theory observable. The work emphasized setup quality, instrumentation, and the ability to explain what the measurements were really saying."
-  },
-  {
-    title: "Solar Energy Test Bench",
-    type: "Physics",
-    image: "physique_2.jpg",
-    summary: "Performance testing setup for solar behavior under changing operating conditions.",
-    details:
-      "A physically grounded project where the value came from comparing system response under different loads and conditions rather than settling for one static read."
+    role: "Community builder",
+    org: "Club E-plusplus",
+    summary:
+      "Growing through programming workshops, collaborative projects, and student-led technical initiatives inside the EMINES ecosystem.",
+    focus: "Student community, workshops, and technical collaboration"
   }
 ];
 
 const sites = [
   {
-    title: "Starteady",
-    image: "starteady.png",
-    url: "https://www.starteady.com/",
-    summary: "Launch-focused web presence with a clearer commercial tone."
-  },
-  {
-    title: "Auramaking",
-    image: "auramaking.png",
-    url: "https://www.auramaking.com/",
-    summary: "Brand-led website work shaped around presentation and credibility."
-  },
-  {
-    title: "Icodex Academy",
-    image: "icodex.png",
-    url: "https://icodex.academy/",
-    summary: "Education platform work for code and AI learning."
+    title: "Efaix",
+    image: "efaix.png",
+    url: "https://efaix.com/",
+    summary: "Main brand presence for the EFAIX education ecosystem and company story."
   },
   {
     title: "Efaix Academy",
     image: "efaix_academy.png",
     url: "https://academy.efaix.com/",
-    summary: "Structured digital learning experience for training delivery."
+    summary: "Structured digital learning experience built around training delivery."
   },
   {
     title: "Efaix LMS",
     image: "efaix_lms.png",
     url: "https://lms.efaix.com/",
-    summary: "Learning management interface work for organized educational flows."
+    summary: "Learning management interface work for organized educational workflows."
   },
   {
-    title: "Efaix",
-    image: "efaix.png",
-    url: "https://efaix.com/",
-    summary: "Main brand presence tying the ecosystem together."
+    title: "Starteady",
+    image: "starteady.png",
+    url: "https://www.starteady.com/",
+    summary: "Launch-focused web presence shaped for clarity, speed, and commercial trust."
+  },
+  {
+    title: "Auramaking",
+    image: "auramaking.png",
+    url: "https://www.auramaking.com/",
+    summary: "Brand-led website work built around presentation, credibility, and polish."
+  },
+  {
+    title: "Icodex Academy",
+    image: "icodex.png",
+    url: "https://icodex.academy/",
+    summary: "Education platform work for code, AI learning, and clearer course delivery."
   }
 ];
 
 const stack = [
   {
-    title: "AI and data",
-    items: ["Python", "Pandas", "NumPy", "Scikit-learn", "Matplotlib", "Seaborn"]
+    title: "AI and ML",
+    items: ["Python", "Pandas", "NumPy", "Scikit-learn", "XGBoost", "Matplotlib"]
   },
   {
-    title: "Programming",
-    items: ["Python", "C", "Java", "SQL", "HTML", "CSS", "JavaScript"]
+    title: "Data work",
+    items: ["EDA", "Feature Engineering", "Classification", "Clustering", "Forecasting", "Evaluation"]
   },
   {
-    title: "Engineering",
-    items: ["Arduino", "SolidWorks", "MATLAB", "Scilab", "Processing"]
+    title: "Web and product",
+    items: ["HTML", "CSS", "JavaScript", "TypeScript", "WordPress", "Figma"]
   },
   {
-    title: "Workflow",
-    items: ["Git", "Linux", "Figma", "WordPress", "Notion", "Power BI"]
+    title: "Engineering and workflow",
+    items: ["Git", "Linux", "Power BI", "Arduino", "SolidWorks", "MATLAB"]
   }
 ];
 
@@ -185,6 +199,24 @@ function renderProjects() {
     .join("");
 }
 
+function renderExperience() {
+  const grid = $("#experience-grid");
+  if (!grid) return;
+
+  grid.innerHTML = experiences
+    .map(
+      (item) => `
+        <article class="experience-card">
+          <span>${item.role}</span>
+          <h3>${item.org}</h3>
+          <p>${item.summary}</p>
+          <strong>${item.focus}</strong>
+        </article>
+      `
+    )
+    .join("");
+}
+
 function renderSites() {
   const grid = $("#sites-grid");
   if (!grid) return;
@@ -239,6 +271,14 @@ function openLightbox(index) {
   const image = $("#lightbox-image");
   image.src = fallbackImage(project.image);
   image.alt = project.title;
+  const link = $("#lightbox-link");
+  if (link && project.url) {
+    link.href = project.url;
+    link.hidden = false;
+  } else if (link) {
+    link.hidden = true;
+    link.removeAttribute("href");
+  }
 
   box.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
@@ -358,6 +398,7 @@ function initImages() {
 function init() {
   renderProjectFilters();
   renderProjects();
+  renderExperience();
   renderSites();
   renderStack();
   initSwitcher();

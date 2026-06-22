@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="400" viewBox="0 0 640 400" role="img" aria-label="Metal quality control project thumbnail">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#efe7df"/>
+      <stop offset="100%" stop-color="#d7c5b4"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="400" fill="#f4efe8"/>
+  <rect x="24" y="24" width="592" height="352" rx="28" fill="url(#bg)"/>
+  <g fill="none" stroke="#5c5047" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M152 128h336l40 40v104l-40 40H152l-40-40V168z"/>
+    <circle cx="250" cy="220" r="52"/>
+    <path d="M380 178h84M380 220h84M380 262h60"/>
+    <path d="M220 190l60 60M280 190l-60 60"/>
+  </g>
+  <g fill="#121212" font-family="Inter, Arial, sans-serif">
+    <text x="84" y="86" font-size="18" font-weight="700" letter-spacing="2">COMPUTER VISION</text>
+    <text x="84" y="146" font-size="40" font-weight="800">Metal Quality</text>
+    <text x="84" y="192" font-size="40" font-weight="800">Control</text>
+    <text x="84" y="232" font-size="20" opacity=".72">Defect detection and segmentation workflow</text>
+  </g>
+</svg>
