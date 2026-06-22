@@ -182,7 +182,6 @@ button {
 .project-card p,
 .site-card p,
 .feature-copy p,
-.focus-card p,
 .about-card p,
 .rhythm-grid p,
 .experience-card p {
@@ -379,56 +378,70 @@ button {
 }
 
 .feature-shell {
+  max-width: 1040px;
+  margin: 0 auto;
   border-radius: var(--radius-lg);
   display: grid;
-  grid-template-columns: minmax(320px, 0.95fr) minmax(0, 1.05fr);
-  gap: 20px;
-  padding: 20px;
+  grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
+  gap: 18px;
+  padding: 18px;
+  align-items: start;
+}
+
+.feature-media {
+  background: #f4f6f9;
+  border: 1px solid rgba(18, 18, 18, 0.06);
+  border-radius: 18px;
+  padding: 10px;
 }
 
 .feature-media img {
   width: 100%;
-  object-fit: cover;
-  aspect-ratio: 16 / 11;
-  border-radius: 18px;
+  object-fit: contain;
+  object-position: top center;
+  aspect-ratio: 4 / 3;
+  max-height: 320px;
+  border-radius: 12px;
+  background: #fff;
 }
 
 .feature-copy {
-  padding: 6px 2px;
+  padding: 2px 0;
   display: grid;
   align-content: start;
-  gap: 14px;
+  gap: 12px;
 }
 
 .feature-copy h3 {
   margin: 0;
-  font-size: clamp(2rem, 4vw, 3.3rem);
-  line-height: 0.98;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  line-height: 0.95;
 }
 
 .feature-summary {
   margin: 0;
-  font-size: 1rem;
+  font-size: 0.98rem;
+  max-width: 36ch;
 }
 
 .feature-metrics {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
+  gap: 10px;
 }
 
 .feature-metrics div,
 .detail-grid div {
-  padding: 12px;
-  border-radius: 14px;
+  padding: 10px 12px;
+  border-radius: 12px;
   background: rgba(18, 18, 18, 0.03);
 }
 
 .feature-metrics strong,
 .detail-grid strong {
   display: block;
-  margin-top: 6px;
-  line-height: 1.45;
+  margin-top: 4px;
+  line-height: 1.35;
 }
 
 .feature-block h4,
@@ -926,6 +939,10 @@ button {
 
   .feature-shell {
     padding: 16px;
+  }
+
+  .feature-media img {
+    max-height: 260px;
   }
 }
 
