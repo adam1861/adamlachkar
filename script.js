@@ -4,29 +4,6 @@ const proofPoints = [
   { value: "6", label: "live web builds shown" }
 ];
 
-const featuredProject = {
-  kicker: "Current venture",
-  title: "EFAIX",
-  image: "assets/images/sites/efaix.png",
-  summary:
-    "EFAIX is the strongest expression of where I want to grow: education technology, product execution, and systems that turn ideas into something real and visible.",
-  role: "Founder, product direction, and web execution",
-  period: "Current",
-  scope: "Brand, academy, LMS, and connected education workflows",
-  challenge:
-    "Build a more coherent learning ecosystem instead of a single disconnected website.",
-  approach:
-    "Shape the product story, ship the public-facing surfaces, and keep the learning experience organized across multiple properties.",
-  outcome:
-    "Turned an idea into a visible education ecosystem with live surfaces that make the venture legible to users, partners, and collaborators.",
-  stack: ["Product direction", "Web execution", "Education workflows", "Brand systems"],
-  links: [
-    { label: "Main site", url: "https://efaix.com/" },
-    { label: "Academy", url: "https://academy.efaix.com/" },
-    { label: "LMS", url: "https://lms.efaix.com/" }
-  ]
-};
-
 const projects = [
   {
     title: "Pricing Engine",
@@ -117,48 +94,6 @@ const projects = [
     result:
       "Added a stronger industrial computer-vision angle to the portfolio.",
     stack: ["Computer vision", "Segmentation", "TypeScript"]
-  }
-];
-
-const experiences = [
-  {
-    period: "Current",
-    track: "Venture",
-    role: "Founder",
-    org: "EFAIX",
-    summary:
-      "Building an education-focused product ecosystem and helping shape how the venture shows up across its public web surfaces.",
-    highlights: [
-      "Guide product direction across the main brand, academy, and LMS surfaces.",
-      "Translate product ideas into visible web experiences that people can actually navigate and understand.",
-      "Operate at the intersection of execution, structure, and education workflow thinking."
-    ]
-  },
-  {
-    period: "Current",
-    track: "Education",
-    role: "Engineering student",
-    org: "EMINES - UM6P",
-    summary:
-      "Developing an industrial engineering base while leaning strongly into AI, data science, and technical systems work outside the classroom.",
-    highlights: [
-      "Use coursework as a base, but push most learning through shipped work and self-driven technical exploration.",
-      "Build across machine learning, web systems, and product thinking instead of staying inside one narrow lane.",
-      "Treat clarity and execution as important skills, not only technical output."
-    ]
-  },
-  {
-    period: "Current",
-    track: "Community",
-    role: "Community builder",
-    org: "Club E-plusplus",
-    summary:
-      "Growing through workshops, collaborative projects, and student-led technical activity inside the EMINES ecosystem.",
-    highlights: [
-      "Contribute to the programming and technical learning culture around the club.",
-      "Value community work because it sharpens leadership, coordination, and teaching instincts.",
-      "Use collaboration as another way to get better at building."
-    ]
   }
 ];
 
@@ -314,62 +249,6 @@ function renderProofPoints() {
     .join("");
 }
 
-function renderFeaturedProject() {
-  const container = $("#featured-project");
-  if (!container) return;
-
-  container.innerHTML = `
-    <article class="feature-shell">
-      <div class="feature-media">
-        <img src="${fallbackImage(featuredProject.image)}" alt="${featuredProject.title}" loading="lazy" />
-      </div>
-      <div class="feature-copy">
-        <p class="kicker">${featuredProject.kicker}</p>
-        <h3>${featuredProject.title}</h3>
-        <p class="feature-summary">${featuredProject.summary}</p>
-        <div class="feature-metrics">
-          <div>
-            <span>Role</span>
-            <strong>${featuredProject.role}</strong>
-          </div>
-          <div>
-            <span>Period</span>
-            <strong>${featuredProject.period}</strong>
-          </div>
-          <div>
-            <span>Scope</span>
-            <strong>${featuredProject.scope}</strong>
-          </div>
-        </div>
-        <div class="feature-block">
-          <h4>Challenge</h4>
-          <p>${featuredProject.challenge}</p>
-        </div>
-        <div class="feature-block">
-          <h4>Approach</h4>
-          <p>${featuredProject.approach}</p>
-        </div>
-        <div class="feature-block">
-          <h4>Outcome</h4>
-          <p>${featuredProject.outcome}</p>
-        </div>
-        ${renderChipList(featuredProject.stack)}
-        <div class="inline-links">
-          ${featuredProject.links
-            .map(
-              (link) => `
-                <a href="${link.url}" target="_blank" rel="noopener">
-                  ${link.label}
-                </a>
-              `
-            )
-            .join("")}
-        </div>
-      </div>
-    </article>
-  `;
-}
-
 function renderProjectFilters() {
   const container = $("#project-filters");
   if (!container) return;
@@ -414,30 +293,6 @@ function renderProjects() {
               </div>
             </div>
           </button>
-        </article>
-      `
-    )
-    .join("");
-}
-
-function renderExperience() {
-  const grid = $("#experience-grid");
-  if (!grid) return;
-
-  grid.innerHTML = experiences
-    .map(
-      (item) => `
-        <article class="experience-card">
-          <div class="experience-meta">
-            <span>${item.period}</span>
-            <strong>${item.track}</strong>
-          </div>
-          <h3>${item.role}</h3>
-          <p class="experience-org">${item.org}</p>
-          <p>${item.summary}</p>
-          <ul>
-            ${item.highlights.map((highlight) => `<li>${highlight}</li>`).join("")}
-          </ul>
         </article>
       `
     )
@@ -722,10 +577,8 @@ function initImages() {
 
 function init() {
   renderProofPoints();
-  renderFeaturedProject();
   renderProjectFilters();
   renderProjects();
-  renderExperience();
   renderAboutCards();
   renderSites();
   renderStack();

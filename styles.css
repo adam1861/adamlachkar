@@ -193,10 +193,8 @@ button {
 .contact-copy p,
 .project-card p,
 .site-card p,
-.feature-copy p,
 .about-card p,
-.rhythm-grid p,
-.experience-card p {
+.rhythm-grid p {
   color: var(--muted);
   line-height: 1.7;
 }
@@ -281,9 +279,7 @@ button {
 }
 
 .proof-card,
-.feature-shell,
 .project-card,
-.experience-card,
 .site-card,
 .stack-card,
 .rhythm-grid article,
@@ -308,8 +304,6 @@ button {
 
 .proof-card span,
 .about-card span,
-.experience-card span,
-.feature-metrics span,
 .detail-grid span,
 .project-meta span,
 .site-meta span,
@@ -385,85 +379,23 @@ button {
   line-height: 1.7;
 }
 
-.featured-section {
-  padding-top: 0;
-}
-
-.feature-shell {
-  max-width: 1040px;
-  margin: 0 auto;
-  border-radius: var(--radius-lg);
-  display: grid;
-  grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
-  gap: 18px;
-  padding: 18px;
-  align-items: start;
-}
-
-.feature-media {
-  background: #f4f6f9;
-  border: 1px solid rgba(18, 18, 18, 0.06);
-  border-radius: 18px;
-  padding: 10px;
-}
-
-.feature-media img {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  object-position: top center;
-  aspect-ratio: auto;
-  max-height: none;
-  border-radius: 12px;
-  background: #fff;
-}
-
-.feature-copy {
-  padding: 2px 0;
-  display: grid;
-  align-content: start;
-  gap: 12px;
-}
-
-.feature-copy h3 {
-  margin: 0;
-  font-size: clamp(1.8rem, 3vw, 2.8rem);
-  line-height: 0.95;
-}
-
-.feature-summary {
-  margin: 0;
-  font-size: 0.98rem;
-  max-width: 36ch;
-}
-
-.feature-metrics {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
-}
-
-.feature-metrics div,
 .detail-grid div {
   padding: 10px 12px;
   border-radius: 12px;
   background: rgba(18, 18, 18, 0.03);
 }
 
-.feature-metrics strong,
 .detail-grid strong {
   display: block;
   margin-top: 4px;
   line-height: 1.35;
 }
 
-.feature-block h4,
 .detail-block h4 {
   margin: 0 0 8px;
   font-size: 0.92rem;
 }
 
-.feature-block p,
 .detail-block p,
 .lightbox-summary {
   margin: 0;
@@ -571,8 +503,7 @@ button {
 }
 
 .project-meta,
-.site-meta,
-.experience-meta {
+.site-meta {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -581,8 +512,7 @@ button {
 
 .project-copy h3,
 .site-copy h3,
-#lightbox-title,
-.experience-card h3 {
+#lightbox-title {
   margin: 0;
   font-size: 1.45rem;
   line-height: 1.1;
@@ -590,13 +520,11 @@ button {
 
 .project-role,
 .project-result,
-.experience-org,
 .contact-note {
   margin: 0;
 }
 
-.project-role,
-.experience-org {
+.project-role {
   color: var(--text);
   font-weight: 600;
 }
@@ -620,28 +548,6 @@ button {
   background: var(--accent-soft);
   color: var(--text);
   font-size: 0.8rem;
-}
-
-.experience-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
-}
-
-.experience-card {
-  border-radius: var(--radius-md);
-  padding: 20px;
-}
-
-.experience-card ul {
-  margin: 12px 0 0;
-  padding-left: 18px;
-  color: var(--muted);
-  line-height: 1.7;
-}
-
-.experience-card li + li {
-  margin-top: 6px;
 }
 
 .about-grid {
@@ -1024,8 +930,6 @@ button {
 
 @media (max-width: 1080px) {
   .proof-grid,
-  .feature-metrics,
-  .experience-grid,
   .site-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1037,7 +941,6 @@ button {
 
 @media (max-width: 980px) {
   .hero-grid,
-  .feature-shell,
   .about-grid,
   .contact-card {
     grid-template-columns: 1fr;
@@ -1096,9 +999,7 @@ button {
 
   .proof-grid,
   .project-layout,
-  .experience-grid,
   .site-list,
-  .feature-metrics,
   .detail-grid {
     grid-template-columns: 1fr;
   }
@@ -1118,10 +1019,6 @@ button {
 
   .project-layout img {
     aspect-ratio: 16 / 10;
-  }
-
-  .feature-shell {
-    padding: 16px;
   }
 
 }
