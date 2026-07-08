@@ -228,11 +228,11 @@ const sites = [
 
 const stack = [
   { name: "Python", icon: "assets/icons/stack/python.svg", group: "AI and ML", type: "language" },
-  { name: "Pandas", icon: "assets/icons/stack/pandas.svg", group: "AI and ML", type: "app" },
-  { name: "NumPy", icon: "assets/icons/stack/numpy.svg", group: "AI and ML", type: "app" },
-  { name: "Scikit-learn", icon: "assets/icons/stack/scikitlearn.svg", group: "AI and ML", type: "app" },
-  { name: "XGBoost", icon: "assets/icons/stack/xgboost.png", group: "AI and ML", type: "app", iconClass: "wide" },
-  { name: "Matplotlib", icon: "assets/icons/stack/matplotlib.svg", group: "AI and ML", type: "app" },
+  { name: "Pandas", icon: "assets/icons/stack/pandas.svg", group: "AI and ML", type: "library" },
+  { name: "NumPy", icon: "assets/icons/stack/numpy.svg", group: "AI and ML", type: "library" },
+  { name: "Scikit-learn", icon: "assets/icons/stack/scikitlearn.svg", group: "AI and ML", type: "library" },
+  { name: "XGBoost", icon: "assets/icons/stack/xgboost.png", group: "AI and ML", type: "library", iconClass: "wide" },
+  { name: "Matplotlib", icon: "assets/icons/stack/matplotlib.svg", group: "AI and ML", type: "library" },
   { name: "EDA", icon: "assets/icons/stack/eda.svg", group: "Data work", type: "skill" },
   { name: "Feature Engineering", icon: "assets/icons/stack/feature-engineering.svg", group: "Data work", type: "skill" },
   { name: "Classification", icon: "assets/icons/stack/classification.svg", group: "Data work", type: "skill" },

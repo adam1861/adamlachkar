@@ -1132,7 +1132,7 @@ button {
   }
 
   .stack-filter {
-    flex: 1 1 calc(33.333% - 7px);
+    flex: 1 1 calc(50% - 5px);
     min-width: 0;
   }
 
