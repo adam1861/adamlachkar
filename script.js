@@ -192,6 +192,7 @@ const $ = (selector, scope = document) => scope.querySelector(selector);
 const $$ = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
 const projectFilters = ["All", ...new Set(projects.map((project) => project.type))];
 let activeProjectFilter = "All";
+let expandedProjectIndex = null;
 let activeStackFilter = "all";
 let stackSearchTerm = "";
 
@@ -276,8 +277,13 @@ function renderProjects() {
   grid.innerHTML = getFilteredProjects()
     .map(
       (project) => `
-        <article class="project-card">
-          <button class="project-trigger" type="button" data-project="${project.index}">
+        <article class="project-card ${expandedProjectIndex === project.index ? "expanded" : ""}">
+          <button
+            class="project-trigger"
+            type="button"
+            data-project="${project.index}"
+            aria-expanded="${expandedProjectIndex === project.index ? "true" : "false"}"
+          >
             <div class="project-layout">
               <img src="${fallbackImage(project.image)}" alt="${project.title}" loading="lazy" />
               <div class="project-copy">
@@ -499,6 +505,7 @@ function initLightbox() {
     const filter = event.target.closest("[data-project-filter]");
     if (filter) {
       activeProjectFilter = filter.dataset.projectFilter;
+      expandedProjectIndex = null;
       renderProjectFilters();
       renderProjects();
       return;
@@ -506,7 +513,9 @@ function initLightbox() {
 
     const trigger = event.target.closest("[data-project]");
     if (trigger) {
-      openLightbox(Number(trigger.dataset.project));
+      const projectIndex = Number(trigger.dataset.project);
+      expandedProjectIndex = expandedProjectIndex === projectIndex ? null : projectIndex;
+      renderProjects();
       return;
     }
 

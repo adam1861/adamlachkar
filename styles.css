@@ -548,12 +548,22 @@ button {
 }
 
 .project-summary,
+.project-result {
+  display: none;
+}
+
+.project-summary,
 .site-summary {
   -webkit-line-clamp: 3;
 }
 
 .project-result {
   -webkit-line-clamp: 3;
+}
+
+.project-card.expanded .project-summary,
+.project-card.expanded .project-result {
+  display: -webkit-box;
 }
 
 .chip-list {
