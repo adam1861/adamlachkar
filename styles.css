@@ -460,16 +460,20 @@ button {
 
 .project-list {
   display: grid;
-  gap: 14px;
+  gap: 16px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.project-card {
+.project-card,
+.site-card {
   border-radius: var(--radius-lg);
   overflow: hidden;
+  height: 100%;
 }
 
 .project-trigger {
   width: 100%;
+  height: 100%;
   padding: 0;
   text-align: left;
   cursor: pointer;
@@ -478,7 +482,9 @@ button {
 
 .project-layout {
   display: grid;
-  grid-template-columns: minmax(240px, 340px) minmax(0, 1fr);
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+  height: 100%;
   align-items: stretch;
 }
 
@@ -491,12 +497,12 @@ button {
 }
 
 .project-layout img {
-  aspect-ratio: 16 / 11;
+  aspect-ratio: 16 / 10;
 }
 
 .project-copy,
 .site-copy {
-  padding: 20px;
+  padding: 18px;
   display: grid;
   align-content: start;
   gap: 10px;
@@ -531,6 +537,23 @@ button {
 
 .project-result {
   font-size: 0.95rem;
+}
+
+.project-summary,
+.project-result,
+.site-summary {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.project-summary,
+.site-summary {
+  -webkit-line-clamp: 3;
+}
+
+.project-result {
+  -webkit-line-clamp: 3;
 }
 
 .chip-list {
@@ -763,7 +786,7 @@ button {
 }
 
 .site-list {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .site-card {
@@ -930,6 +953,7 @@ button {
 
 @media (max-width: 1080px) {
   .proof-grid,
+  .project-list,
   .site-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -998,7 +1022,7 @@ button {
   }
 
   .proof-grid,
-  .project-layout,
+  .project-list,
   .site-list,
   .detail-grid {
     grid-template-columns: 1fr;

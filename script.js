@@ -1,6 +1,6 @@
 const proofPoints = [
   { value: "17+", label: "public repos" },
-  { value: "6", label: "AI projects selected" },
+  { value: "6", label: "selected projects" },
   { value: "6", label: "live web builds shown" }
 ];
 
@@ -10,7 +10,7 @@ const projects = [
     type: "AI and data",
     year: "2026",
     role: "Pricing modeling and decision support",
-    image: "assets/images/projects/generated/pricing-engine.svg",
+    image: "assets/images/projects/thumbnails/pricing-engine.jpg",
     url: "https://github.com/adam1861/Pricing-Engine",
     summary: "Machine learning pricing workflow focused on turning model output into better pricing decisions.",
     problem: "Estimate stronger product price points from structured business signals.",
@@ -25,7 +25,7 @@ const projects = [
     type: "AI and data",
     year: "2026",
     role: "End-to-end churn classification workflow",
-    image: "assets/images/projects/generated/churn-prediction.svg",
+    image: "assets/images/projects/thumbnails/telecom-churn.jpg",
     url: "https://github.com/adam1861/Telecom-Customer-Churn-Prediction",
     summary: "Retention-focused classification project built around churn signals and customer behavior.",
     problem: "Identify which customers are most likely to churn and why.",
@@ -37,10 +37,10 @@ const projects = [
   },
   {
     title: "Credit Card Fraud Detection",
-    type: "AI and data",
+    type: "Cyber security",
     year: "2026",
     role: "Imbalanced classification and evaluation",
-    image: "assets/images/projects/generated/fraud-detection.svg",
+    image: "assets/images/projects/thumbnails/credit-card-fraud.jpg",
     url: "https://github.com/adam1861/Credit-Card-Fraud-Detection",
     summary: "Fraud detection workflow centered on imbalance handling, feature work, and evaluation.",
     problem: "Detect suspicious transactions in a highly imbalanced classification setting.",
@@ -52,10 +52,10 @@ const projects = [
   },
   {
     title: "Weather Forecasting System",
-    type: "AI and data",
+    type: "Software",
     year: "2026",
     role: "Forecast modeling plus interactive interface",
-    image: "assets/images/projects/weather_forcasting.avif",
+    image: "assets/images/projects/thumbnails/weather-forecasting.jpg",
     url: "https://github.com/adam1861/weather_forcasting",
     summary: "Forecasting project using XGBoost, NASA weather data, and an interactive web layer.",
     problem: "Turn weather signals into forecasts that are both modeled and user-facing.",
@@ -70,7 +70,7 @@ const projects = [
     type: "AI and data",
     year: "2026",
     role: "Clustering and exploratory analysis",
-    image: "assets/images/projects/generated/customer-segmentation.svg",
+    image: "assets/images/projects/thumbnails/customer-segmentation.jpg",
     url: "https://github.com/adam1861/E-Commerce-Customer-Segmentation",
     summary: "Clustering-driven segmentation project built to support sharper targeting decisions.",
     problem: "Group customers by behavior to support better targeting and marketing decisions.",
@@ -85,7 +85,7 @@ const projects = [
     type: "Computer vision",
     year: "2025",
     role: "Defect detection and segmentation",
-    image: "assets/images/projects/generated/metal-quality.svg",
+    image: "assets/images/projects/thumbnails/metal-quality-control.jpg",
     url: "https://github.com/adam1861/metal_quality_control",
     summary: "Computer vision workflow for defect detection and segmentation in industrial parts.",
     problem: "Spot color anomalies and scratches in metal nut inspection scenarios.",
@@ -287,7 +287,7 @@ function renderProjects() {
                 </div>
                 <h3>${project.title}</h3>
                 <p class="project-role">${project.role}</p>
-                <p>${project.summary}</p>
+                <p class="project-summary">${project.summary}</p>
                 <p class="project-result">${project.result}</p>
                 ${renderChipList(project.stack)}
               </div>
@@ -325,14 +325,14 @@ function renderSites() {
         <article class="site-card">
           <a href="${site.url}" target="_blank" rel="noopener">
             <img src="${fallbackImage(site.image)}" alt="${site.title}" loading="lazy" />
-            <div class="site-copy">
-              <div class="site-meta">
-                <span>${site.category}</span>
-                <strong>${site.role}</strong>
+              <div class="site-copy">
+                <div class="site-meta">
+                  <span>${site.category}</span>
+                  <strong>${site.role}</strong>
+                </div>
+                <h3>${site.title}</h3>
+                <p class="site-summary">${site.summary}</p>
               </div>
-              <h3>${site.title}</h3>
-              <p>${site.summary}</p>
-            </div>
           </a>
         </article>
       `
