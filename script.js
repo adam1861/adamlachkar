@@ -227,28 +227,38 @@ const sites = [
 ];
 
 const stack = [
-  {
-    title: "AI and ML",
-    items: ["Python", "Pandas", "NumPy", "Scikit-learn", "XGBoost", "Matplotlib"]
-  },
-  {
-    title: "Data work",
-    items: ["EDA", "Feature Engineering", "Classification", "Clustering", "Forecasting", "Evaluation"]
-  },
-  {
-    title: "Web and product",
-    items: ["HTML", "CSS", "JavaScript", "TypeScript", "WordPress", "Figma"]
-  },
-  {
-    title: "Engineering and workflow",
-    items: ["Git", "Linux", "Power BI", "Arduino", "SolidWorks", "MATLAB"]
-  }
+  { name: "Python", icon: "Py", group: "AI and ML", type: "language" },
+  { name: "Pandas", icon: "Pd", group: "AI and ML", type: "app" },
+  { name: "NumPy", icon: "Np", group: "AI and ML", type: "app" },
+  { name: "Scikit-learn", icon: "Sk", group: "AI and ML", type: "app" },
+  { name: "XGBoost", icon: "XG", group: "AI and ML", type: "app" },
+  { name: "Matplotlib", icon: "Mp", group: "AI and ML", type: "app" },
+  { name: "EDA", icon: "ED", group: "Data work", type: "skill" },
+  { name: "Feature Engineering", icon: "FE", group: "Data work", type: "skill" },
+  { name: "Classification", icon: "CL", group: "Data work", type: "skill" },
+  { name: "Clustering", icon: "CT", group: "Data work", type: "skill" },
+  { name: "Forecasting", icon: "FC", group: "Data work", type: "skill" },
+  { name: "Evaluation", icon: "EV", group: "Data work", type: "skill" },
+  { name: "HTML", icon: "H5", group: "Web and product", type: "language" },
+  { name: "CSS", icon: "C3", group: "Web and product", type: "language" },
+  { name: "JavaScript", icon: "JS", group: "Web and product", type: "language" },
+  { name: "TypeScript", icon: "TS", group: "Web and product", type: "language" },
+  { name: "WordPress", icon: "WP", group: "Web and product", type: "app" },
+  { name: "Figma", icon: "Fg", group: "Web and product", type: "app" },
+  { name: "Git", icon: "Gt", group: "Engineering and workflow", type: "app" },
+  { name: "Linux", icon: "Lx", group: "Engineering and workflow", type: "app" },
+  { name: "Power BI", icon: "BI", group: "Engineering and workflow", type: "app" },
+  { name: "Arduino", icon: "Ar", group: "Engineering and workflow", type: "app" },
+  { name: "SolidWorks", icon: "SW", group: "Engineering and workflow", type: "app" },
+  { name: "MATLAB", icon: "ML", group: "Engineering and workflow", type: "language" }
 ];
 
 const $ = (selector, scope = document) => scope.querySelector(selector);
 const $$ = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
 const projectFilters = ["All", ...new Set(projects.map((project) => project.type))];
 let activeProjectFilter = "All";
+let activeStackFilter = "all";
+let stackSearchTerm = "";
 
 function fallbackImage(image) {
   return image || "assets/images/ui/placeholder.svg";
@@ -260,6 +270,26 @@ function renderChipList(items) {
       ${items.map((item) => `<span class="chip">${item}</span>`).join("")}
     </div>
   `;
+}
+
+function formatStackType(type) {
+  return type.charAt(0).toUpperCase() + type.slice(1);
+}
+
+function getFilteredStack() {
+  const query = stackSearchTerm.trim().toLowerCase();
+
+  return stack.filter((item) => {
+    const matchesFilter = activeStackFilter === "all" || item.type === activeStackFilter;
+    const matchesQuery =
+      !query ||
+      [item.name, item.group, item.type]
+        .join(" ")
+        .toLowerCase()
+        .includes(query);
+
+    return matchesFilter && matchesQuery;
+  });
 }
 
 function getFilteredProjects() {
@@ -457,20 +487,70 @@ function renderSites() {
 
 function renderStack() {
   const container = $("#stack-cards");
+  const results = $("#stack-results");
   if (!container) return;
 
-  container.innerHTML = stack
+  const filteredStack = getFilteredStack();
+
+  if (results) {
+    results.textContent = `${filteredStack.length} item${filteredStack.length === 1 ? "" : "s"} shown`;
+  }
+
+  if (!filteredStack.length) {
+    container.innerHTML = `
+      <article class="stack-empty">
+        <strong>No matches found.</strong>
+        <p>Try another keyword or tap the active filter again to reset the full list.</p>
+      </article>
+    `;
+    return;
+  }
+
+  container.innerHTML = filteredStack
     .map(
-      (group) => `
-        <article class="stack-card">
-          <h3>${group.title}</h3>
-          <ul>
-            ${group.items.map((item) => `<li>${item}</li>`).join("")}
-          </ul>
+      (item) => `
+        <article class="stack-item" data-stack-type="${item.type}">
+          <div class="stack-item-icon" aria-hidden="true">${item.icon}</div>
+          <span class="stack-item-name">${item.name}</span>
+          <span class="stack-item-meta">${item.group} / ${formatStackType(item.type)}</span>
         </article>
       `
     )
     .join("");
+}
+
+function renderStackFilters() {
+  $$("[data-stack-filter]").forEach((button) => {
+    const active = button.dataset.stackFilter === activeStackFilter;
+    button.classList.toggle("active", active);
+    button.setAttribute("aria-pressed", String(active));
+  });
+}
+
+function initStackControls() {
+  const search = $("#stack-search");
+  const filters = $("#stack-filters");
+
+  if (search) {
+    search.addEventListener("input", (event) => {
+      stackSearchTerm = event.target.value;
+      renderStack();
+    });
+  }
+
+  if (filters) {
+    filters.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-stack-filter]");
+      if (!button) return;
+
+      const nextFilter = button.dataset.stackFilter;
+      activeStackFilter = activeStackFilter === nextFilter ? "all" : nextFilter;
+      renderStackFilters();
+      renderStack();
+    });
+  }
+
+  renderStackFilters();
 }
 
 function openLightbox(index) {
@@ -647,6 +727,7 @@ function init() {
   renderAboutCards();
   renderSites();
   renderStack();
+  initStackControls();
   initSwitcher();
   initLightbox();
   initNav();

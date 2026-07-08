@@ -207,11 +207,42 @@
         </div>
       </section>
 
-      <section id="stack" class="section">
+      <section id="stack" class="section stack-section">
         <div class="shell stack-grid">
           <div class="section-head compact">
             <p class="kicker">Stack</p>
             <h2>Tools I reach for.</h2>
+            <p class="section-intro">
+              A quick look at the apps, languages, and working skills I use most often.
+            </p>
+          </div>
+
+          <div class="stack-controls">
+            <label class="sr-only" for="stack-search">Search tools and skills</label>
+            <div class="stack-search">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"></circle>
+                <path d="m16 16 4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+              </svg>
+              <input
+                id="stack-search"
+                type="search"
+                name="stack-search"
+                placeholder="Search Python, Figma, forecasting..."
+                autocomplete="off"
+              />
+            </div>
+
+            <div id="stack-filters" class="stack-filters" role="group" aria-label="Stack filters">
+              <button class="stack-filter" type="button" data-stack-filter="app" aria-pressed="false">App</button>
+              <button class="stack-filter" type="button" data-stack-filter="language" aria-pressed="false">Language</button>
+              <button class="stack-filter" type="button" data-stack-filter="skill" aria-pressed="false">Skill</button>
+            </div>
+          </div>
+
+          <div class="stack-meta">
+            <p class="stack-caption">Search by name or use the filters to narrow the list.</p>
+            <p id="stack-results" class="stack-results" aria-live="polite"></p>
           </div>
 
           <div class="stack-cards" id="stack-cards"></div>
