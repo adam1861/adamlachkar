@@ -227,30 +227,30 @@ const sites = [
 ];
 
 const stack = [
-  { name: "Python", icon: "Py", group: "AI and ML", type: "language" },
-  { name: "Pandas", icon: "Pd", group: "AI and ML", type: "app" },
-  { name: "NumPy", icon: "Np", group: "AI and ML", type: "app" },
-  { name: "Scikit-learn", icon: "Sk", group: "AI and ML", type: "app" },
-  { name: "XGBoost", icon: "XG", group: "AI and ML", type: "app" },
-  { name: "Matplotlib", icon: "Mp", group: "AI and ML", type: "app" },
-  { name: "EDA", icon: "ED", group: "Data work", type: "skill" },
-  { name: "Feature Engineering", icon: "FE", group: "Data work", type: "skill" },
-  { name: "Classification", icon: "CL", group: "Data work", type: "skill" },
-  { name: "Clustering", icon: "CT", group: "Data work", type: "skill" },
-  { name: "Forecasting", icon: "FC", group: "Data work", type: "skill" },
-  { name: "Evaluation", icon: "EV", group: "Data work", type: "skill" },
-  { name: "HTML", icon: "H5", group: "Web and product", type: "language" },
-  { name: "CSS", icon: "C3", group: "Web and product", type: "language" },
-  { name: "JavaScript", icon: "JS", group: "Web and product", type: "language" },
-  { name: "TypeScript", icon: "TS", group: "Web and product", type: "language" },
-  { name: "WordPress", icon: "WP", group: "Web and product", type: "app" },
-  { name: "Figma", icon: "Fg", group: "Web and product", type: "app" },
-  { name: "Git", icon: "Gt", group: "Engineering and workflow", type: "app" },
-  { name: "Linux", icon: "Lx", group: "Engineering and workflow", type: "app" },
-  { name: "Power BI", icon: "BI", group: "Engineering and workflow", type: "app" },
-  { name: "Arduino", icon: "Ar", group: "Engineering and workflow", type: "app" },
-  { name: "SolidWorks", icon: "SW", group: "Engineering and workflow", type: "app" },
-  { name: "MATLAB", icon: "ML", group: "Engineering and workflow", type: "language" }
+  { name: "Python", icon: "assets/icons/stack/python.svg", group: "AI and ML", type: "language" },
+  { name: "Pandas", icon: "assets/icons/stack/pandas.svg", group: "AI and ML", type: "app" },
+  { name: "NumPy", icon: "assets/icons/stack/numpy.svg", group: "AI and ML", type: "app" },
+  { name: "Scikit-learn", icon: "assets/icons/stack/scikitlearn.svg", group: "AI and ML", type: "app" },
+  { name: "XGBoost", icon: "assets/icons/stack/xgboost.png", group: "AI and ML", type: "app", iconClass: "wide" },
+  { name: "Matplotlib", icon: "assets/icons/stack/matplotlib.svg", group: "AI and ML", type: "app" },
+  { name: "EDA", icon: "assets/icons/stack/eda.svg", group: "Data work", type: "skill" },
+  { name: "Feature Engineering", icon: "assets/icons/stack/feature-engineering.svg", group: "Data work", type: "skill" },
+  { name: "Classification", icon: "assets/icons/stack/classification.svg", group: "Data work", type: "skill" },
+  { name: "Clustering", icon: "assets/icons/stack/clustering.svg", group: "Data work", type: "skill" },
+  { name: "Forecasting", icon: "assets/icons/stack/forecasting.svg", group: "Data work", type: "skill" },
+  { name: "Evaluation", icon: "assets/icons/stack/evaluation.svg", group: "Data work", type: "skill" },
+  { name: "HTML", icon: "assets/icons/stack/html5.svg", group: "Web and product", type: "language" },
+  { name: "CSS", icon: "assets/icons/stack/css.svg", group: "Web and product", type: "language" },
+  { name: "JavaScript", icon: "assets/icons/stack/javascript.svg", group: "Web and product", type: "language" },
+  { name: "TypeScript", icon: "assets/icons/stack/typescript.svg", group: "Web and product", type: "language" },
+  { name: "WordPress", icon: "assets/icons/stack/wordpress.svg", group: "Web and product", type: "app" },
+  { name: "Figma", icon: "assets/icons/stack/figma.svg", group: "Web and product", type: "app" },
+  { name: "Git", icon: "assets/icons/stack/git.svg", group: "Engineering and workflow", type: "app" },
+  { name: "Linux", icon: "assets/icons/stack/linux.svg", group: "Engineering and workflow", type: "app" },
+  { name: "Power BI", icon: "assets/icons/stack/powerbi.svg", group: "Engineering and workflow", type: "app" },
+  { name: "Arduino", icon: "assets/icons/stack/arduino.svg", group: "Engineering and workflow", type: "app" },
+  { name: "SolidWorks", icon: "assets/icons/stack/solidworks.svg", group: "Engineering and workflow", type: "app" },
+  { name: "MATLAB", icon: "assets/icons/stack/matlab.svg", group: "Engineering and workflow", type: "language" }
 ];
 
 const $ = (selector, scope = document) => scope.querySelector(selector);
@@ -510,7 +510,9 @@ function renderStack() {
     .map(
       (item) => `
         <article class="stack-item" data-stack-type="${item.type}">
-          <div class="stack-item-icon" aria-hidden="true">${item.icon}</div>
+          <div class="stack-item-icon${item.iconClass ? ` ${item.iconClass}` : ""}" aria-hidden="true">
+            <img src="${item.icon}" alt="" loading="lazy" />
+          </div>
           <span class="stack-item-name">${item.name}</span>
           <span class="stack-item-meta">${item.group} / ${formatStackType(item.type)}</span>
         </article>
