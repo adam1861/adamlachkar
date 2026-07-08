@@ -759,7 +759,7 @@ button {
   border-color: rgba(47, 94, 168, 0.18);
 }
 
-.stack-item[data-stack-type="app"] {
+.stack-item[data-stack-type="software"] {
   border-color: rgba(216, 104, 45, 0.18);
 }
 
