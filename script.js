@@ -110,6 +110,15 @@ const aboutCards = [
   }
 ];
 
+const certificates = [
+  {
+    title: "ML Specialisation",
+    file: "certifs/ML%20Specialisation.pdf",
+    format: "PDF certificate",
+    note: "Machine learning specialization certificate available to open directly."
+  }
+];
+
 const sites = [
   {
     title: "EFAIX",
@@ -325,6 +334,35 @@ function renderAboutCards() {
         <article class="about-card">
           <span>${item.title}</span>
           <p>${item.text}</p>
+        </article>
+      `
+    )
+    .join("");
+}
+
+function renderCertificates() {
+  const container = $("#certificate-grid");
+  if (!container) return;
+
+  container.innerHTML = certificates
+    .map(
+      (item) => `
+        <article class="certificate-card">
+          <div class="certificate-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M7 3.75h7.25L19.25 8v12.25H7z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+              <path d="M14 3.75V8h5.25" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+              <path d="M10 12.25h6M10 15.25h6M10 18.25h4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="certificate-copy">
+            <span>${item.format}</span>
+            <h3>${item.title}</h3>
+            <p>${item.note}</p>
+          </div>
+          <a class="button button-light certificate-link" href="${item.file}" target="_blank" rel="noopener">
+            Open certificate
+          </a>
         </article>
       `
     )
@@ -599,6 +637,7 @@ function init() {
   renderProjectFilters();
   renderProjects();
   renderAboutCards();
+  renderCertificates();
   renderSites();
   renderStack();
   initStackControls();
