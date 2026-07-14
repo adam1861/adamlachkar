@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Portfolio Studio</title>
+    <link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="admin.css" />
+    <script defer src="admin.js"></script>
+  </head>
+  <body>
+    <main class="studio-shell">
+      <section id="login-view" class="login-view" hidden>
+        <form id="login-form" class="login-card">
+          <div>
+            <p class="eyebrow">Private studio</p>
+            <h1>Portfolio Studio</h1>
+            <p class="muted">Sign in to update projects, certificates, web builds, skills, and proof points.</p>
+          </div>
+
+          <label>
+            <span>Username</span>
+            <input id="username" name="username" autocomplete="username" required />
+          </label>
+
+          <label>
+            <span>Password</span>
+            <input id="password" name="password" type="password" autocomplete="current-password" required />
+          </label>
+
+          <button class="primary-button" type="submit">Sign in</button>
+          <p id="login-status" class="status" role="status"></p>
+        </form>
+      </section>
+
+      <section id="studio-view" class="studio-view" hidden>
+        <aside class="sidebar">
+          <a class="brand" href="../" target="_blank" rel="noopener">Adam Lachkar</a>
+          <nav id="section-nav" class="section-nav" aria-label="Content sections"></nav>
+          <button id="logout-button" class="ghost-button" type="button">Log out</button>
+        </aside>
+
+        <section class="workspace">
+          <header class="workspace-top">
+            <div>
+              <p class="eyebrow">Content manager</p>
+              <h1 id="section-title">Projects</h1>
+            </div>
+            <div class="top-actions">
+              <a class="ghost-button" href="../" target="_blank" rel="noopener">View site</a>
+              <button id="save-button" class="primary-button" type="button">Publish changes</button>
+            </div>
+          </header>
+
+          <div id="dashboard" class="dashboard"></div>
+
+          <div class="editor-layout">
+            <section class="item-panel" aria-label="Items">
+              <div class="panel-head">
+                <div>
+                  <h2 id="list-title">Projects</h2>
+                  <p id="item-count" class="muted"></p>
+                </div>
+                <button id="add-button" class="primary-button small" type="button">Add</button>
+              </div>
+              <div id="item-list" class="item-list"></div>
+            </section>
+
+            <section class="form-panel" aria-label="Editor">
+              <div class="panel-head">
+                <div>
+                  <h2 id="editor-title">Editor</h2>
+                  <p id="editor-subtitle" class="muted"></p>
+                </div>
+                <div class="inline-actions">
+                  <button id="move-up-button" class="icon-button" type="button" title="Move up">Up</button>
+                  <button id="move-down-button" class="icon-button" type="button" title="Move down">Down</button>
+                  <button id="duplicate-button" class="icon-button" type="button" title="Duplicate">Copy</button>
+                  <button id="delete-button" class="danger-button" type="button">Delete</button>
+                </div>
+              </div>
+              <form id="editor-form" class="editor-form"></form>
+            </section>
+          </div>
+
+          <p id="save-status" class="save-status" role="status"></p>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

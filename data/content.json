@@ -1,0 +1,371 @@
+{
+  "proofPoints": [
+    {
+      "value": "17+",
+      "label": "public repos"
+    },
+    {
+      "value": "6",
+      "label": "selected projects"
+    },
+    {
+      "value": "6",
+      "label": "live web builds shown"
+    }
+  ],
+  "projects": [
+    {
+      "title": "Pricing Engine",
+      "type": "AI and data",
+      "year": "2026",
+      "role": "Pricing modeling and decision support",
+      "image": "assets/images/projects/thumbnails/pricing-engine.jpg",
+      "url": "https://github.com/adam1861/Pricing-Engine",
+      "summary": "Machine learning pricing workflow focused on turning model output into better pricing decisions.",
+      "problem": "Estimate stronger product price points from structured business signals.",
+      "approach": "Combined analytics, prediction, and feature thinking into a workflow designed to support pricing choices rather than just produce a score.",
+      "result": "Framed pricing as a practical decision-support system instead of a notebook-only exercise.",
+      "stack": ["Python", "Pandas", "Scikit-learn"]
+    },
+    {
+      "title": "Telecom Customer Churn Prediction",
+      "type": "AI and data",
+      "year": "2026",
+      "role": "End-to-end churn classification workflow",
+      "image": "assets/images/projects/thumbnails/telecom-churn.jpg",
+      "url": "https://github.com/adam1861/Telecom-Customer-Churn-Prediction",
+      "summary": "Retention-focused classification project built around churn signals and customer behavior.",
+      "problem": "Identify which customers are most likely to churn and why.",
+      "approach": "Worked through cleaning, exploratory analysis, feature encoding, train-test splitting, and classification to build a usable churn pipeline.",
+      "result": "Produced a clearer retention-oriented workflow that ties business context to modeling choices.",
+      "stack": ["Python", "EDA", "Classification"]
+    },
+    {
+      "title": "Credit Card Fraud Detection",
+      "type": "Cyber security",
+      "year": "2026",
+      "role": "Imbalanced classification and evaluation",
+      "image": "assets/images/projects/thumbnails/credit-card-fraud.jpg",
+      "url": "https://github.com/adam1861/Credit-Card-Fraud-Detection",
+      "summary": "Fraud detection workflow centered on imbalance handling, feature work, and evaluation.",
+      "problem": "Detect suspicious transactions in a highly imbalanced classification setting.",
+      "approach": "Used notebooks to walk through cleaning, feature engineering, class-imbalance handling, and model comparison in a structured way.",
+      "result": "Showed careful treatment of anomaly-heavy data instead of treating fraud detection as a generic classification task.",
+      "stack": ["Python", "Feature engineering", "Model evaluation"]
+    },
+    {
+      "title": "Weather Forecasting System",
+      "type": "Software",
+      "year": "2026",
+      "role": "Forecast modeling plus interactive interface",
+      "image": "assets/images/projects/thumbnails/weather-forecasting.jpg",
+      "url": "https://github.com/adam1861/weather_forcasting",
+      "summary": "Forecasting project using XGBoost, NASA weather data, and an interactive web layer.",
+      "problem": "Turn weather signals into forecasts that are both modeled and user-facing.",
+      "approach": "Combined time-aware modeling, XGBoost, location-based inputs, and a web interface to move the work beyond raw predictions.",
+      "result": "One of the clearest examples in the portfolio of combining machine learning with product-minded delivery.",
+      "stack": ["XGBoost", "NASA weather data", "JavaScript"]
+    },
+    {
+      "title": "E-Commerce Customer Segmentation",
+      "type": "AI and data",
+      "year": "2026",
+      "role": "Clustering and exploratory analysis",
+      "image": "assets/images/projects/thumbnails/customer-segmentation.jpg",
+      "url": "https://github.com/adam1861/E-Commerce-Customer-Segmentation",
+      "summary": "Clustering-driven segmentation project built to support sharper targeting decisions.",
+      "problem": "Group customers by behavior to support better targeting and marketing decisions.",
+      "approach": "Used exploratory analysis and clustering to identify meaningful behavior segments instead of focusing only on prediction.",
+      "result": "Shifted the work toward insight and action, not just model output.",
+      "stack": ["Clustering", "EDA", "Customer analysis"]
+    },
+    {
+      "title": "Metal Quality Control",
+      "type": "Computer vision",
+      "year": "2025",
+      "role": "Defect detection and segmentation",
+      "image": "assets/images/projects/thumbnails/metal-quality-control.jpg",
+      "url": "https://github.com/adam1861/metal_quality_control",
+      "summary": "Computer vision workflow for defect detection and segmentation in industrial parts.",
+      "problem": "Spot color anomalies and scratches in metal nut inspection scenarios.",
+      "approach": "Built a more applied visual quality-control workflow around defect detection and segmentation rather than a purely academic image task.",
+      "result": "Added a stronger industrial computer-vision angle to the portfolio.",
+      "stack": ["Computer vision", "Segmentation", "TypeScript"]
+    }
+  ],
+  "aboutCards": [
+    {
+      "title": "Education",
+      "text": "Engineering student at EMINES - UM6P with a growing focus on AI, data science, and technical systems that have real users."
+    },
+    {
+      "title": "Best fit work",
+      "text": "AI and ML internships, product engineering, education technology systems, technical web builds, and collaborations that need both execution and range."
+    }
+  ],
+  "certificates": [
+    {
+      "title": "ML Specialisation",
+      "file": "certifs/ML%20Specialisation.pdf",
+      "format": "PDF certificate",
+      "note": "Machine learning specialization certificate available to open directly."
+    }
+  ],
+  "sites": [
+    {
+      "title": "EFAIX",
+      "image": "assets/images/sites/efaix.png",
+      "url": "https://efaix.com/",
+      "category": "Education ecosystem",
+      "role": "Brand site and product positioning",
+      "summary": "Main public-facing site for the EFAIX story, positioning, and ecosystem overview."
+    },
+    {
+      "title": "EFAIX Academy",
+      "image": "assets/images/sites/efaix_academy.png",
+      "url": "https://academy.efaix.com/",
+      "category": "Learning platform",
+      "role": "Training delivery experience",
+      "summary": "Structured digital learning surface built around clearer course access and delivery."
+    },
+    {
+      "title": "EFAIX LMS",
+      "image": "assets/images/sites/efaix_lms.png",
+      "url": "https://lms.efaix.com/",
+      "category": "Learning system",
+      "role": "LMS interface execution",
+      "summary": "Learning management experience focused on organizing educational workflows."
+    },
+    {
+      "title": "Starteady",
+      "image": "assets/images/sites/starteady.png",
+      "url": "https://www.starteady.com/",
+      "category": "Client website",
+      "role": "Launch-focused web execution",
+      "summary": "Commercial web presence shaped for clarity, speed, and stronger trust."
+    },
+    {
+      "title": "Auramaking",
+      "image": "assets/images/sites/auramaking.png",
+      "url": "https://www.auramaking.com/",
+      "category": "Client website",
+      "role": "Brand presentation and polish",
+      "summary": "Brand-led site work built around presentation, credibility, and cleaner storytelling."
+    },
+    {
+      "title": "Icodex Academy",
+      "image": "assets/images/sites/icodex.png",
+      "url": "https://icodex.academy/",
+      "category": "Education platform",
+      "role": "Course and platform experience",
+      "summary": "Education platform work for code and AI learning with a more organized user path."
+    }
+  ],
+  "stack": [
+    {
+      "name": "Python",
+      "icon": "assets/icons/stack/python.svg",
+      "group": "AI and ML",
+      "type": "language"
+    },
+    {
+      "name": "C",
+      "icon": "assets/icons/stack/c.svg",
+      "group": "AI and ML",
+      "type": "language"
+    },
+    {
+      "name": "Java",
+      "icon": "assets/icons/stack/java.svg",
+      "group": "AI and ML",
+      "type": "language"
+    },
+    {
+      "name": "Pandas",
+      "icon": "assets/icons/stack/pandas.svg",
+      "group": "AI and ML",
+      "type": "library"
+    },
+    {
+      "name": "NumPy",
+      "icon": "assets/icons/stack/numpy.svg",
+      "group": "AI and ML",
+      "type": "library"
+    },
+    {
+      "name": "Scikit-learn",
+      "icon": "assets/icons/stack/scikitlearn.svg",
+      "group": "AI and ML",
+      "type": "library"
+    },
+    {
+      "name": "XGBoost",
+      "icon": "assets/icons/stack/xgboost.png",
+      "group": "AI and ML",
+      "type": "library",
+      "iconClass": "wide"
+    },
+    {
+      "name": "Matplotlib",
+      "icon": "assets/icons/stack/matplotlib.svg",
+      "group": "AI and ML",
+      "type": "library"
+    },
+    {
+      "name": "TensorFlow",
+      "icon": "assets/icons/stack/tensorflow.svg",
+      "group": "AI and ML",
+      "type": "library"
+    },
+    {
+      "name": "Seaborn",
+      "icon": "assets/icons/stack/seaborn.svg",
+      "group": "AI and ML",
+      "type": "library"
+    },
+    {
+      "name": "EDA",
+      "icon": "assets/icons/stack/eda.svg",
+      "group": "Data work",
+      "type": "skill"
+    },
+    {
+      "name": "Feature Engineering",
+      "icon": "assets/icons/stack/feature-engineering.svg",
+      "group": "Data work",
+      "type": "skill"
+    },
+    {
+      "name": "Classification",
+      "icon": "assets/icons/stack/classification.svg",
+      "group": "Data work",
+      "type": "skill"
+    },
+    {
+      "name": "Clustering",
+      "icon": "assets/icons/stack/clustering.svg",
+      "group": "Data work",
+      "type": "skill"
+    },
+    {
+      "name": "Forecasting",
+      "icon": "assets/icons/stack/forecasting.svg",
+      "group": "Data work",
+      "type": "skill"
+    },
+    {
+      "name": "Evaluation",
+      "icon": "assets/icons/stack/evaluation.svg",
+      "group": "Data work",
+      "type": "skill"
+    },
+    {
+      "name": "RAG",
+      "icon": "assets/icons/stack/rag.svg",
+      "group": "Data work",
+      "type": "skill"
+    },
+    {
+      "name": "HTML",
+      "icon": "assets/icons/stack/html5.svg",
+      "group": "Web and product",
+      "type": "language"
+    },
+    {
+      "name": "CSS",
+      "icon": "assets/icons/stack/css.svg",
+      "group": "Web and product",
+      "type": "language"
+    },
+    {
+      "name": "JavaScript",
+      "icon": "assets/icons/stack/javascript.svg",
+      "group": "Web and product",
+      "type": "language"
+    },
+    {
+      "name": "TypeScript",
+      "icon": "assets/icons/stack/typescript.svg",
+      "group": "Web and product",
+      "type": "language"
+    },
+    {
+      "name": "WordPress",
+      "icon": "assets/icons/stack/wordpress.svg",
+      "group": "Web and product",
+      "type": "software"
+    },
+    {
+      "name": "Figma",
+      "icon": "assets/icons/stack/figma.svg",
+      "group": "Web and product",
+      "type": "software"
+    },
+    {
+      "name": "GitHub",
+      "icon": "assets/icons/stack/github.svg",
+      "group": "Web and product",
+      "type": "software"
+    },
+    {
+      "name": "Vercel",
+      "icon": "assets/icons/stack/vercel.svg",
+      "group": "Web and product",
+      "type": "software"
+    },
+    {
+      "name": "Render",
+      "icon": "assets/icons/stack/render.svg",
+      "group": "Web and product",
+      "type": "software"
+    },
+    {
+      "name": "Processing",
+      "icon": "assets/icons/stack/processing.svg",
+      "group": "Web and product",
+      "type": "software"
+    },
+    {
+      "name": "Git",
+      "icon": "assets/icons/stack/git.svg",
+      "group": "Engineering and workflow",
+      "type": "software"
+    },
+    {
+      "name": "Linux",
+      "icon": "assets/icons/stack/linux.svg",
+      "group": "Engineering and workflow",
+      "type": "software"
+    },
+    {
+      "name": "Power BI",
+      "icon": "assets/icons/stack/powerbi.svg",
+      "group": "Engineering and workflow",
+      "type": "software"
+    },
+    {
+      "name": "Arduino",
+      "icon": "assets/icons/stack/arduino.svg",
+      "group": "Engineering and workflow",
+      "type": "software"
+    },
+    {
+      "name": "SolidWorks",
+      "icon": "assets/icons/stack/solidworks.svg",
+      "group": "Engineering and workflow",
+      "type": "software"
+    },
+    {
+      "name": "Aspen",
+      "icon": "assets/icons/stack/aspen.svg",
+      "group": "Engineering and workflow",
+      "type": "software"
+    },
+    {
+      "name": "MATLAB",
+      "icon": "assets/icons/stack/matlab.svg",
+      "group": "Engineering and workflow",
+      "type": "language"
+    }
+  ]
+}
