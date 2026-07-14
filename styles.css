@@ -819,6 +819,10 @@ button {
   border-color: rgba(216, 104, 45, 0.18);
 }
 
+.stack-item[data-stack-type="tools"] {
+  border-color: rgba(135, 74, 168, 0.18);
+}
+
 .stack-item[data-stack-type="skill"] {
   border-color: rgba(52, 122, 90, 0.18);
 }
