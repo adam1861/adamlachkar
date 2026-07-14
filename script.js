@@ -116,6 +116,12 @@ const certificates = [
     file: "certifs/ML%20Specialisation.pdf",
     format: "PDF certificate",
     note: "Machine learning specialization certificate available to open directly."
+  },
+  {
+    title: "Pre Security",
+    file: "certifs/Pre-security.pdf",
+    format: "PDF certificate",
+    note: "Pre-security learning path certificate available to open directly."
   }
 ];
 
