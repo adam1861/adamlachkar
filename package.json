@@ -1,8 +1,0 @@
-{
-  "name": "adamlachkar-portfolio",
-  "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "hash-password": "node scripts/hash-password.js"
-  }
-}
