@@ -177,7 +177,7 @@ const stack = [
   { name: "Pandas", icon: "assets/icons/stack/pandas.svg", group: "AI and ML", type: "library" },
   { name: "NumPy", icon: "assets/icons/stack/numpy.svg", group: "AI and ML", type: "library" },
   { name: "Scikit-learn", icon: "assets/icons/stack/scikitlearn.svg", group: "AI and ML", type: "library" },
-  { name: "XGBoost", icon: "assets/icons/stack/xgboost.png", group: "AI and ML", type: "library", iconClass: "wide" },
+  { name: "XGBoost", icon: "assets/icons/stack/xgboost.svg", group: "AI and ML", type: "library", iconClass: "wide" },
   { name: "Matplotlib", icon: "assets/icons/stack/matplotlib.svg", group: "AI and ML", type: "library" },
   { name: "TensorFlow", icon: "assets/icons/stack/tensorflow.svg", group: "AI and ML", type: "library" },
   { name: "Seaborn", icon: "assets/icons/stack/seaborn.svg", group: "AI and ML", type: "library" },
