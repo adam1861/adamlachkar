@@ -113,13 +113,13 @@ const aboutCards = [
 const certificates = [
   {
     title: "ML Specialisation",
-    file: "certifs/ML%20Specialisation.pdf",
+    file: "assets/docs/certificates/ML%20Specialisation.pdf",
     format: "PDF certificate",
     note: "Machine learning specialization certificate available to open directly."
   },
   {
     title: "Pre Security",
-    file: "certifs/Pre-security.pdf",
+    file: "assets/docs/certificates/Pre-security.pdf",
     format: "PDF certificate",
     note: "Pre-security learning path certificate available to open directly."
   }
