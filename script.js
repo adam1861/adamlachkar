@@ -226,7 +226,7 @@ const stack = [
   { name: "Wireshark", icon: "assets/icons/stack/wireshark.svg", group: "Tools", type: "software" },
   { name: "Metasploit", icon: "assets/icons/stack/metasploit.svg", group: "Tools", type: "software" },
   { name: "tcpdump", icon: "assets/icons/stack/tcpdump.svg", group: "Tools", type: "tools", iconClass: "wide" },
-  { name: "SQL dump", icon: "assets/icons/stack/sql-dump.svg", group: "Tools", type: "tools" },
+  { name: "sqlmap", icon: "assets/icons/stack/sqlmap.png", group: "Tools", type: "tools", iconClass: "wide" },
   { name: "Splunk", icon: "assets/icons/stack/splunk.png", group: "Engineering and workflow", type: "software", iconClass: "wide" },
   { name: "Git", icon: "assets/icons/stack/git.svg", group: "Engineering and workflow", type: "software" },
   { name: "Linux", icon: "assets/icons/stack/linux.svg", group: "Engineering and workflow", type: "software" },
