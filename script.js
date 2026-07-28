@@ -122,6 +122,18 @@ const certificates = [
     file: "assets/docs/certificates/Pre-security.pdf",
     format: "PDF certificate",
     note: "Pre-security learning path certificate available to open directly."
+  },
+  {
+    title: "Security 101",
+    file: "assets/docs/certificates/Security%20101.pdf",
+    format: "PDF certificate",
+    note: "Security 101 certificate available to open directly."
+  },
+  {
+    title: "RAG",
+    file: "assets/docs/certificates/RAG.pdf",
+    format: "PDF certificate",
+    note: "Retrieval-augmented generation certificate available to open directly."
   }
 ];
 
@@ -205,11 +217,16 @@ const stack = [
   { name: "Vercel", icon: "assets/icons/stack/vercel.svg", group: "Web and product", type: "software" },
   { name: "Render", icon: "assets/icons/stack/render.svg", group: "Web and product", type: "software" },
   { name: "Processing", icon: "assets/icons/stack/processing.svg", group: "Web and product", type: "software" },
+  { name: "n8n", icon: "assets/icons/stack/n8n.svg", group: "Engineering and workflow", type: "software" },
   { name: "Hydra", icon: "assets/icons/stack/hydra.ico", group: "Tools", type: "tools" },
   { name: "John the Ripper", icon: "assets/icons/stack/john-the-ripper.svg", group: "Tools", type: "tools" },
   { name: "Hashcat", icon: "assets/icons/stack/hashcat.svg", group: "Tools", type: "tools" },
   { name: "Gobuster", icon: "assets/icons/stack/gobuster.svg", group: "Tools", type: "tools" },
   { name: "Burp Suite", icon: "assets/icons/stack/burpsuite.svg", group: "Tools", type: "software" },
+  { name: "Wireshark", icon: "assets/icons/stack/wireshark.svg", group: "Tools", type: "software" },
+  { name: "Metasploit", icon: "assets/icons/stack/metasploit.svg", group: "Tools", type: "software" },
+  { name: "tcpdump", icon: "assets/icons/stack/tcpdump.svg", group: "Tools", type: "tools", iconClass: "wide" },
+  { name: "SQL dump", icon: "assets/icons/stack/sql-dump.svg", group: "Tools", type: "tools" },
   { name: "Splunk", icon: "assets/icons/stack/splunk.png", group: "Engineering and workflow", type: "software", iconClass: "wide" },
   { name: "Git", icon: "assets/icons/stack/git.svg", group: "Engineering and workflow", type: "software" },
   { name: "Linux", icon: "assets/icons/stack/linux.svg", group: "Engineering and workflow", type: "software" },
