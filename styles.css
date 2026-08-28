@@ -796,6 +796,7 @@ button {
 }
 
 .experience-card {
+  position: relative;
   display: grid;
   grid-template-columns: 126px minmax(0, 1fr);
   gap: 24px;
@@ -804,6 +805,26 @@ button {
   border-radius: var(--radius-md);
   background: rgba(255, 250, 244, 0.72);
   box-shadow: 0 14px 34px rgba(18, 18, 18, 0.05);
+}
+
+.experience-card[data-detail-type] {
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.experience-card[data-detail-type]:hover,
+.experience-card[data-detail-type]:focus-visible {
+  border-color: rgba(216, 104, 45, 0.36);
+  box-shadow: 0 18px 40px rgba(18, 18, 18, 0.09);
+}
+
+.experience-card[data-detail-type]:hover {
+  transform: translateY(-2px);
+}
+
+.experience-card[data-detail-type]:focus-visible {
+  outline: 3px solid rgba(216, 104, 45, 0.3);
+  outline-offset: 3px;
 }
 
 .experience-card-content {
@@ -949,6 +970,7 @@ button {
 }
 
 .experience-description {
+  display: none;
   margin-top: 20px;
   color: var(--muted);
   line-height: 1.7;
@@ -1526,6 +1548,16 @@ button {
 
 .lightbox-copy {
   padding: 20px 22px 28px;
+}
+
+.lightbox-profile #lightbox-image {
+  width: min(220px, 42vw);
+  height: min(220px, 42vw);
+  margin: 18px auto 0;
+  aspect-ratio: 1;
+  object-fit: contain;
+  border-radius: 22px;
+  background: #fff;
 }
 
 .lightbox-body {

@@ -236,7 +236,6 @@ const $ = (selector, scope = document) => scope.querySelector(selector);
 const $$ = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
 const projectFilters = ["All", ...new Set(projects.map((project) => project.type))];
 let activeProjectFilter = "All";
-let expandedProjectIndex = null;
 let activeStackFilter = "all";
 let stackSearchTerm = "";
 
@@ -321,12 +320,12 @@ function renderProjects() {
   grid.innerHTML = getFilteredProjects()
     .map(
       (project) => `
-        <article class="project-card ${expandedProjectIndex === project.index ? "expanded" : ""}">
+        <article class="project-card">
           <button
             class="project-trigger"
             type="button"
             data-project="${project.index}"
-            aria-expanded="${expandedProjectIndex === project.index ? "true" : "false"}"
+            aria-label="Open ${project.title} details"
           >
             <div class="project-layout">
               <img src="${fallbackImage(project.image)}" alt="${project.title}" loading="lazy" />
@@ -469,16 +468,46 @@ function initStackControls() {
   renderStackFilters();
 }
 
-function openLightbox(index) {
+function slugify(value) {
+  return value
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+function escapeHtml(value) {
+  return String(value ?? "").replace(/[&<>'"]/g, (character) => {
+    const entities = { "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" };
+    return entities[character];
+  });
+}
+
+function setLightboxImage(src, alt, isProfile = false) {
+  const image = $("#lightbox-image");
+  const box = $("#lightbox");
+  if (!image || !box) return;
+
+  box.classList.toggle("lightbox-profile", isProfile);
+  image.hidden = !src;
+  image.src = src || "";
+  image.alt = alt || "";
+}
+
+function setDetailHash(type, id) {
+  window.history.pushState({}, "", `#detail/${type}/${id}`);
+}
+
+function openProjectDetails(index, updateHash = true) {
   const project = projects[index];
   const box = $("#lightbox");
   if (!project || !box) return;
 
+  if (updateHash) setDetailHash("project", slugify(project.title));
+
   $("#lightbox-kicker").textContent = project.type;
   $("#lightbox-title").textContent = project.title;
-  const image = $("#lightbox-image");
-  image.src = fallbackImage(project.image);
-  image.alt = project.title;
+  setLightboxImage(fallbackImage(project.image), project.title);
 
   const body = $("#lightbox-body");
   if (body) {
@@ -524,9 +553,84 @@ function openLightbox(index) {
   $(".lightbox-close")?.focus();
 }
 
-function closeLightbox() {
+function openCardDetails(type, id, updateHash = true) {
+  const card = $$(`[data-detail-type="${type}"]`).find((item) => item.dataset.detailId === id);
+  const box = $("#lightbox");
+  if (!card || !box) return;
+
+  if (updateHash) setDetailHash(type, id);
+
+  const role = card.querySelector(".experience-label")?.textContent.trim() || "Details";
+  const title = card.querySelector("h3")?.textContent.trim() || "";
+  const company = card.querySelector(".experience-company")?.textContent.trim() || "";
+  const date = card.querySelector(".experience-date")?.textContent.trim() || "";
+  const location = card.querySelector(".experience-location")?.textContent.trim() || "";
+  const description = card.querySelector(".experience-description")?.textContent.trim() || "";
+  const logo = card.querySelector(".experience-logo img");
+
+  $("#lightbox-kicker").textContent = role;
+  $("#lightbox-title").textContent = title;
+  setLightboxImage(logo?.getAttribute("src"), logo?.getAttribute("alt") || title, true);
+
+  const body = $("#lightbox-body");
+  if (body) {
+    body.innerHTML = `
+      <p class="lightbox-summary">${escapeHtml(description)}</p>
+      <div class="detail-grid">
+        <div>
+          <span>Organisation</span>
+          <strong>${escapeHtml(company)}</strong>
+        </div>
+        <div>
+          <span>Dates</span>
+          <strong>${escapeHtml(date)}</strong>
+        </div>
+        ${location ? `<div><span>Context</span><strong>${escapeHtml(location)}</strong></div>` : ""}
+      </div>
+    `;
+  }
+
+  const link = $("#lightbox-link");
+  if (link) {
+    link.hidden = true;
+    link.removeAttribute("href");
+  }
+
+  box.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+  $(".lightbox-close")?.focus();
+}
+
+function handleDetailHash() {
+  const match = window.location.hash.match(/^#detail\/(project|experience|activity)\/([^/]+)$/);
+  if (!match) {
+    closeLightbox(false);
+    return;
+  }
+
+  const [, type, id] = match;
+  if (type === "project") {
+    const index = projects.findIndex((project) => slugify(project.title) === id);
+    if (index >= 0) {
+      openProjectDetails(index, false);
+      return;
+    }
+  } else {
+    openCardDetails(type, id, false);
+    if ($("#lightbox")?.getAttribute("aria-hidden") === "false") return;
+  }
+
+  closeLightbox(false);
+}
+
+function closeLightbox(updateHash = true) {
   const box = $("#lightbox");
   if (!box) return;
+
+  if (updateHash && window.location.hash.startsWith("#detail/")) {
+    window.history.replaceState({}, "", "#portfolio");
+  }
+
   box.setAttribute("aria-hidden", "true");
   document.body.style.overflow = "";
 }
@@ -612,7 +716,6 @@ function initLightbox() {
     const filter = event.target.closest("[data-project-filter]");
     if (filter) {
       activeProjectFilter = filter.dataset.projectFilter;
-      expandedProjectIndex = null;
       renderProjectFilters();
       renderProjects();
       return;
@@ -621,8 +724,13 @@ function initLightbox() {
     const trigger = event.target.closest("[data-project]");
     if (trigger) {
       const projectIndex = Number(trigger.dataset.project);
-      expandedProjectIndex = expandedProjectIndex === projectIndex ? null : projectIndex;
-      renderProjects();
+      openProjectDetails(projectIndex);
+      return;
+    }
+
+    const detailTrigger = event.target.closest("[data-detail-type]");
+    if (detailTrigger) {
+      openCardDetails(detailTrigger.dataset.detailType, detailTrigger.dataset.detailId);
       return;
     }
 
@@ -632,10 +740,20 @@ function initLightbox() {
   });
 
   document.addEventListener("keydown", (event) => {
+    const detailTrigger = event.target.closest?.("[data-detail-type]");
+    if (detailTrigger && (event.key === "Enter" || event.key === " ")) {
+      event.preventDefault();
+      openCardDetails(detailTrigger.dataset.detailType, detailTrigger.dataset.detailId);
+      return;
+    }
+
     if (event.key === "Escape") {
       closeLightbox();
     }
   });
+
+  window.addEventListener("hashchange", handleDetailHash);
+  handleDetailHash();
 }
 
 function initNav() {
