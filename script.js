@@ -251,10 +251,6 @@ function renderChipList(items) {
   `;
 }
 
-function formatStackType(type) {
-  return type.charAt(0).toUpperCase() + type.slice(1);
-}
-
 function getFilteredStack() {
   const query = stackSearchTerm.trim().toLowerCase();
 
@@ -432,7 +428,6 @@ function renderStack() {
             <img src="${item.icon}" alt="" loading="lazy" />
           </div>
           <span class="stack-item-name">${item.name}</span>
-          <span class="stack-item-meta">${item.group} / ${formatStackType(item.type)}</span>
         </article>
       `
     )
