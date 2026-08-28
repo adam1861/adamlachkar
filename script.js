@@ -132,57 +132,6 @@ const certificates = [
   }
 ];
 
-const sites = [
-  {
-    title: "EFAIX",
-    image: "assets/images/sites/efaix.png",
-    url: "https://efaix.com/",
-    category: "Education ecosystem",
-    role: "Brand site and product positioning",
-    summary: "Main public-facing site for the EFAIX story, positioning, and ecosystem overview."
-  },
-  {
-    title: "EFAIX Academy",
-    image: "assets/images/sites/efaix_academy.png",
-    url: "https://academy.efaix.com/",
-    category: "Learning platform",
-    role: "Training delivery experience",
-    summary: "Structured digital learning surface built around clearer course access and delivery."
-  },
-  {
-    title: "EFAIX LMS",
-    image: "assets/images/sites/efaix_lms.png",
-    url: "https://lms.efaix.com/",
-    category: "Learning system",
-    role: "LMS interface execution",
-    summary: "Learning management experience focused on organizing educational workflows."
-  },
-  {
-    title: "Starteady",
-    image: "assets/images/sites/starteady.png",
-    url: "https://www.starteady.com/",
-    category: "Client website",
-    role: "Launch-focused web execution",
-    summary: "Commercial web presence shaped for clarity, speed, and stronger trust."
-  },
-  {
-    title: "Auramaking",
-    image: "assets/images/sites/auramaking.png",
-    url: "https://www.auramaking.com/",
-    category: "Client website",
-    role: "Brand presentation and polish",
-    summary: "Brand-led site work built around presentation, credibility, and cleaner storytelling."
-  },
-  {
-    title: "Icodex Academy",
-    image: "assets/images/sites/icodex.png",
-    url: "https://icodex.academy/",
-    category: "Education platform",
-    role: "Course and platform experience",
-    summary: "Education platform work for code and AI learning with a more organized user path."
-  }
-];
-
 const stack = [
   { name: "Python", icon: "assets/icons/stack/python.svg", group: "AI and ML", type: "language" },
   { name: "C", icon: "assets/icons/stack/c.svg", group: "AI and ML", type: "language" },
@@ -369,36 +318,6 @@ function renderCertificates() {
     .join("");
 }
 
-function renderSites() {
-  const grid = $("#sites-grid");
-  if (!grid) return;
-
-  grid.innerHTML = sites
-    .map(
-      (site) => `
-        <article
-          class="site-card"
-          data-detail-type="site"
-          data-detail-id="${slugify(site.title)}"
-          tabindex="0"
-          role="button"
-          aria-label="Open ${site.title} website details"
-        >
-          <img src="${fallbackImage(site.image)}" alt="${site.title}" loading="lazy" />
-          <div class="site-copy">
-            <div class="site-meta">
-              <span>${site.category}</span>
-              <strong>${site.role}</strong>
-            </div>
-            <h3>${site.title}</h3>
-            <p class="site-summary">${site.summary}</p>
-          </div>
-        </article>
-      `
-    )
-    .join("");
-}
-
 function renderStack() {
   const container = $("#stack-cards");
   const results = $("#stack-results");
@@ -503,7 +422,7 @@ function showDetailPage({ kicker, title, media, body, link, linkLabel }) {
 
   if (link) {
     linkElement.href = link;
-    linkElement.textContent = linkLabel || "Visit website";
+    linkElement.textContent = linkLabel || "View repo";
     linkElement.hidden = false;
   } else {
     linkElement.hidden = true;
@@ -567,34 +486,6 @@ function openProjectDetails(index, updateHash = true) {
   });
 }
 
-function openSiteDetails(id, updateHash = true) {
-  const site = sites.find((item) => slugify(item.title) === id);
-  if (!site) return;
-
-  if (updateHash) setDetailHash("site", id);
-
-  showDetailPage({
-    kicker: site.category,
-    title: site.title,
-    media: createImage(fallbackImage(site.image), site.title),
-    link: site.url,
-    linkLabel: "Visit website",
-    body: `
-      <p class="detail-page-summary">${escapeHtml(site.summary)}</p>
-      <div class="detail-grid">
-        <div>
-          <span>Category</span>
-          <strong>${escapeHtml(site.category)}</strong>
-        </div>
-        <div>
-          <span>Role</span>
-          <strong>${escapeHtml(site.role)}</strong>
-        </div>
-      </div>
-    `
-  });
-}
-
 function openCardDetails(type, id, updateHash = true) {
   const card = $$(`[data-detail-type="${type}"]`).find((item) => item.dataset.detailId === id);
   if (!card) return;
@@ -632,7 +523,7 @@ function openCardDetails(type, id, updateHash = true) {
 }
 
 function handleDetailHash() {
-  const match = window.location.hash.match(/^#detail\/(project|experience|activity|site)\/([^/]+)$/);
+  const match = window.location.hash.match(/^#detail\/(project|experience|activity)\/([^/]+)$/);
   if (!match) {
     hideDetailPage();
     return;
@@ -645,9 +536,6 @@ function handleDetailHash() {
       openProjectDetails(index, false);
       return;
     }
-  } else if (type === "site") {
-    openSiteDetails(id, false);
-    if (!$("#detail-page")?.hidden) return;
   } else {
     openCardDetails(type, id, false);
     if (!$("#detail-page")?.hidden) return;
@@ -720,30 +608,6 @@ function initSectionTabs() {
   });
 }
 
-function initSwitcher() {
-  $$(".switch").forEach((button) => {
-    button.addEventListener("click", () => {
-      const view = button.dataset.view;
-      $$(".switch").forEach((item) => {
-        const active = item === button;
-        item.classList.toggle("active", active);
-        item.setAttribute("aria-selected", String(active));
-      });
-
-      const projectsPanel = $("#projects-panel");
-      const sitesPanel = $("#sites-panel");
-      const projectFilters = $("#project-filters");
-      const showProjects = view === "projects";
-
-      projectsPanel.classList.toggle("active", showProjects);
-      projectsPanel.hidden = !showProjects;
-      sitesPanel.classList.toggle("active", !showProjects);
-      sitesPanel.hidden = showProjects;
-      if (projectFilters) projectFilters.hidden = !showProjects;
-    });
-  });
-}
-
 function initDetailRoutes() {
   document.addEventListener("click", (event) => {
     const filter = event.target.closest("[data-project-filter]");
@@ -763,11 +627,7 @@ function initDetailRoutes() {
 
     const detailTrigger = event.target.closest("[data-detail-type]");
     if (detailTrigger) {
-      if (detailTrigger.dataset.detailType === "site") {
-        openSiteDetails(detailTrigger.dataset.detailId);
-      } else {
-        openCardDetails(detailTrigger.dataset.detailType, detailTrigger.dataset.detailId);
-      }
+      openCardDetails(detailTrigger.dataset.detailType, detailTrigger.dataset.detailId);
       return;
     }
 
@@ -777,11 +637,7 @@ function initDetailRoutes() {
     const detailTrigger = event.target.closest?.("[data-detail-type]");
     if (detailTrigger && (event.key === "Enter" || event.key === " ")) {
       event.preventDefault();
-      if (detailTrigger.dataset.detailType === "site") {
-        openSiteDetails(detailTrigger.dataset.detailId);
-      } else {
-        openCardDetails(detailTrigger.dataset.detailType, detailTrigger.dataset.detailId);
-      }
+      openCardDetails(detailTrigger.dataset.detailType, detailTrigger.dataset.detailId);
       return;
     }
 
@@ -852,11 +708,9 @@ function init() {
   renderProjectFilters();
   renderProjects();
   renderCertificates();
-  renderSites();
   renderStack();
   initStackControls();
   initSectionTabs();
-  initSwitcher();
   initDetailRoutes();
   initNav();
   initScrollSpy();

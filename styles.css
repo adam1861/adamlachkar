@@ -213,7 +213,6 @@ button {
 .about-copy p,
 .contact-copy p,
 .project-card p,
-.site-card p,
 .about-card p,
 .rhythm-grid p {
   color: var(--muted);
@@ -300,7 +299,6 @@ button {
 
 .proof-card,
 .project-card,
-.site-card,
 .stack-card,
 .rhythm-grid article,
 .contact-card,
@@ -326,7 +324,6 @@ button {
 .about-card span,
 .detail-grid span,
 .project-meta span,
-.site-meta span,
 .rhythm-grid article span {
   color: var(--accent);
   font-size: 0.8rem;
@@ -564,15 +561,6 @@ button {
   margin: 0;
 }
 
-.work-switcher {
-  display: inline-flex;
-  gap: 8px;
-  padding: 6px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: rgba(255, 250, 244, 0.84);
-}
-
 .projects-controls {
   display: flex;
   align-items: center;
@@ -584,19 +572,6 @@ button {
 .projects-controls .project-filters {
   flex: 1 1 420px;
   margin-bottom: 0;
-}
-
-.switch {
-  min-height: 40px;
-  padding: 0 16px;
-  border-radius: 999px;
-  color: var(--muted);
-  cursor: pointer;
-}
-
-.switch.active {
-  color: #fff;
-  background: var(--text);
 }
 
 .work-panel {
@@ -639,8 +614,7 @@ button {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.project-card,
-.site-card {
+.project-card {
   border-radius: var(--radius-lg);
   overflow: hidden;
   height: 100%;
@@ -664,7 +638,6 @@ button {
 }
 
 .project-layout img,
-.site-card img,
 #lightbox-image {
   width: 100%;
   height: 100%;
@@ -675,16 +648,14 @@ button {
   aspect-ratio: 16 / 10;
 }
 
-.project-copy,
-.site-copy {
+.project-copy {
   padding: 18px;
   display: grid;
   align-content: start;
   gap: 10px;
 }
 
-.project-meta,
-.site-meta {
+.project-meta {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -692,7 +663,6 @@ button {
 }
 
 .project-copy h3,
-.site-copy h3,
 #lightbox-title {
   margin: 0;
   font-size: 1.45rem;
@@ -715,8 +685,7 @@ button {
 }
 
 .project-summary,
-.project-result,
-.site-summary {
+.project-result {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
@@ -727,8 +696,7 @@ button {
   display: none;
 }
 
-.project-summary,
-.site-summary {
+.project-summary {
   -webkit-line-clamp: 3;
 }
 
@@ -1189,7 +1157,6 @@ button {
 }
 
 .stack-cards,
-.site-list,
 .rhythm-grid {
   display: grid;
   gap: 14px;
@@ -1277,39 +1244,6 @@ button {
 
 .stack-empty p {
   margin-top: 8px;
-}
-
-.site-list {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.site-card {
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  height: auto;
-  aspect-ratio: 1 / 1;
-  display: grid;
-  grid-template-rows: minmax(0, 1fr) auto;
-  cursor: pointer;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
-}
-
-.site-card[data-detail-type]:hover {
-  border-color: rgba(216, 104, 45, 0.36);
-  box-shadow: 0 18px 40px rgba(18, 18, 18, 0.09);
-  transform: translateY(-2px);
-}
-
-.site-card[data-detail-type]:focus-visible {
-  outline: 3px solid rgba(216, 104, 45, 0.3);
-  outline-offset: 3px;
-}
-
-.site-card img {
-  min-height: 0;
-  height: 100%;
-  aspect-ratio: auto;
-  object-position: top center;
 }
 
 .section-alt {
@@ -1659,8 +1593,7 @@ button {
 
 @media (max-width: 1080px) {
   .proof-grid,
-  .project-list,
-  .site-list {
+  .project-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1805,7 +1738,6 @@ button {
 
   .proof-grid,
   .project-list,
-  .site-list,
   .detail-grid,
   .experience-list {
     grid-template-columns: 1fr;
