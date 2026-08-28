@@ -423,7 +423,7 @@ button {
   top: 90px;
   z-index: 12;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 4px;
   border: 1px solid rgba(18, 18, 18, 0.1);
   border-radius: 22px;
@@ -472,6 +472,7 @@ button {
 .section-tab:nth-child(2) .tab-icon::before { content: "02"; }
 .section-tab:nth-child(3) .tab-icon::before { content: "03"; }
 .section-tab:nth-child(4) .tab-icon::before { content: "04"; }
+.section-tab:nth-child(5) .tab-icon::before { content: "05"; }
 
 .section-tab .tab-icon {
   display: none;
@@ -493,6 +494,7 @@ button {
 .section-tab:nth-child(2)::before { content: "02"; }
 .section-tab:nth-child(3)::before { content: "03"; }
 .section-tab:nth-child(4)::before { content: "04"; }
+.section-tab:nth-child(5)::before { content: "05"; }
 
 .section-panels {
   min-height: 420px;
@@ -793,6 +795,10 @@ button {
   box-shadow: 0 14px 34px rgba(18, 18, 18, 0.05);
 }
 
+.experience-card-content {
+  min-width: 0;
+}
+
 .experience-logo {
   min-height: 104px;
   padding: 14px;
@@ -817,6 +823,57 @@ button {
 
 .experience-logo-thales img {
   width: 110px;
+}
+
+.experience-logo-eplusplus img {
+  width: 88px;
+  border-radius: 12px;
+}
+
+.experience-logo-etech img {
+  width: 112px;
+}
+
+.experience-logo-emines img {
+  width: 88px;
+  height: 88px;
+}
+
+.experience-logo-mathmaroc img {
+  width: 112px;
+}
+
+.experience-logo-datalab {
+  color: #526a87;
+  background: linear-gradient(135deg, #f1ede8, #fff);
+}
+
+.datalab-wordmark {
+  position: relative;
+  display: inline-block;
+  padding-top: 18px;
+  color: #526a87;
+  font-size: 1.08rem;
+  font-weight: 800;
+  letter-spacing: -0.06em;
+}
+
+.datalab-wordmark::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 42px;
+  height: 16px;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, transparent 0 13%, #9bb1c7 13% 34%, transparent 34% 39%, #526a87 39% 61%, transparent 61% 66%, #9bb1c7 66% 87%, transparent 87%);
+}
+
+.experience-logo-datalab small {
+  color: #7b8794;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
 }
 
 .experience-logo-edgeflow img {
@@ -853,6 +910,7 @@ button {
   margin: 7px 0 0;
   font-size: clamp(1.45rem, 3vw, 2rem);
   line-height: 1.08;
+  overflow-wrap: anywhere;
 }
 
 .experience-company,
