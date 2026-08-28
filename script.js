@@ -150,12 +150,12 @@ const sites = [
     summary: "Structured digital learning surface built around clearer course access and delivery."
   },
   {
-    title: "EFAIX LMS",
-    image: "assets/images/sites/efaix_lms.png",
-    url: "https://lms.efaix.com/",
-    category: "Learning system",
-    role: "LMS interface execution",
-    summary: "Learning management experience focused on organizing educational workflows."
+    title: "E++",
+    image: "assets/images/sites/eplusplus.png",
+    url: "https://eplusplus.vercel.app/",
+    category: "Student tech community",
+    role: "Community website and identity",
+    summary: "A student technology community website built around events, workshops, leadership, and hands-on impact."
   },
   {
     title: "Starteady",
