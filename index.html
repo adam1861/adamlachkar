@@ -154,10 +154,6 @@
               <span class="tab-icon" aria-hidden="true">✦</span>
               <span>Certifications</span>
             </button>
-            <button id="contact-tab" class="section-tab" type="button" role="tab" data-section-tab="contact" aria-controls="panel-contact" aria-selected="false">
-              <span class="tab-icon" aria-hidden="true">↗</span>
-              <span>Contact</span>
-            </button>
           </div>
 
           <div class="section-panels">
@@ -194,52 +190,65 @@
 
               <div class="experience-list">
                 <article class="experience-card">
-                  <div class="experience-card-head">
-                    <div>
-                      <p class="experience-label">Founder &amp; product builder</p>
-                      <h3>EFAIX</h3>
-                    </div>
-                    <span class="experience-date">Current</span>
+                  <div class="experience-logo experience-logo-efaix">
+                    <img src="assets/images/experience/efaix-logo.svg" alt="EFAIX logo" loading="lazy" />
                   </div>
-                  <ul>
-                    <li>Shaping an education ecosystem across brand, academy, LMS, and learning delivery surfaces.</li>
-                    <li>Connecting product positioning, web execution, and practical AI learning into one clearer user journey.</li>
-                  </ul>
+                  <div class="experience-card-content">
+                    <div class="experience-card-head">
+                      <div>
+                        <p class="experience-label">Founder &amp; CEO</p>
+                        <h3>EFAIX</h3>
+                        <p class="experience-company">EFAIX · Self-employed</p>
+                      </div>
+                      <span class="experience-date">Sep 2025 - Present · 1 yr</span>
+                    </div>
+                    <p class="experience-location">Morocco</p>
+                    <p class="experience-description">
+                      Building EFAIX, an AI-powered educational platform designed to make learning more personalised, accessible, and secure. Leading the development of intelligent learning, assessment, and automation systems while considering data privacy, access control, and the responsible handling of user information. Working across AI engineering, software development, product design, and secure system architecture to transform innovative ideas into practical educational solutions.
+                    </p>
+                  </div>
                 </article>
 
                 <article class="experience-card">
-                  <div class="experience-card-head">
-                    <div>
-                      <p class="experience-label">Independent web &amp; product work</p>
-                      <h3>Client and education platforms</h3>
-                    </div>
-                    <span class="experience-date">Ongoing</span>
+                  <div class="experience-logo experience-logo-thales">
+                    <img src="assets/images/experience/thales-logo.png" alt="Thales logo" loading="lazy" />
                   </div>
-                  <ul>
-                    <li>Shipped polished public websites and platform surfaces for Starteady, Auramaking, and Icodex Academy.</li>
-                    <li>Focused on clearer storytelling, stronger trust, and interfaces that are ready for real users.</li>
-                  </ul>
+                  <div class="experience-card-content">
+                    <div class="experience-card-head">
+                      <div>
+                        <p class="experience-label">Intern</p>
+                        <h3>Thales</h3>
+                        <p class="experience-company">Thales · Internship</p>
+                      </div>
+                      <span class="experience-date">Jul 2026 · 1 mo</span>
+                    </div>
+                    <p class="experience-location">Rabat, Rabat-Salé-Kénitra, Morocco · On-site</p>
+                    <p class="experience-description">
+                      Contributing to the development of SecureGRC, an AI-assisted Governance, Risk, and Compliance platform designed to streamline cybersecurity compliance through intelligent document analysis and automated evidence processing. Working across the full stack while developing AI features for document understanding, control mapping, risk management, and compliance workflows. Combining artificial intelligence and cybersecurity governance to improve traceability, decision-making, and the secure management of compliance data.
+                    </p>
+                  </div>
                 </article>
 
                 <article class="experience-card">
-                  <div class="experience-card-head">
-                    <div>
-                      <p class="experience-label">Education</p>
-                      <h3>EMINES - UM6P</h3>
-                    </div>
-                    <span class="experience-date">Engineering</span>
+                  <div class="experience-logo experience-logo-edgeflow">
+                    <img src="assets/images/experience/edgeflow-logo.png" alt="EdgeFlow Pricing logo" loading="lazy" />
+                    <span>EDGEFLOW PRICING</span>
                   </div>
-                  <ul>
-                    <li>Engineering student growing a practical focus across machine learning, data science, and technical systems.</li>
-                    <li>Learning by taking projects beyond notebooks and into interfaces, workflows, and public delivery.</li>
-                  </ul>
+                  <div class="experience-card-content">
+                    <div class="experience-card-head">
+                      <div>
+                        <p class="experience-label">Intern</p>
+                        <h3>EdgeFlow Pricing</h3>
+                        <p class="experience-company">EDGEFLOW PRICING · Internship</p>
+                      </div>
+                      <span class="experience-date">Jun 2026 · 1 mo</span>
+                    </div>
+                    <p class="experience-location">Ben Guerir, Marrakesh-Safi, Morocco · On-site</p>
+                    <p class="experience-description">
+                      Contributed to the adaptation of an AI-driven pricing engine for the agricultural sector by transforming raw market data into reliable and actionable pricing insights. Worked on data preparation, feature engineering, competitor analysis, model development, and pricing optimisation to support data-driven business decisions. Strengthened my ability to build practical machine-learning solutions while ensuring data quality, consistency, and responsible processing throughout the analytical workflow.
+                    </p>
+                  </div>
                 </article>
-              </div>
-
-              <div class="about-callout">
-                <p class="kicker">How I work</p>
-                <h3>I like work that becomes visible, testable, and useful.</h3>
-                <p>Most of my learning comes from building through real constraints, real users, or real questions. I care about range, clarity, and finishing.</p>
               </div>
             </section>
 
@@ -298,11 +307,11 @@
               <div id="certificate-grid" class="certificate-grid"></div>
             </section>
 
-            <section id="panel-contact" class="section-panel contact-section" role="tabpanel" aria-labelledby="contact-tab" hidden>
+            <section id="contact" class="contact-section" aria-labelledby="contact-title">
               <div class="contact-card">
           <div class="contact-copy">
             <p class="kicker">Contact</p>
-            <h2>Let's talk if the work needs both range and follow-through.</h2>
+            <h2 id="contact-title">Let's talk if the work needs both range and follow-through.</h2>
             <p>
               For AI or product internships, freelance web projects, or technical collaborations, email is the fastest route.
             </p>
@@ -399,7 +408,7 @@
             <button class="footer-link" type="button" data-section-target="experience">Experience</button>
             <button class="footer-link" type="button" data-section-target="tools">Tools</button>
             <button class="footer-link" type="button" data-section-target="certificates">Certifications</button>
-            <button class="footer-link" type="button" data-section-target="contact">Contact</button>
+            <a class="footer-link" href="#contact">Contact</a>
             <a class="footer-link" href="https://github.com/adam1861" target="_blank" rel="noopener me">GitHub</a>
             <a class="footer-link" href="https://www.linkedin.com/in/adamlachkar/" target="_blank" rel="noopener me">LinkedIn</a>
           </nav>
