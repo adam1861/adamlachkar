@@ -144,7 +144,7 @@ const sites = [
   {
     title: "EFAIX Academy",
     image: "assets/images/sites/efaix_academy.png",
-    url: "https://academy.efaix.com/",
+    url: "https://academy-six-umber.vercel.app/",
     category: "Learning platform",
     role: "Training delivery experience",
     summary: "Structured digital learning surface built around clearer course access and delivery."
