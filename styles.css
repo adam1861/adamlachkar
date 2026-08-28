@@ -1282,15 +1282,20 @@ button {
 .site-card {
   border-radius: var(--radius-lg);
   overflow: hidden;
+  height: auto;
+  aspect-ratio: 1 / 1;
 }
 
 .site-card a {
-  display: block;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
   height: 100%;
 }
 
 .site-card img {
-  aspect-ratio: 16 / 10;
+  min-height: 0;
+  aspect-ratio: auto;
+  object-position: top center;
 }
 
 .section-alt {
