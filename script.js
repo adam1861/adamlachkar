@@ -483,35 +483,60 @@ function escapeHtml(value) {
   });
 }
 
-function setLightboxImage(src, alt, isProfile = false) {
-  const image = $("#lightbox-image");
-  const box = $("#lightbox");
-  if (!image || !box) return;
-
-  box.classList.toggle("lightbox-profile", isProfile);
-  image.hidden = !src;
-  image.src = src || "";
-  image.alt = alt || "";
-}
-
 function setDetailHash(type, id) {
   window.history.pushState({}, "", `#detail/${type}/${id}`);
 }
 
+function showDetailPage({ kicker, title, media, body, link }) {
+  const main = $("#main");
+  const page = $("#detail-page");
+  const mediaContainer = $("#detail-page-media");
+  const bodyContainer = $("#detail-page-body");
+  const linkElement = $("#detail-page-link");
+  if (!main || !page || !mediaContainer || !bodyContainer || !linkElement) return;
+
+  $("#detail-page-kicker").textContent = kicker;
+  $("#detail-page-title").textContent = title;
+  mediaContainer.replaceChildren();
+  if (media) mediaContainer.append(media);
+  bodyContainer.innerHTML = body;
+
+  if (link) {
+    linkElement.href = link;
+    linkElement.hidden = false;
+  } else {
+    linkElement.hidden = true;
+    linkElement.removeAttribute("href");
+  }
+
+  main.hidden = true;
+  page.hidden = false;
+  document.title = `${title} | Adam Lachkar`;
+  window.scrollTo({ top: 0, behavior: "auto" });
+}
+
+function createImage(src, alt) {
+  const image = document.createElement("img");
+  image.src = src;
+  image.alt = alt;
+  image.loading = "eager";
+  return image;
+}
+
 function openProjectDetails(index, updateHash = true) {
   const project = projects[index];
-  const box = $("#lightbox");
-  if (!project || !box) return;
+  if (!project) return;
 
   if (updateHash) setDetailHash("project", slugify(project.title));
 
-  $("#lightbox-kicker").textContent = project.type;
-  $("#lightbox-title").textContent = project.title;
-  setLightboxImage(fallbackImage(project.image), project.title);
-
-  const body = $("#lightbox-body");
-  if (body) {
-    body.innerHTML = `
+  showDetailPage({
+    type: "project",
+    kicker: project.type,
+    title: project.title,
+    media: createImage(fallbackImage(project.image), project.title),
+    link: project.url,
+    description: project.summary,
+    body: `
       <p class="lightbox-summary">${project.summary}</p>
       <div class="detail-grid">
         <div>
@@ -536,27 +561,13 @@ function openProjectDetails(index, updateHash = true) {
         <p>${project.result}</p>
       </div>
       ${renderChipList(project.stack)}
-    `;
-  }
-
-  const link = $("#lightbox-link");
-  if (link && project.url) {
-    link.href = project.url;
-    link.hidden = false;
-  } else if (link) {
-    link.hidden = true;
-    link.removeAttribute("href");
-  }
-
-  box.setAttribute("aria-hidden", "false");
-  document.body.style.overflow = "hidden";
-  $(".lightbox-close")?.focus();
+    `
+  });
 }
 
 function openCardDetails(type, id, updateHash = true) {
   const card = $$(`[data-detail-type="${type}"]`).find((item) => item.dataset.detailId === id);
-  const box = $("#lightbox");
-  if (!card || !box) return;
+  if (!card) return;
 
   if (updateHash) setDetailHash(type, id);
 
@@ -566,16 +577,15 @@ function openCardDetails(type, id, updateHash = true) {
   const date = card.querySelector(".experience-date")?.textContent.trim() || "";
   const location = card.querySelector(".experience-location")?.textContent.trim() || "";
   const description = card.querySelector(".experience-description")?.textContent.trim() || "";
-  const logo = card.querySelector(".experience-logo img");
+  const logo = card.querySelector(".experience-logo")?.cloneNode(true);
 
-  $("#lightbox-kicker").textContent = role;
-  $("#lightbox-title").textContent = title;
-  setLightboxImage(logo?.getAttribute("src"), logo?.getAttribute("alt") || title, true);
-
-  const body = $("#lightbox-body");
-  if (body) {
-    body.innerHTML = `
-      <p class="lightbox-summary">${escapeHtml(description)}</p>
+  showDetailPage({
+    type,
+    kicker: role,
+    title,
+    media: logo,
+    body: `
+      <p class="detail-page-summary">${escapeHtml(description)}</p>
       <div class="detail-grid">
         <div>
           <span>Organisation</span>
@@ -587,24 +597,14 @@ function openCardDetails(type, id, updateHash = true) {
         </div>
         ${location ? `<div><span>Context</span><strong>${escapeHtml(location)}</strong></div>` : ""}
       </div>
-    `;
-  }
-
-  const link = $("#lightbox-link");
-  if (link) {
-    link.hidden = true;
-    link.removeAttribute("href");
-  }
-
-  box.setAttribute("aria-hidden", "false");
-  document.body.style.overflow = "hidden";
-  $(".lightbox-close")?.focus();
+    `
+  });
 }
 
 function handleDetailHash() {
   const match = window.location.hash.match(/^#detail\/(project|experience|activity)\/([^/]+)$/);
   if (!match) {
-    closeLightbox(false);
+    hideDetailPage();
     return;
   }
 
@@ -617,22 +617,20 @@ function handleDetailHash() {
     }
   } else {
     openCardDetails(type, id, false);
-    if ($("#lightbox")?.getAttribute("aria-hidden") === "false") return;
+    if (!$("#detail-page")?.hidden) return;
   }
 
-  closeLightbox(false);
+  hideDetailPage();
 }
 
-function closeLightbox(updateHash = true) {
-  const box = $("#lightbox");
-  if (!box) return;
+function hideDetailPage() {
+  const main = $("#main");
+  const page = $("#detail-page");
+  if (!main || !page) return;
 
-  if (updateHash && window.location.hash.startsWith("#detail/")) {
-    window.history.replaceState({}, "", "#portfolio");
-  }
-
-  box.setAttribute("aria-hidden", "true");
-  document.body.style.overflow = "";
+  main.hidden = false;
+  page.hidden = true;
+  document.title = "Adam Lachkar | AI, Data Science, EdTech, Web Products";
 }
 
 function setActiveSection(section, shouldScroll = false) {
@@ -711,7 +709,7 @@ function initSwitcher() {
   });
 }
 
-function initLightbox() {
+function initDetailRoutes() {
   document.addEventListener("click", (event) => {
     const filter = event.target.closest("[data-project-filter]");
     if (filter) {
@@ -734,9 +732,6 @@ function initLightbox() {
       return;
     }
 
-    if (event.target.closest("[data-close-lightbox]")) {
-      closeLightbox();
-    }
   });
 
   document.addEventListener("keydown", (event) => {
@@ -747,8 +742,8 @@ function initLightbox() {
       return;
     }
 
-    if (event.key === "Escape") {
-      closeLightbox();
+    if (event.key === "Escape" && window.location.hash.startsWith("#detail/")) {
+      window.history.back();
     }
   });
 
@@ -819,7 +814,7 @@ function init() {
   initStackControls();
   initSectionTabs();
   initSwitcher();
-  initLightbox();
+  initDetailRoutes();
   initNav();
   initScrollSpy();
   initImages();

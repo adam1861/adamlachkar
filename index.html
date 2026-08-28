@@ -472,25 +472,26 @@
       </section>
     </main>
 
-    <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="lightbox-title">
-      <div class="lightbox-backdrop" data-close-lightbox></div>
-      <div class="lightbox-panel">
-        <button class="lightbox-close" type="button" data-close-lightbox aria-label="Close details">
-          Close
-        </button>
-        <img id="lightbox-image" src="" alt="" />
-        <div class="lightbox-copy">
-          <p id="lightbox-kicker" class="kicker"></p>
-          <h3 id="lightbox-title"></h3>
-          <div id="lightbox-body" class="lightbox-body"></div>
-          <div class="lightbox-actions">
-            <a id="lightbox-link" class="button button-dark" href="#" target="_blank" rel="noopener" hidden>
-              View repo
-            </a>
-          </div>
+    <main id="detail-page" hidden>
+      <section class="detail-page-section">
+        <div class="shell">
+          <a class="detail-back" href="#portfolio">← Back to portfolio</a>
+          <article class="detail-page-card">
+            <div id="detail-page-media" class="detail-page-media"></div>
+            <div class="detail-page-copy">
+              <p id="detail-page-kicker" class="kicker"></p>
+              <h1 id="detail-page-title"></h1>
+              <div id="detail-page-body" class="detail-page-body"></div>
+              <div class="detail-page-actions">
+                <a id="detail-page-link" class="button button-dark" href="#" target="_blank" rel="noopener" hidden>
+                  View repo
+                </a>
+              </div>
+            </div>
+          </article>
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
 
     <footer class="site-footer">
       <div class="shell">
