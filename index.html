@@ -159,13 +159,15 @@
 
             <div class="section-panels">
             <section id="panel-projects" class="section-panel active" role="tabpanel" aria-labelledby="projects-tab">
-              <div class="work-switcher" role="tablist" aria-label="Work views">
-                <button class="switch active" type="button" data-view="projects" aria-selected="true">AI Projects</button>
-                <button class="switch" type="button" data-view="sites" aria-selected="false">Web Builds</button>
+              <div class="projects-controls">
+                <div class="work-switcher" role="tablist" aria-label="Work views">
+                  <button class="switch active" type="button" data-view="projects" aria-selected="true">AI Projects</button>
+                  <button class="switch" type="button" data-view="sites" aria-selected="false">Web Builds</button>
+                </div>
+                <div id="project-filters" class="project-filters" role="tablist" aria-label="Project filters"></div>
               </div>
 
               <div id="projects-panel" class="work-panel active" role="tabpanel">
-                <div id="project-filters" class="project-filters" role="tablist" aria-label="Project filters"></div>
                 <div id="projects-grid" class="project-list"></div>
               </div>
 

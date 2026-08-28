@@ -699,12 +699,14 @@ function initSwitcher() {
 
       const projectsPanel = $("#projects-panel");
       const sitesPanel = $("#sites-panel");
+      const projectFilters = $("#project-filters");
       const showProjects = view === "projects";
 
       projectsPanel.classList.toggle("active", showProjects);
       projectsPanel.hidden = !showProjects;
       sitesPanel.classList.toggle("active", !showProjects);
       sitesPanel.hidden = showProjects;
+      if (projectFilters) projectFilters.hidden = !showProjects;
     });
   });
 }
