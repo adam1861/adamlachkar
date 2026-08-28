@@ -394,12 +394,7 @@ function renderSites() {
         >
           <img src="${fallbackImage(site.image)}" alt="${site.title}" loading="lazy" />
           <div class="site-copy">
-            <div class="site-meta">
-              <span>${site.category}</span>
-              <strong>${site.role}</strong>
-            </div>
             <h3>${site.title}</h3>
-            <p class="site-summary">${site.summary}</p>
           </div>
         </article>
       `
