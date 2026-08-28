@@ -176,7 +176,7 @@ const sites = [
   {
     title: "Icodex Academy",
     image: "assets/images/sites/icodex.png",
-    url: "https://icodex.academy/",
+    url: "https://icodex-frontend.onrender.com/",
     category: "Education platform",
     role: "Course and platform experience",
     summary: "Education platform work for code and AI learning with a more organized user path."
