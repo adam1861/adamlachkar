@@ -260,7 +260,6 @@ button {
   background: var(--accent-soft);
 }
 
-.hero-actions,
 .contact-actions {
   display: flex;
   flex-wrap: wrap;
