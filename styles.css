@@ -1225,6 +1225,76 @@ button {
   height: 19px;
 }
 
+.site-footer {
+  padding: 34px 0 28px;
+  background: #1b1d22;
+  color: #fffaf4;
+}
+
+.footer-main,
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.footer-main {
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(255, 250, 244, 0.14);
+}
+
+.footer-brand {
+  color: #fffaf4;
+}
+
+.footer-tagline {
+  max-width: 44ch;
+  margin: 8px 0 0;
+  color: rgba(255, 250, 244, 0.62);
+  line-height: 1.5;
+}
+
+.footer-resume {
+  border-color: rgba(255, 250, 244, 0.18);
+  background: rgba(255, 250, 244, 0.08);
+  color: #fffaf4;
+}
+
+.footer-resume:hover {
+  border-color: rgba(255, 250, 244, 0.38);
+  background: rgba(255, 250, 244, 0.14);
+}
+
+.footer-bottom {
+  align-items: start;
+  padding-top: 18px;
+}
+
+.footer-bottom p {
+  margin: 0;
+  color: rgba(255, 250, 244, 0.48);
+  font-size: 0.84rem;
+}
+
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: end;
+  gap: 8px 14px;
+}
+
+.footer-link {
+  padding: 0;
+  color: rgba(255, 250, 244, 0.68);
+  cursor: pointer;
+  font-size: 0.84rem;
+}
+
+.footer-link:hover {
+  color: #fffaf4;
+}
+
 .lightbox {
   position: fixed;
   inset: 0;
@@ -1447,6 +1517,16 @@ button {
   .experience-card-head {
     flex-direction: column;
     gap: 10px;
+  }
+
+  .footer-main,
+  .footer-bottom {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .footer-nav {
+    justify-content: start;
   }
 
 }
