@@ -180,6 +180,14 @@ const sites = [
     category: "Education platform",
     role: "Course and platform experience",
     summary: "Education platform work for code and AI learning with a more organized user path."
+  },
+  {
+    title: "Twisted Circus",
+    image: "assets/images/sites/twisted-circus.png",
+    url: "https://bde-kxts.vercel.app/",
+    category: "Student event platform",
+    role: "BDE website and event experience",
+    summary: "A dark, story-led BDE 2026 website built around the Twisted Circus theme, events, leaderboard, and student community."
   }
 ];
 
