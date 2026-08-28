@@ -415,23 +415,21 @@ button {
 }
 
 .portfolio-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 220px;
-  align-items: stretch;
-  gap: 18px;
+  display: block;
 }
 
 .section-switcher {
-  width: 220px;
-  margin: 0;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto 24px;
   padding: 6px;
-  position: relative;
-  align-self: stretch;
+  position: sticky;
+  top: 90px;
   z-index: 12;
-  grid-column: 2;
-  grid-row: 1;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 4px;
   border: 1px solid rgba(18, 18, 18, 0.1);
   border-radius: 22px;
@@ -440,13 +438,13 @@ button {
 }
 
 .section-tab {
-  flex: 1 1 0;
-  width: 100%;
+  flex: 0 0 auto;
+  width: auto;
   min-height: 58px;
-  padding: 0 16px;
+  padding: 0 14px;
   display: inline-flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 9px;
   border-radius: 16px;
   color: rgba(255, 250, 244, 0.66);
@@ -509,8 +507,6 @@ button {
 .section-panels {
   min-width: 0;
   min-height: 420px;
-  grid-column: 1;
-  grid-row: 1;
 }
 
 .section-panel {
@@ -1597,25 +1593,23 @@ button {
 
   .section-switcher {
     width: 100%;
-    height: auto;
     margin: 0 auto 18px;
     position: sticky;
     top: 90px;
     display: flex;
     flex-direction: row;
-    overflow-x: auto;
-    justify-content: start;
+    flex-wrap: wrap;
+    justify-content: center;
     border-radius: 18px;
-    scrollbar-width: none;
-  }
-
-  .section-switcher::-webkit-scrollbar {
-    display: none;
   }
 
   .section-tab {
     flex: 0 0 auto;
-    min-width: 118px;
+    min-width: 0;
+  }
+
+  .section-panels {
+    min-height: 420px;
   }
 }
 
@@ -1669,23 +1663,18 @@ button {
   }
 
   .section-switcher {
-    width: 100%;
     margin-bottom: 18px;
     top: 76px;
+    width: 100%;
     display: flex;
-    overflow-x: auto;
-    justify-content: start;
+    flex-wrap: wrap;
+    justify-content: center;
     border-radius: 18px;
-    scrollbar-width: none;
-  }
-
-  .section-switcher::-webkit-scrollbar {
-    display: none;
   }
 
   .section-tab {
     flex: 0 0 auto;
-    min-width: 118px;
+    min-width: 0;
     min-height: 52px;
     padding: 0 14px;
   }
