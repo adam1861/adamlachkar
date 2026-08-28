@@ -800,9 +800,12 @@ button {
 }
 
 .experience-logo {
-  min-height: 104px;
+  width: 126px;
+  aspect-ratio: 1;
+  min-height: 0;
   padding: 14px;
   display: grid;
+  align-self: start;
   place-items: center;
   align-content: center;
   gap: 10px;
@@ -819,6 +822,7 @@ button {
 
 .experience-logo-efaix img {
   width: 112px;
+  max-height: none;
 }
 
 .experience-logo-thales img {
