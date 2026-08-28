@@ -380,18 +380,23 @@ function renderSites() {
   grid.innerHTML = sites
     .map(
       (site) => `
-        <article class="site-card">
-          <a href="${site.url}" target="_blank" rel="noopener">
-            <img src="${fallbackImage(site.image)}" alt="${site.title}" loading="lazy" />
-              <div class="site-copy">
-                <div class="site-meta">
-                  <span>${site.category}</span>
-                  <strong>${site.role}</strong>
-                </div>
-                <h3>${site.title}</h3>
-                <p class="site-summary">${site.summary}</p>
-              </div>
-          </a>
+        <article
+          class="site-card"
+          data-detail-type="site"
+          data-detail-id="${slugify(site.title)}"
+          tabindex="0"
+          role="button"
+          aria-label="Open ${site.title} website details"
+        >
+          <img src="${fallbackImage(site.image)}" alt="${site.title}" loading="lazy" />
+          <div class="site-copy">
+            <div class="site-meta">
+              <span>${site.category}</span>
+              <strong>${site.role}</strong>
+            </div>
+            <h3>${site.title}</h3>
+            <p class="site-summary">${site.summary}</p>
+          </div>
         </article>
       `
     )
@@ -487,7 +492,7 @@ function setDetailHash(type, id) {
   window.history.pushState({}, "", `#detail/${type}/${id}`);
 }
 
-function showDetailPage({ kicker, title, media, body, link }) {
+function showDetailPage({ kicker, title, media, body, link, linkLabel }) {
   const main = $("#main");
   const page = $("#detail-page");
   const mediaContainer = $("#detail-page-media");
@@ -503,6 +508,7 @@ function showDetailPage({ kicker, title, media, body, link }) {
 
   if (link) {
     linkElement.href = link;
+    linkElement.textContent = linkLabel || "Visit website";
     linkElement.hidden = false;
   } else {
     linkElement.hidden = true;
@@ -535,6 +541,7 @@ function openProjectDetails(index, updateHash = true) {
     title: project.title,
     media: createImage(fallbackImage(project.image), project.title),
     link: project.url,
+    linkLabel: "View repo",
     description: project.summary,
     body: `
       <p class="lightbox-summary">${project.summary}</p>
@@ -561,6 +568,34 @@ function openProjectDetails(index, updateHash = true) {
         <p>${project.result}</p>
       </div>
       ${renderChipList(project.stack)}
+    `
+  });
+}
+
+function openSiteDetails(id, updateHash = true) {
+  const site = sites.find((item) => slugify(item.title) === id);
+  if (!site) return;
+
+  if (updateHash) setDetailHash("site", id);
+
+  showDetailPage({
+    kicker: site.category,
+    title: site.title,
+    media: createImage(fallbackImage(site.image), site.title),
+    link: site.url,
+    linkLabel: "Visit website",
+    body: `
+      <p class="detail-page-summary">${escapeHtml(site.summary)}</p>
+      <div class="detail-grid">
+        <div>
+          <span>Category</span>
+          <strong>${escapeHtml(site.category)}</strong>
+        </div>
+        <div>
+          <span>Role</span>
+          <strong>${escapeHtml(site.role)}</strong>
+        </div>
+      </div>
     `
   });
 }
@@ -602,7 +637,7 @@ function openCardDetails(type, id, updateHash = true) {
 }
 
 function handleDetailHash() {
-  const match = window.location.hash.match(/^#detail\/(project|experience|activity)\/([^/]+)$/);
+  const match = window.location.hash.match(/^#detail\/(project|experience|activity|site)\/([^/]+)$/);
   if (!match) {
     hideDetailPage();
     return;
@@ -615,6 +650,9 @@ function handleDetailHash() {
       openProjectDetails(index, false);
       return;
     }
+  } else if (type === "site") {
+    openSiteDetails(id, false);
+    if (!$("#detail-page")?.hidden) return;
   } else {
     openCardDetails(type, id, false);
     if (!$("#detail-page")?.hidden) return;
@@ -730,7 +768,11 @@ function initDetailRoutes() {
 
     const detailTrigger = event.target.closest("[data-detail-type]");
     if (detailTrigger) {
-      openCardDetails(detailTrigger.dataset.detailType, detailTrigger.dataset.detailId);
+      if (detailTrigger.dataset.detailType === "site") {
+        openSiteDetails(detailTrigger.dataset.detailId);
+      } else {
+        openCardDetails(detailTrigger.dataset.detailType, detailTrigger.dataset.detailId);
+      }
       return;
     }
 
@@ -740,7 +782,11 @@ function initDetailRoutes() {
     const detailTrigger = event.target.closest?.("[data-detail-type]");
     if (detailTrigger && (event.key === "Enter" || event.key === " ")) {
       event.preventDefault();
-      openCardDetails(detailTrigger.dataset.detailType, detailTrigger.dataset.detailId);
+      if (detailTrigger.dataset.detailType === "site") {
+        openSiteDetails(detailTrigger.dataset.detailId);
+      } else {
+        openCardDetails(detailTrigger.dataset.detailType, detailTrigger.dataset.detailId);
+      }
       return;
     }
 
