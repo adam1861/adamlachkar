@@ -97,19 +97,6 @@ const projects = [
   }
 ];
 
-const aboutCards = [
-  {
-    title: "Education",
-    text:
-      "Engineering student at EMINES - UM6P with a growing focus on AI, data science, and technical systems that have real users."
-  },
-  {
-    title: "Best fit work",
-    text:
-      "AI and ML internships, product engineering, education technology systems, technical web builds, and collaborations that need both execution and range."
-  }
-];
-
 const certificates = [
   {
     title: "ML Specialisation",
@@ -354,22 +341,6 @@ function renderProjects() {
     .join("");
 }
 
-function renderAboutCards() {
-  const container = $("#about-cards");
-  if (!container) return;
-
-  container.innerHTML = aboutCards
-    .map(
-      (item) => `
-        <article class="about-card">
-          <span>${item.title}</span>
-          <p>${item.text}</p>
-        </article>
-      `
-    )
-    .join("");
-}
-
 function renderCertificates() {
   const container = $("#certificate-grid");
   if (!container) return;
@@ -556,6 +527,60 @@ function closeLightbox() {
   document.body.style.overflow = "";
 }
 
+function setActiveSection(section, shouldScroll = false) {
+  const tab = document.querySelector(`[data-section-tab="${section}"]`);
+  const panel = document.querySelector(`#panel-${section}`);
+  if (!tab || !panel) return;
+
+  $$('[data-section-tab]').forEach((item) => {
+    const active = item === tab;
+    item.classList.toggle("active", active);
+    item.setAttribute("aria-selected", String(active));
+    item.tabIndex = active ? 0 : -1;
+  });
+
+  $$(".section-panel").forEach((item) => {
+    const active = item === panel;
+    item.classList.toggle("active", active);
+    item.hidden = !active;
+  });
+
+  if (shouldScroll) {
+    $("#portfolio")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+}
+
+function initSectionTabs() {
+  const tabs = $$('[data-section-tab]');
+  if (!tabs.length) return;
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener("click", () => {
+      setActiveSection(tab.dataset.sectionTab, true);
+    });
+
+    tab.addEventListener("keydown", (event) => {
+      if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+      event.preventDefault();
+
+      let nextIndex = index;
+      if (event.key === "ArrowRight") nextIndex = (index + 1) % tabs.length;
+      if (event.key === "ArrowLeft") nextIndex = (index - 1 + tabs.length) % tabs.length;
+      if (event.key === "Home") nextIndex = 0;
+      if (event.key === "End") nextIndex = tabs.length - 1;
+
+      tabs[nextIndex].focus();
+      setActiveSection(tabs[nextIndex].dataset.sectionTab, true);
+    });
+  });
+
+  $$('[data-section-target]').forEach((trigger) => {
+    trigger.addEventListener("click", () => {
+      setActiveSection(trigger.dataset.sectionTarget, true);
+    });
+  });
+}
+
 function initSwitcher() {
   $$(".switch").forEach((button) => {
     button.addEventListener("click", () => {
@@ -666,11 +691,11 @@ function init() {
   renderProofPoints();
   renderProjectFilters();
   renderProjects();
-  renderAboutCards();
   renderCertificates();
   renderSites();
   renderStack();
   initStackControls();
+  initSectionTabs();
   initSwitcher();
   initLightbox();
   initNav();
