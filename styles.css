@@ -1060,10 +1060,18 @@ button {
 }
 
 .education-logo-emines img {
-  width: 88px;
-  height: 88px;
-  object-fit: cover;
-  border-radius: 12px;
+  width: 96px;
+  height: 106px;
+  max-height: none;
+  object-fit: contain;
+  border-radius: 0;
+}
+
+.education-logo-um6p img {
+  width: 104px;
+  height: auto;
+  max-height: none;
+  object-fit: contain;
 }
 
 .education-card .education-details {

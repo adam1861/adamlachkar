@@ -721,9 +721,11 @@ function renderEducation() {
           aria-label="${item.aria}"
         >
           <div class="experience-logo education-logo education-logo-${logoTypes[index]}">
-            ${index === 1
-              ? '<img src="/assets/images/leadership/emines-logo-square.jpg" alt="EMINES logo" loading="lazy" />'
-              : `<span>${index === 0 ? "UM6P" : "ABB"}</span>`}
+            ${index === 0
+              ? '<img src="/assets/images/education/um6p-logo.png" alt="UM6P logo" loading="lazy" />'
+              : index === 1
+                ? '<img src="/assets/images/education/emines-logo.jpg" alt="EMINES logo" loading="lazy" />'
+                : `<span>ABB</span>`}
           </div>
           <div class="experience-card-content">
             <div class="experience-card-head">
