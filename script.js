@@ -536,17 +536,6 @@ function applyStaticLocale() {
   setText("#panel-education .section-head .kicker", ui.educationKicker);
   setText("#panel-education .section-head h2", ui.educationHeading);
   setText("#panel-education .section-intro", ui.educationIntro);
-  $$(".education-card").forEach((card, index) => {
-    const content = educationCopy[index];
-    if (!content) return;
-    setText(".experience-label", content.label, card);
-    setText("h3", content.title, card);
-    setText(".experience-company", content.degree, card);
-    setText(".experience-date", content.date, card);
-    const details = $(".education-details", card);
-    if (details) details.innerHTML = content.details.map((detail) => `<li>${detail}</li>`).join("");
-    card.setAttribute("aria-label", content.aria);
-  });
 
   const activityCards = $$('.experience-card[data-detail-type="activity"]');
   activityCards.forEach((card, index) => {
@@ -709,6 +698,37 @@ function renderCertificates() {
           <a class="button button-light certificate-link" href="${fallbackImage(item.file)}" target="_blank" rel="noopener">
             ${ui.openCertificate}
           </a>
+        </article>
+      `
+    )
+    .join("");
+}
+
+function renderEducation() {
+  const container = $("#education-grid");
+  if (!container) return;
+
+  const logoTypes = ["um6p", "emines", "school"];
+  container.innerHTML = educationCopy
+    .map(
+      (item, index) => `
+        <article class="experience-card education-card">
+          <div class="experience-logo education-logo education-logo-${logoTypes[index]}">
+            ${index === 1
+              ? '<img src="/assets/images/leadership/emines-logo-square.jpg" alt="EMINES logo" loading="lazy" />'
+              : `<span>${index === 0 ? "UM6P" : "ABB"}</span>`}
+          </div>
+          <div class="experience-card-content">
+            <div class="experience-card-head">
+              <div>
+                <p class="experience-label">${item.label}</p>
+                <h3>${item.title}</h3>
+                <p class="experience-company">${item.degree}</p>
+              </div>
+              <span class="experience-date">${item.date}</span>
+            </div>
+            ${item.details.length ? `<ul class="education-details">${item.details.map((detail) => `<li>${detail}</li>`).join("")}</ul>` : ""}
+          </div>
         </article>
       `
     )
@@ -1194,6 +1214,7 @@ function init() {
   renderProjectFilters();
   renderProjects();
   renderCertificates();
+  renderEducation();
   renderSites();
   renderStack();
   initStackControls();

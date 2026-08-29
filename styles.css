@@ -1108,6 +1108,12 @@ button {
   gap: 16px;
 }
 
+.education-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
 .certificate-card {
   background: var(--panel);
   border: 1px solid var(--line);
