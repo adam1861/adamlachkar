@@ -857,7 +857,7 @@ function setDetailHash(type, id) {
   window.history.pushState({}, "", `#detail/${type}/${id}`);
 }
 
-function showDetailPage({ kicker, title, media, body, link, linkLabel }) {
+function showDetailPage({ type, kicker, title, media, body, link, linkLabel }) {
   const main = $("#main");
   const page = $("#detail-page");
   const mediaContainer = $("#detail-page-media");
@@ -865,6 +865,7 @@ function showDetailPage({ kicker, title, media, body, link, linkLabel }) {
   const linkElement = $("#detail-page-link");
   if (!main || !page || !mediaContainer || !bodyContainer || !linkElement) return;
 
+  if (type) page.dataset.detailType = type;
   $("#detail-page-kicker").textContent = kicker;
   $("#detail-page-title").textContent = title;
   mediaContainer.replaceChildren();
@@ -1041,6 +1042,7 @@ function hideDetailPage() {
 
   main.hidden = false;
   page.hidden = true;
+  page.removeAttribute("data-detail-type");
   document.title = ui.title;
 }
 
