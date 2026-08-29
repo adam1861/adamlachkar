@@ -253,7 +253,6 @@ const ui = {
     resume: "Resume",
     openCv: "Open CV",
     heroKicker: "UM6P engineering student, founder at EFAIX, and applied AI builder",
-    heroLead: "I build practical AI systems, education products, and web experiences that people can actually use.",
     heroText: "I am an engineering student at EMINES - UM6P and the founder of EFAIX. My recent work spans applied AI projects on GitHub, education product execution across multiple live surfaces, and shipped web builds for real users and teams.",
     primaryLinks: "Primary profile links",
     location: "Benguerir, Morocco",
@@ -262,12 +261,15 @@ const ui = {
     chooseChapter: "Choose a chapter.",
     portfolioNote: "A focused view of the work, experience, tools, and proof behind the portfolio.",
     sectionsLabel: "Portfolio sections",
-    sections: ["Projects", "Experience", "Tools", "Certifications", "Activities"],
+    sections: ["Projects", "Experience", "Education", "Tools", "Certifications", "Activities"],
     workViews: "Work views",
     work: ["AI Projects", "Web Builds"],
     experienceKicker: "Experience",
     experienceHeading: "Building across AI, education, and the web.",
     experienceIntro: "The work I keep returning to: turning technical ideas into useful, public-facing systems.",
+    educationKicker: "Education",
+    educationHeading: "Learning the foundations behind the work.",
+    educationIntro: "The engineering, industrial systems, and mathematics studies shaping how I build.",
     toolsKicker: "Tools",
     toolsHeading: "Tools I reach for.",
     toolsIntro: "Search or filter the software, languages, libraries, and working skills behind the projects.",
@@ -289,7 +291,7 @@ const ui = {
     contactLinks: "Contact links",
     footerTagline: "Applied AI, education products, and web experiences built with follow-through.",
     footerNavigation: "Footer navigation",
-    footerNav: ["Projects", "Experience", "Tools", "Certifications", "Activities", "Contact", "GitHub", "LinkedIn"],
+    footerNav: ["Projects", "Experience", "Education", "Tools", "Certifications", "Activities", "Contact", "GitHub", "LinkedIn"],
     all: "All",
     items: "items",
     item: "item",
@@ -321,7 +323,6 @@ const ui = {
     resume: "CV",
     openCv: "Ouvrir le CV",
     heroKicker: "Étudiant ingénieur à l'UM6P, fondateur d'EFAIX et créateur de solutions d'IA appliquée",
-    heroLead: "Je conçois des systèmes d'IA concrets, des produits éducatifs et des expériences web réellement utiles.",
     heroText: "Je suis étudiant ingénieur à l'EMINES - UM6P et fondateur d'EFAIX. Mes travaux récents couvrent des projets d'IA appliquée sur GitHub, la réalisation de produits éducatifs et des sites web livrés pour de vrais utilisateurs et équipes.",
     primaryLinks: "Liens principaux",
     location: "Benguerir, Maroc",
@@ -330,12 +331,15 @@ const ui = {
     chooseChapter: "Choisissez un chapitre.",
     portfolioNote: "Une vue ciblée du travail, de l'expérience, des outils et des preuves présentés dans ce portfolio.",
     sectionsLabel: "Sections du portfolio",
-    sections: ["Projets", "Expérience", "Outils", "Certifications", "Activités"],
+    sections: ["Projets", "Expérience", "Formation", "Outils", "Certifications", "Activités"],
     workViews: "Vues du travail",
     work: ["Projets IA", "Créations web"],
     experienceKicker: "Expérience",
     experienceHeading: "Construire entre IA, éducation et web.",
     experienceIntro: "Le fil conducteur de mon travail : transformer des idées techniques en systèmes utiles et accessibles au public.",
+    educationKicker: "Formation",
+    educationHeading: "Les fondations académiques derrière mon travail.",
+    educationIntro: "Les études d'ingénierie, de systèmes industriels et de mathématiques qui façonnent ma manière de construire.",
     toolsKicker: "Outils",
     toolsHeading: "Les outils que j'utilise.",
     toolsIntro: "Recherchez ou filtrez les logiciels, langages, bibliothèques et compétences mobilisés dans les projets.",
@@ -357,7 +361,7 @@ const ui = {
     contactLinks: "Liens de contact",
     footerTagline: "IA appliquée, produits éducatifs et expériences web réalisés avec exigence.",
     footerNavigation: "Navigation du pied de page",
-    footerNav: ["Projets", "Expérience", "Outils", "Certifications", "Activités", "Contact", "GitHub", "LinkedIn"],
+    footerNav: ["Projets", "Expérience", "Formation", "Outils", "Certifications", "Activités", "Contact", "GitHub", "LinkedIn"],
     all: "Tous",
     items: "éléments",
     item: "élément",
@@ -418,6 +422,16 @@ const experienceCopy = currentLanguage === "fr" ? [
   { role: "Intern", company: "EDGEFLOW PRICING · Internship", date: "Jun 2026 · 1 mo", location: "Ben Guerir, Marrakesh-Safi, Morocco · On-site", description: "Contributed to the adaptation of an AI-driven pricing engine for the agricultural sector by transforming raw market data into reliable and actionable pricing insights. Worked on data preparation, feature engineering, competitor analysis, model development, and pricing optimisation to support data-driven business decisions. Strengthened my ability to build practical machine-learning solutions while ensuring data quality, consistency, and responsible processing throughout the analytical workflow.", aria: "Open EdgeFlow Pricing experience details" }
 ];
 
+const educationCopy = currentLanguage === "fr" ? [
+  { label: "Étudiant ingénieur", title: "UM6P - Université Mohammed VI Polytechnique", degree: "Diplôme d'ingénieur, Génie industriel et management", date: "2023 - 2028", details: [], aria: "Formation à l'UM6P" },
+  { label: "Étudiant ingénieur", title: "EMINES - École de management industriel / Université Mohammed VI Polytechnique", degree: "Diplôme d'ingénieur, Génie des procédés et systèmes industriels", date: "sept. 2023 - juil. 2028", details: ["Simulation des procédés", "Aspen Plus", "Programmation Python", "Systèmes industriels", "Robotique et automatisation", "Gestion de projet"], aria: "Formation à l'EMINES" },
+  { label: "Études secondaires", title: "Lycée Ali Ben Berry", degree: "Baccalauréat, Sciences mathématiques", date: "sept. 2022 - juil. 2023", details: ["Mention : Très bien"], aria: "Formation au lycée Ali Ben Berry" }
+] : [
+  { label: "Engineering student", title: "UM6P - University Mohammed VI Polytechnic University", degree: "Engineer's Degree, Engineering/Industrial Management", date: "2023 - 2028", details: [], aria: "UM6P education" },
+  { label: "Engineering student", title: "EMINES - School of Industrial Management / Mohammed VI Polytechnic University", degree: "Engineer's degree, process Engineering & Industrial Systems", date: "Sep 2023 - Jul 2028", details: ["Process Simulation", "Aspen Plus", "Python Programming", "Industrial Systems", "Robotics & Automation", "Project Management"], aria: "EMINES education" },
+  { label: "Secondary education", title: "Ali Ben Berry School", degree: "Baccalaureate, Mathematical Sciences", date: "Sep 2022 - Jul 2023", details: ["Grade: High Honors"], aria: "Ali Ben Berry School education" }
+];
+
 const activityCopy = currentLanguage === "fr" ? [
   { role: "Président", date: "mai 2026 - aujourd'hui · 4 mois", location: "Sciences et technologie", description: "J'ai rejoint E++ comme Event Manager, puis été Vice-Président, et je dirige aujourd'hui le club comme Président. Je travaille avec une équipe pluridisciplinaire pour organiser des ateliers techniques, événements et initiatives autour de la programmation, du développement web, de l'intelligence artificielle et de la data science. Notre objectif est de créer des occasions d'apprentissage pratiques qui aident les étudiants à développer des compétences d'ingénierie concrètes.", aria: "Ouvrir les détails de l'activité Club E-plusplus" },
   { role: "Responsable matériel", date: "mai 2024 - juin 2025 · 1 an 2 mois", location: "Sciences et technologie", description: "Je gère les outils, composants électroniques et équipements mécaniques du club afin qu'ils soient disponibles et correctement entretenus pour les projets de robotique. Je coordonne les demandes de matériel, organise l'inventaire et accompagne les équipes pendant les ateliers et compétitions.", aria: "Ouvrir les détails de l'activité Emines Technology Club" },
@@ -475,7 +489,6 @@ function applyStaticLocale() {
   setText(".topbar-link", ui.explore);
   setText(".topbar-resume", ui.openResume);
   setText(".hero-copy .kicker", ui.heroKicker);
-  setText(".hero-copy h1 span", ui.heroLead);
   setText(".hero-text", ui.heroText);
   setAttr(".hero-links", "aria-label", ui.primaryLinks);
   setText(".hero-note strong", ui.location);
@@ -517,6 +530,21 @@ function applyStaticLocale() {
     setText(".experience-date", content.date, card);
     setText(".experience-location", content.location, card);
     setText(".experience-description", content.description, card);
+    card.setAttribute("aria-label", content.aria);
+  });
+
+  setText("#panel-education .section-head .kicker", ui.educationKicker);
+  setText("#panel-education .section-head h2", ui.educationHeading);
+  setText("#panel-education .section-intro", ui.educationIntro);
+  $$(".education-card").forEach((card, index) => {
+    const content = educationCopy[index];
+    if (!content) return;
+    setText(".experience-label", content.label, card);
+    setText("h3", content.title, card);
+    setText(".experience-company", content.degree, card);
+    setText(".experience-date", content.date, card);
+    const details = $(".education-details", card);
+    if (details) details.innerHTML = content.details.map((detail) => `<li>${detail}</li>`).join("");
     card.setAttribute("aria-label", content.aria);
   });
 

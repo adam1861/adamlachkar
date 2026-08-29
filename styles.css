@@ -228,17 +228,6 @@ button {
   font-size: clamp(3.8rem, 9vw, 7.6rem);
 }
 
-.hero-copy h1 span {
-  display: block;
-  font-family: "Inter", system-ui, sans-serif;
-  font-size: clamp(1.15rem, 2vw, 1.75rem);
-  line-height: 1.35;
-  font-weight: 500;
-  margin-top: 18px;
-  max-width: 23ch;
-  color: var(--muted);
-}
-
 .hero-text,
 .about-copy p,
 .contact-copy p,
@@ -511,6 +500,7 @@ button {
 .section-tab:nth-child(3) .tab-icon::before { content: "03"; }
 .section-tab:nth-child(4) .tab-icon::before { content: "04"; }
 .section-tab:nth-child(5) .tab-icon::before { content: "05"; }
+.section-tab:nth-child(6) .tab-icon::before { content: "06"; }
 
 .section-tab .tab-icon {
   display: none;
@@ -533,6 +523,7 @@ button {
 .section-tab:nth-child(3)::before { content: "03"; }
 .section-tab:nth-child(4)::before { content: "04"; }
 .section-tab:nth-child(5)::before { content: "05"; }
+.section-tab:nth-child(6)::before { content: "06"; }
 
 .section-panels {
   min-width: 0;
@@ -1031,6 +1022,52 @@ button {
   font-weight: 800;
 }
 
+.education-logo {
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.education-logo-um6p {
+  color: #fff;
+  background: #e56a36;
+}
+
+.education-logo-um6p span {
+  padding: 5px 4px;
+  border: 2px solid currentColor;
+}
+
+.education-logo-school {
+  color: #283b66;
+  background: #e8e2d9;
+}
+
+.education-logo-school span {
+  display: grid;
+  width: 72px;
+  height: 72px;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(91, 137, 182, 0.55);
+  box-shadow: 18px 12px 0 rgba(91, 137, 182, 0.45);
+}
+
+.education-logo-emines img {
+  width: 88px;
+  height: 88px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.education-card .education-details {
+  margin-top: 18px;
+}
+
+.education-card .education-details li::before {
+  content: "•";
+}
+
 .about-callout {
   margin-top: 18px;
   padding: 22px;
@@ -1349,10 +1386,7 @@ button {
 .stack-section {
   position: relative;
   overflow: hidden;
-  background:
-    radial-gradient(circle at top left, rgba(216, 104, 45, 0.14), transparent 32%),
-    radial-gradient(circle at right 15% bottom 20%, rgba(18, 18, 18, 0.05), transparent 30%),
-    linear-gradient(180deg, #f6efe5 0%, #efe4d6 100%);
+  background: var(--panel);
 }
 
 .stack-section::before {
@@ -1379,7 +1413,7 @@ button {
 
 /* Keep the panel background treatments from competing with the shared shell. */
 .section-panel.section-alt {
-  background: var(--bg-alt);
+  background: var(--panel);
 }
 
 .section-panel.contact-section {
