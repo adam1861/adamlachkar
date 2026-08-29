@@ -197,6 +197,12 @@ button {
   padding: 28px 0 80px;
 }
 
+.hero {
+  min-height: calc(100svh - 78px);
+  display: flex;
+  align-items: center;
+}
+
 .hero-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
