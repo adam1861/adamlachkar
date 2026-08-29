@@ -712,7 +712,14 @@ function renderEducation() {
   container.innerHTML = educationCopy
     .map(
       (item, index) => `
-        <article class="experience-card education-card">
+        <article
+          class="experience-card education-card"
+          data-detail-type="education"
+          data-detail-id="${slugify(item.title)}"
+          tabindex="0"
+          role="button"
+          aria-label="${item.aria}"
+        >
           <div class="experience-logo education-logo education-logo-${logoTypes[index]}">
             ${index === 1
               ? '<img src="/assets/images/leadership/emines-logo-square.jpg" alt="EMINES logo" loading="lazy" />'
@@ -969,6 +976,13 @@ function openCardDetails(type, id, updateHash = true) {
   const location = card.querySelector(".experience-location")?.textContent.trim() || "";
   const description = card.querySelector(".experience-description")?.textContent.trim() || "";
   const logo = card.querySelector(".experience-logo")?.cloneNode(true);
+  const details = [...card.querySelectorAll(".education-details li")]
+    .map((item) => item.textContent.trim())
+    .filter(Boolean);
+  const detailsHeading = currentLanguage === "fr" ? "Domaines étudiés" : "Areas of study";
+  const organisationLabel = type === "education"
+    ? (currentLanguage === "fr" ? "Diplôme" : "Degree")
+    : ui.organisation;
 
   showDetailPage({
     type,
@@ -976,10 +990,10 @@ function openCardDetails(type, id, updateHash = true) {
     title,
     media: logo,
     body: `
-      <p class="detail-page-summary">${escapeHtml(description)}</p>
+      ${description ? `<p class="detail-page-summary">${escapeHtml(description)}</p>` : ""}
       <div class="detail-grid">
         <div>
-          <span>${ui.organisation}</span>
+          <span>${organisationLabel}</span>
           <strong>${escapeHtml(company)}</strong>
         </div>
         <div>
@@ -988,12 +1002,13 @@ function openCardDetails(type, id, updateHash = true) {
         </div>
         ${location ? `<div><span>${ui.context}</span><strong>${escapeHtml(location)}</strong></div>` : ""}
       </div>
+      ${details.length ? `<div class="detail-block"><h4>${detailsHeading}</h4><ul class="detail-list">${details.map((detail) => `<li>${escapeHtml(detail)}</li>`).join("")}</ul></div>` : ""}
     `
   });
 }
 
 function handleDetailHash() {
-  const match = window.location.hash.match(/^#detail\/(project|experience|activity|site)\/([^/]+)$/);
+  const match = window.location.hash.match(/^#detail\/(project|experience|education|activity|site)\/([^/]+)$/);
   if (!match) {
     hideDetailPage();
     return;

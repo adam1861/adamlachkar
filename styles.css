@@ -1067,7 +1067,17 @@ button {
 }
 
 .education-card .education-details {
+  display: none;
   margin-top: 18px;
+}
+
+.detail-list {
+  display: grid;
+  gap: 9px;
+  margin: 0;
+  padding-left: 22px;
+  color: var(--muted);
+  line-height: 1.65;
 }
 
 .education-card .education-details li::before {
