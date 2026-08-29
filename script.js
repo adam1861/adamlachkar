@@ -1,10 +1,13 @@
-const proofPoints = [
+const currentLanguage = /^\/fr(?:\/|$)/i.test(window.location.pathname) ? "fr" : "en";
+const resumeFile = currentLanguage === "fr" ? "/CV%20-%201P%20-%20FR.pdf" : "/CV%20-%201P%20-%20EN.pdf";
+
+const baseProofPoints = [
   { value: "17+", label: "public repos" },
   { value: "6", label: "selected projects" },
   { value: "6", label: "live web builds shown" }
 ];
 
-const projects = [
+const baseProjects = [
   {
     title: "Pricing Engine",
     type: "AI and data",
@@ -97,7 +100,7 @@ const projects = [
   }
 ];
 
-const certificates = [
+const baseCertificates = [
   {
     title: "ML Specialisation",
     file: "assets/docs/certificates/ML%20Specialisation.pdf",
@@ -132,7 +135,7 @@ const certificates = [
   }
 ];
 
-const sites = [
+const baseSites = [
   {
     title: "EFAIX",
     image: "assets/images/sites/efaix.png",
@@ -240,15 +243,322 @@ const stack = [
   { name: "MATLAB", icon: "assets/icons/stack/matlab.svg", group: "Engineering and workflow", type: "language" }
 ];
 
-const $ = (selector, scope = document) => scope.querySelector(selector);
-const $$ = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
-const projectFilters = ["All", ...new Set(projects.map((project) => project.type))];
-let activeProjectFilter = "All";
+const ui = {
+  en: {
+    title: "Adam Lachkar | AI, Data Science, EdTech, Web Products",
+    description: "Adam Lachkar is an engineering student at UM6P and founder at EFAIX, building practical AI projects, education products, and product-minded web experiences.",
+    skip: "Skip to content",
+    explore: "Explore portfolio",
+    openResume: "Open resume",
+    resume: "Resume",
+    openCv: "Open CV",
+    heroKicker: "UM6P engineering student, founder at EFAIX, and applied AI builder",
+    heroLead: "I build practical AI systems, education products, and web experiences that people can actually use.",
+    heroText: "I am an engineering student at EMINES - UM6P and the founder of EFAIX. My recent work spans applied AI projects on GitHub, education product execution across multiple live surfaces, and shipped web builds for real users and teams.",
+    primaryLinks: "Primary profile links",
+    location: "Benguerir, Morocco",
+    availability: "Open to AI and product internships, freelance web work, and serious technical collaborations.",
+    exploreKicker: "Explore",
+    chooseChapter: "Choose a chapter.",
+    portfolioNote: "A focused view of the work, experience, tools, and proof behind the portfolio.",
+    sectionsLabel: "Portfolio sections",
+    sections: ["Projects", "Experience", "Tools", "Certifications", "Activities"],
+    workViews: "Work views",
+    work: ["AI Projects", "Web Builds"],
+    experienceKicker: "Experience",
+    experienceHeading: "Building across AI, education, and the web.",
+    experienceIntro: "The work I keep returning to: turning technical ideas into useful, public-facing systems.",
+    toolsKicker: "Tools",
+    toolsHeading: "Tools I reach for.",
+    toolsIntro: "Search or filter the software, languages, libraries, and working skills behind the projects.",
+    searchTools: "Search tools and skills",
+    searchPlaceholder: "Search Python, GitHub, RAG...",
+    stackFilters: "Stack filters",
+    stackFilterLabels: { software: "Software", language: "Language", library: "Library", tools: "Tools", skill: "Skill" },
+    stackCaption: "Search by name or use the filters to narrow the list.",
+    certificatesKicker: "Certifications",
+    certificatesHeading: "Coursework and credentials I can point to directly.",
+    certificatesIntro: "A compact archive of certificate documents tied to the learning paths behind the work.",
+    activitiesKicker: "Activities",
+    activitiesHeading: "Leading communities and creating practical learning spaces.",
+    activitiesIntro: "The student leadership, teaching, and community work that complements my technical experience.",
+    contactKicker: "Contact",
+    contactHeading: "Let's talk",
+    contactIntro: "For AI or product internships, freelance web projects, or technical collaborations, email is the fastest route.",
+    bestFit: "Best fit: AI/ML internships, product engineering internships, education technology systems, and serious technical collaborations.",
+    contactLinks: "Contact links",
+    footerTagline: "Applied AI, education products, and web experiences built with follow-through.",
+    footerNavigation: "Footer navigation",
+    footerNav: ["Projects", "Experience", "Tools", "Certifications", "Activities", "Contact", "GitHub", "LinkedIn"],
+    all: "All",
+    items: "items",
+    item: "item",
+    shown: "shown",
+    noMatches: "No matches found.",
+    noMatchesText: "Try another keyword or tap the active filter again to reset the full list.",
+    certificate: "certificate",
+    openCertificate: "Open certificate",
+    viewRepo: "View repo",
+    visitWebsite: "Visit website",
+    back: "← Back to portfolio",
+    year: "Year",
+    role: "Role",
+    problem: "Problem",
+    approach: "Approach",
+    result: "Result",
+    category: "Category",
+    organisation: "Organisation",
+    dates: "Dates",
+    context: "Context",
+    copyright: "All rights reserved."
+  },
+  fr: {
+    title: "Adam Lachkar | IA, Data Science, EdTech, Produits web",
+    description: "Adam Lachkar est étudiant ingénieur à l'UM6P et fondateur d'EFAIX. Il conçoit des projets d'IA appliquée, des produits éducatifs et des expériences web utiles.",
+    skip: "Aller au contenu",
+    explore: "Explorer le portfolio",
+    openResume: "Ouvrir le CV",
+    resume: "CV",
+    openCv: "Ouvrir le CV",
+    heroKicker: "Étudiant ingénieur à l'UM6P, fondateur d'EFAIX et créateur de solutions d'IA appliquée",
+    heroLead: "Je conçois des systèmes d'IA concrets, des produits éducatifs et des expériences web réellement utiles.",
+    heroText: "Je suis étudiant ingénieur à l'EMINES - UM6P et fondateur d'EFAIX. Mes travaux récents couvrent des projets d'IA appliquée sur GitHub, la réalisation de produits éducatifs et des sites web livrés pour de vrais utilisateurs et équipes.",
+    primaryLinks: "Liens principaux",
+    location: "Benguerir, Maroc",
+    availability: "Ouvert aux stages en IA et produit, aux missions web freelance et aux collaborations techniques ambitieuses.",
+    exploreKicker: "Explorer",
+    chooseChapter: "Choisissez un chapitre.",
+    portfolioNote: "Une vue ciblée du travail, de l'expérience, des outils et des preuves présentés dans ce portfolio.",
+    sectionsLabel: "Sections du portfolio",
+    sections: ["Projets", "Expérience", "Outils", "Certifications", "Activités"],
+    workViews: "Vues du travail",
+    work: ["Projets IA", "Créations web"],
+    experienceKicker: "Expérience",
+    experienceHeading: "Construire entre IA, éducation et web.",
+    experienceIntro: "Le fil conducteur de mon travail : transformer des idées techniques en systèmes utiles et accessibles au public.",
+    toolsKicker: "Outils",
+    toolsHeading: "Les outils que j'utilise.",
+    toolsIntro: "Recherchez ou filtrez les logiciels, langages, bibliothèques et compétences mobilisés dans les projets.",
+    searchTools: "Rechercher des outils et compétences",
+    searchPlaceholder: "Rechercher Python, GitHub, RAG...",
+    stackFilters: "Filtres des outils",
+    stackFilterLabels: { software: "Logiciels", language: "Langages", library: "Bibliothèques", tools: "Outils", skill: "Compétences" },
+    stackCaption: "Recherchez par nom ou utilisez les filtres pour réduire la liste.",
+    certificatesKicker: "Certifications",
+    certificatesHeading: "Des formations et certifications vérifiables.",
+    certificatesIntro: "Une archive concise des certificats liés aux parcours d'apprentissage derrière mon travail.",
+    activitiesKicker: "Activités",
+    activitiesHeading: "Animer des communautés et créer des espaces d'apprentissage concrets.",
+    activitiesIntro: "Les responsabilités étudiantes, l'enseignement et le travail communautaire qui complètent mon expérience technique.",
+    contactKicker: "Contact",
+    contactHeading: "Parlons-en",
+    contactIntro: "Pour un stage en IA ou produit, un projet web freelance ou une collaboration technique, l'e-mail est le moyen le plus rapide.",
+    bestFit: "Collaboration idéale : stages en IA/ML, ingénierie produit, systèmes éducatifs et collaborations techniques ambitieuses.",
+    contactLinks: "Liens de contact",
+    footerTagline: "IA appliquée, produits éducatifs et expériences web réalisés avec exigence.",
+    footerNavigation: "Navigation du pied de page",
+    footerNav: ["Projets", "Expérience", "Outils", "Certifications", "Activités", "Contact", "GitHub", "LinkedIn"],
+    all: "Tous",
+    items: "éléments",
+    item: "élément",
+    shown: "affichés",
+    noMatches: "Aucun résultat.",
+    noMatchesText: "Essayez un autre mot-clé ou touchez à nouveau le filtre actif pour réinitialiser la liste.",
+    certificate: "certificat",
+    openCertificate: "Ouvrir le certificat",
+    viewRepo: "Voir le dépôt",
+    visitWebsite: "Visiter le site",
+    back: "← Retour au portfolio",
+    year: "Année",
+    role: "Rôle",
+    problem: "Problème",
+    approach: "Approche",
+    result: "Résultat",
+    category: "Catégorie",
+    organisation: "Organisation",
+    dates: "Dates",
+    context: "Contexte",
+    copyright: "Tous droits réservés."
+  }
+}[currentLanguage];
+
+const frenchProjectCopy = [
+  { title: "Moteur de tarification", type: "IA et données", role: "Modélisation des prix et aide à la décision", summary: "Workflow de tarification par machine learning pour transformer les sorties d'un modèle en décisions de prix plus pertinentes.", problem: "Estimer de meilleurs niveaux de prix à partir de signaux métier structurés.", approach: "J'ai combiné analyse, prédiction et réflexion produit dans un workflow destiné à éclairer les choix de prix, pas seulement à produire un score.", result: "La tarification est abordée comme un système concret d'aide à la décision plutôt que comme un simple notebook.", stack: ["Python", "Pandas", "Scikit-learn"] },
+  { title: "Prédiction du churn client télécom", type: "IA et données", role: "Workflow complet de classification du churn", summary: "Projet de classification orienté rétention, construit autour des signaux de départ et du comportement client.", problem: "Identifier les clients les plus susceptibles de partir et comprendre pourquoi.", approach: "J'ai travaillé sur le nettoyage, l'analyse exploratoire, l'encodage des variables, la séparation entraînement-test et la classification pour construire un pipeline exploitable.", result: "Un workflow de rétention plus lisible relie le contexte métier aux choix de modélisation.", stack: ["Python", "EDA", "Classification"] },
+  { title: "Détection de fraude par carte bancaire", type: "Cybersécurité", role: "Classification déséquilibrée et évaluation", summary: "Workflow de détection de fraude centré sur le déséquilibre des classes, les variables et l'évaluation.", problem: "Détecter les transactions suspectes dans un contexte de classification fortement déséquilibré.", approach: "J'ai structuré le nettoyage, la création de variables, la gestion du déséquilibre et la comparaison des modèles dans des notebooks.", result: "Le projet traite les données riches en anomalies avec soin au lieu de réduire la fraude à une classification générique.", stack: ["Python", "Feature engineering", "Évaluation des modèles"] },
+  { title: "Système de prévision météo", type: "Logiciel", role: "Modélisation de prévisions et interface interactive", summary: "Projet de prévision utilisant XGBoost, des données météo de la NASA et une couche web interactive.", problem: "Transformer des signaux météo en prévisions modélisées et accessibles à l'utilisateur.", approach: "J'ai combiné une modélisation temporelle, XGBoost, des entrées géographiques et une interface web pour dépasser la simple prédiction brute.", result: "Un exemple clair de lien entre machine learning et livraison orientée produit.", stack: ["XGBoost", "Données météo NASA", "JavaScript"] },
+  { title: "Segmentation clients e-commerce", type: "IA et données", role: "Clustering et analyse exploratoire", summary: "Projet de segmentation par clustering pour soutenir des décisions de ciblage plus précises.", problem: "Regrouper les clients par comportement afin d'améliorer le ciblage et les décisions marketing.", approach: "J'ai utilisé l'analyse exploratoire et le clustering pour identifier des segments comportementaux utiles plutôt que de me concentrer uniquement sur la prédiction.", result: "Le projet met l'accent sur l'insight et l'action, pas seulement sur la sortie du modèle.", stack: ["Clustering", "EDA", "Analyse client"] },
+  { title: "Contrôle qualité des métaux", type: "Vision par ordinateur", role: "Détection et segmentation des défauts", summary: "Workflow de vision par ordinateur pour détecter et segmenter les défauts sur des pièces industrielles.", problem: "Repérer les anomalies de couleur et les rayures dans des scénarios d'inspection d'écrous métalliques.", approach: "J'ai construit un workflow de contrôle qualité visuel appliqué autour de la détection et de la segmentation des défauts.", result: "Le portfolio gagne un volet industriel et concret en vision par ordinateur.", stack: ["Vision par ordinateur", "Segmentation", "TypeScript"] }
+];
+
+const frenchCertificateCopy = [
+  { title: "Spécialisation Machine Learning", note: "Certificat de spécialisation en machine learning, consultable directement." },
+  { title: "Pre Security", note: "Certificat du parcours d'apprentissage Pre-security, consultable directement." },
+  { title: "Security 101", note: "Certificat Security 101, consultable directement." },
+  { title: "RAG", note: "Certificat sur la génération augmentée par récupération, consultable directement." }
+];
+
+const frenchSiteCopy = [
+  { category: "Écosystème éducatif", role: "Site de marque et positionnement produit", summary: "Site public principal présentant l'histoire, le positionnement et l'écosystème EFAIX." },
+  { category: "Plateforme d'apprentissage", role: "Expérience de diffusion de formations", summary: "Surface d'apprentissage numérique structurée autour d'un accès aux cours plus clair." },
+  { category: "Communauté tech étudiante", role: "Site communautaire et identité", summary: "Site d'une communauté technologique étudiante autour des événements, ateliers, responsabilités et projets concrets." },
+  { category: "Site client", role: "Exécution web orientée lancement", summary: "Présence commerciale conçue pour la clarté, la rapidité et une confiance renforcée." },
+  { category: "Site client", role: "Présentation de marque et finition", summary: "Site guidé par la marque, construit autour de la présentation, de la crédibilité et d'un récit plus net." },
+  { category: "Plateforme éducative", role: "Expérience de cours et de plateforme", summary: "Travail sur une plateforme d'apprentissage du code et de l'IA avec un parcours utilisateur plus organisé." },
+  { category: "Plateforme événementielle étudiante", role: "Site BDE et expérience événementielle", summary: "Site BDE 2026 sombre et narratif autour du thème Twisted Circus, des événements, du classement et de la communauté étudiante." }
+];
+
+const experienceCopy = currentLanguage === "fr" ? [
+  { role: "Fondateur et PDG", company: "EFAIX · Indépendant", date: "sept. 2025 - aujourd'hui · 1 an", location: "Maroc", description: "Je construis EFAIX, une plateforme éducative propulsée par l'IA pour rendre l'apprentissage plus personnalisé, accessible et sécurisé. Je dirige le développement de systèmes intelligents d'apprentissage, d'évaluation et d'automatisation en intégrant la confidentialité, le contrôle d'accès et la gestion responsable des données. Je travaille entre ingénierie IA, développement logiciel, conception produit et architecture sécurisée pour transformer des idées innovantes en solutions éducatives concrètes.", aria: "Ouvrir les détails de l'expérience EFAIX" },
+  { role: "Stagiaire", company: "Thales · Stage", date: "juil. 2026 · 1 mois", location: "Rabat, Rabat-Salé-Kénitra, Maroc · Sur site", description: "Je contribue au développement de SecureGRC, une plateforme de gouvernance, risque et conformité assistée par l'IA, conçue pour simplifier la conformité cybersécurité grâce à l'analyse intelligente de documents et au traitement automatisé des preuves. Je travaille sur l'ensemble de la stack et sur des fonctions IA de compréhension documentaire, de correspondance des contrôles, de gestion des risques et de workflows de conformité.", aria: "Ouvrir les détails de l'expérience Thales" },
+  { role: "Stagiaire", company: "EDGEFLOW PRICING · Stage", date: "juin 2026 · 1 mois", location: "Ben Guerir, Marrakech-Safi, Maroc · Sur site", description: "J'ai contribué à l'adaptation d'un moteur de tarification piloté par l'IA pour le secteur agricole en transformant des données de marché brutes en informations de prix fiables et actionnables. J'ai travaillé sur la préparation des données, la création de variables, l'analyse concurrentielle, le développement de modèles et l'optimisation des prix, en veillant à la qualité et à la cohérence des données.", aria: "Ouvrir les détails de l'expérience EdgeFlow Pricing" }
+] : [
+  { role: "Founder & CEO", company: "EFAIX · Self-employed", date: "Sep 2025 - Present · 1 yr", location: "Morocco", description: "Building EFAIX, an AI-powered educational platform designed to make learning more personalised, accessible, and secure. Leading the development of intelligent learning, assessment, and automation systems while considering data privacy, access control, and the responsible handling of user information. Working across AI engineering, software development, product design, and secure system architecture to transform innovative ideas into practical educational solutions.", aria: "Open EFAIX experience details" },
+  { role: "Intern", company: "Thales · Internship", date: "Jul 2026 · 1 mo", location: "Rabat, Rabat-Salé-Kénitra, Morocco · On-site", description: "Contributing to the development of SecureGRC, an AI-assisted Governance, Risk, and Compliance platform designed to streamline cybersecurity compliance through intelligent document analysis and automated evidence processing. Working across the full stack while developing AI features for document understanding, control mapping, risk management, and compliance workflows. Combining artificial intelligence and cybersecurity governance to improve traceability, decision-making, and the secure management of compliance data.", aria: "Open Thales experience details" },
+  { role: "Intern", company: "EDGEFLOW PRICING · Internship", date: "Jun 2026 · 1 mo", location: "Ben Guerir, Marrakesh-Safi, Morocco · On-site", description: "Contributed to the adaptation of an AI-driven pricing engine for the agricultural sector by transforming raw market data into reliable and actionable pricing insights. Worked on data preparation, feature engineering, competitor analysis, model development, and pricing optimisation to support data-driven business decisions. Strengthened my ability to build practical machine-learning solutions while ensuring data quality, consistency, and responsible processing throughout the analytical workflow.", aria: "Open EdgeFlow Pricing experience details" }
+];
+
+const activityCopy = currentLanguage === "fr" ? [
+  { role: "Président", date: "mai 2026 - aujourd'hui · 4 mois", location: "Sciences et technologie", description: "J'ai rejoint E++ comme Event Manager, puis été Vice-Président, et je dirige aujourd'hui le club comme Président. Je travaille avec une équipe pluridisciplinaire pour organiser des ateliers techniques, événements et initiatives autour de la programmation, du développement web, de l'intelligence artificielle et de la data science. Notre objectif est de créer des occasions d'apprentissage pratiques qui aident les étudiants à développer des compétences d'ingénierie concrètes.", aria: "Ouvrir les détails de l'activité Club E-plusplus" },
+  { role: "Responsable matériel", date: "mai 2024 - juin 2025 · 1 an 2 mois", location: "Sciences et technologie", description: "Je gère les outils, composants électroniques et équipements mécaniques du club afin qu'ils soient disponibles et correctement entretenus pour les projets de robotique. Je coordonne les demandes de matériel, organise l'inventaire et accompagne les équipes pendant les ateliers et compétitions.", aria: "Ouvrir les détails de l'activité Emines Technology Club" },
+  { role: "Responsable des ateliers", date: "juin 2026 - aujourd'hui · 3 mois", location: "Sciences et technologie", description: "J'anime des ateliers qui initient les étudiants à la programmation, à la data science et à l'intelligence artificielle à travers des projets pratiques. Je conçois du contenu pédagogique et des exercices accessibles aux débutants, afin de développer la confiance et les compétences nécessaires pour résoudre des problèmes d'ingénierie réels.", aria: "Ouvrir les détails de l'activité datalab emines" },
+  { role: "Vice-Président (BDE)", date: "juin 2026 - aujourd'hui · 3 mois", location: "", description: "En tant que Vice-Président du BDE à l'EMINES, je contribue à coordonner les initiatives étudiantes, à accompagner les clubs et associations et à planifier des événements qui renforcent la vie du campus. Je travaille avec les étudiants et l'administration pour améliorer la communication et créer un environnement plus engageant et collaboratif.", aria: "Ouvrir les détails de l'activité EMINES - UM6P" },
+  { role: "Membre de la communauté", date: "avr. 2024 - aujourd'hui · 2 ans 5 mois", location: "Éducation", description: "Je contribue à des initiatives qui promeuvent les mathématiques et l'éducation scientifique au Maroc. Je collabore avec des bénévoles pour organiser des événements éducatifs et des actions de sensibilisation qui encouragent la curiosité, l'esprit critique et la résolution de problèmes.", aria: "Ouvrir les détails de l'activité Math&Maroc" }
+] : [
+  { role: "President", date: "May 2026 - Present · 4 mos", location: "Science and Technology", description: "Joined E++ as Event Manager, later served as Vice President, and currently lead the club as President. Working with a multidisciplinary team to organize technical workshops, events, and initiatives focused on programming, web development, artificial intelligence, and data science. Our goal is to create practical learning opportunities that help students develop real-world engineering skills.", aria: "Open Club E-plusplus activity details" },
+  { role: "Materials Manager", date: "May 2024 - Jun 2025 · 1 yr 2 mos", location: "Science and Technology", description: "Managing the club's tools, electronic components, and mechanical equipment to ensure they are available and properly maintained for robotics projects. Coordinating material requests, organising inventory, and supporting teams during workshops and competitions. Helping members work efficiently by providing the resources needed to design, build, and test robotic systems.", aria: "Open Emines Technology Club activity details" },
+  { role: "Workshop Lead", date: "Jun 2026 - Present · 3 mos", location: "Science and Technology", description: "Leading workshops that introduce students to programming, data science, and artificial intelligence through hands-on projects. Designing educational content and practical exercises that make technical concepts accessible to beginners. Helping participants build confidence while developing the skills needed to tackle real-world engineering problems.", aria: "Open datalab emines activity details" },
+  { role: "Vice President (BDE)", date: "Jun 2026 - Present · 3 mos", location: "", description: "As Vice President of the BDE at EMINES, I help coordinate student initiatives, support clubs and associations, and contribute to the planning of events that strengthen campus life. I work closely with the student body and school administration to improve communication, organize projects, and create a more engaging and collaborative environment for students.", aria: "Open EMINES - UM6P activity details" },
+  { role: "Community member", date: "Apr 2024 - Present · 2 yrs 5 mos", location: "Education", description: "Contributing to initiatives that promote mathematics and scientific education across Morocco. Collaborating with volunteers to organize educational events and outreach activities that encourage curiosity, critical thinking, and problem-solving. Supporting a community dedicated to making STEM more accessible to students.", aria: "Open Math and Maroc activity details" }
+];
+
+const proofPoints = baseProofPoints.map((item, index) => ({
+  ...item,
+  label: currentLanguage === "fr" ? ["dépôts publics", "projets sélectionnés", "créations web en ligne"][index] : item.label
+}));
+const projects = currentLanguage === "fr" ? baseProjects.map((project, index) => ({ ...project, ...frenchProjectCopy[index] })) : baseProjects;
+const certificates = currentLanguage === "fr" ? baseCertificates.map((certificate, index) => ({ ...certificate, ...frenchCertificateCopy[index] })) : baseCertificates;
+const sites = currentLanguage === "fr" ? baseSites.map((site, index) => ({ ...site, ...frenchSiteCopy[index] })) : baseSites;
+const projectFilters = [ui.all, ...new Set(projects.map((project) => project.type))];
+let activeProjectFilter = ui.all;
 let activeStackFilter = "all";
 let stackSearchTerm = "";
 
+const $ = (selector, scope = document) => scope.querySelector(selector);
+const $$ = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
+
 function fallbackImage(image) {
-  return image || "assets/images/ui/placeholder.svg";
+  return image?.startsWith("/") ? image : `/${image || "assets/images/ui/placeholder.svg"}`;
+}
+
+function applyStaticLocale() {
+  const setText = (selector, value, scope = document) => {
+    const element = selector ? $(selector, scope) : scope;
+    if (element) element.textContent = value;
+  };
+  const setAttr = (selector, attribute, value) => {
+    const element = $(selector);
+    if (element) element.setAttribute(attribute, value);
+  };
+
+  document.documentElement.lang = currentLanguage;
+  document.title = ui.title;
+  setAttr('meta[name="description"]', "content", ui.description);
+  setAttr('meta[property="og:title"]', "content", ui.title);
+  setAttr('meta[property="og:description"]', "content", ui.description);
+  setAttr('meta[property="og:url"]', "content", `https://www.adamlachkar.com/${currentLanguage}/`);
+  setAttr('meta[name="twitter:title"]', "content", ui.title);
+  setAttr('meta[name="twitter:description"]', "content", ui.description);
+  setAttr('link[rel="canonical"]', "href", `https://www.adamlachkar.com/${currentLanguage}/`);
+
+  setText(".skip-link", ui.skip);
+  setText(".topbar-link", ui.explore);
+  setText(".topbar-resume", ui.openResume);
+  setText(".hero-copy .kicker", ui.heroKicker);
+  setText(".hero-copy h1 span", ui.heroLead);
+  setText(".hero-text", ui.heroText);
+  setAttr(".hero-links", "aria-label", ui.primaryLinks);
+  setText(".hero-note strong", ui.location);
+  setText(".hero-note span", ui.availability);
+  setText(".portfolio-heading .kicker", ui.exploreKicker);
+  setText(".portfolio-heading h2", ui.chooseChapter);
+  setText(".portfolio-heading-note", ui.portfolioNote);
+  setAttr(".section-switcher", "aria-label", ui.sectionsLabel);
+  $$(".section-tab").forEach((tab, index) => setText("span:last-child", ui.sections[index], tab));
+  setAttr(".work-switcher", "aria-label", ui.workViews);
+  $$(".work-switcher .switch").forEach((button, index) => setText("", ui.work[index], button));
+
+  setText("#panel-experience .section-head .kicker", ui.experienceKicker);
+  setText("#panel-experience .section-head h2", ui.experienceHeading);
+  setText("#panel-experience .section-intro", ui.experienceIntro);
+  setText("#panel-tools .section-head .kicker", ui.toolsKicker);
+  setText("#panel-tools .section-head h2", ui.toolsHeading);
+  setText("#panel-tools .section-intro", ui.toolsIntro);
+  setText('label[for="stack-search"]', ui.searchTools);
+  setAttr("#stack-search", "placeholder", ui.searchPlaceholder);
+  setAttr("#stack-filters", "aria-label", ui.stackFilters);
+  $$("#stack-filters .stack-filter").forEach((button) => {
+    setText("", ui.stackFilterLabels[button.dataset.stackFilter], button);
+  });
+  setText(".stack-caption", ui.stackCaption);
+  setText("#panel-certificates .section-head .kicker", ui.certificatesKicker);
+  setText("#panel-certificates .section-head h2", ui.certificatesHeading);
+  setText("#panel-certificates .section-intro", ui.certificatesIntro);
+  setText("#panel-activities .section-head .kicker", ui.activitiesKicker);
+  setText("#panel-activities .section-head h2", ui.activitiesHeading);
+  setText("#panel-activities .section-intro", ui.activitiesIntro);
+
+  const experienceCards = $$('.experience-card[data-detail-type="experience"]');
+  experienceCards.forEach((card, index) => {
+    const content = experienceCopy[index];
+    if (!content) return;
+    setText(".experience-label", content.role, card);
+    setText(".experience-company", content.company, card);
+    setText(".experience-date", content.date, card);
+    setText(".experience-location", content.location, card);
+    setText(".experience-description", content.description, card);
+    card.setAttribute("aria-label", content.aria);
+  });
+
+  const activityCards = $$('.experience-card[data-detail-type="activity"]');
+  activityCards.forEach((card, index) => {
+    const content = activityCopy[index];
+    if (!content) return;
+    setText(".experience-label", content.role, card);
+    setText(".experience-date", content.date, card);
+    setText(".experience-location", content.location, card);
+    setText(".experience-description", content.description, card);
+    card.setAttribute("aria-label", content.aria);
+  });
+
+  setText("#contact .contact-copy .kicker", ui.contactKicker);
+  setText("#contact-title", ui.contactHeading);
+  const contactIntro = $("#contact .contact-copy p:not(.kicker):not(.contact-note)");
+  if (contactIntro) contactIntro.textContent = ui.contactIntro;
+  setText("#contact .contact-note", ui.bestFit);
+  setAttr(".contact-icons", "aria-label", ui.contactLinks);
+  setText(".contact-actions .button-dark", "Email");
+  setText(".contact-actions .button-light", ui.openResume);
+  setText(".detail-back", ui.back);
+  setText("#detail-page-link", ui.viewRepo);
+  setText(".footer-tagline", ui.footerTagline);
+  setText(".footer-resume", ui.openCv);
+  setAttr(".footer-nav", "aria-label", ui.footerNavigation);
+  $$(".footer-nav .footer-link").forEach((link, index) => setText("", ui.footerNav[index], link));
+  const copyright = $(".footer-bottom > p");
+  if (copyright) copyright.innerHTML = `© <span id="footer-year">2026</span> Adam Lachkar. ${ui.copyright}`;
+
+  const resumeLinks = $$(".topbar-resume, .hero-links .text-link:last-child, .contact-actions .button-light, .footer-resume");
+  resumeLinks.forEach((link) => {
+    link.href = resumeFile;
+    link.textContent = link.classList.contains("footer-resume") ? ui.openCv : link.classList.contains("topbar-resume") || link.classList.contains("button-light") ? ui.openResume : ui.resume;
+  });
+
+  $$('[data-language-link]').forEach((link) => {
+    const active = link.dataset.languageLink === currentLanguage;
+    link.classList.toggle("active", active);
+    link.setAttribute("aria-current", active ? "page" : "false");
+  });
 }
 
 function renderChipList(items) {
@@ -278,7 +588,7 @@ function getFilteredStack() {
 function getFilteredProjects() {
   return projects
     .map((project, index) => ({ ...project, index }))
-    .filter((project) => activeProjectFilter === "All" || project.type === activeProjectFilter);
+    .filter((project) => activeProjectFilter === ui.all || project.type === activeProjectFilter);
 }
 
 function renderProofPoints() {
@@ -329,7 +639,7 @@ function renderProjects() {
             class="project-trigger"
             type="button"
             data-project="${project.index}"
-            aria-label="Open ${project.title} details"
+            aria-label="${currentLanguage === "fr" ? "Ouvrir les détails de" : "Open"} ${project.title} ${currentLanguage === "fr" ? "" : "details"}"
           >
             <div class="project-layout">
               <img src="${fallbackImage(project.image)}" alt="${project.title}" loading="lazy" />
@@ -361,15 +671,15 @@ function renderCertificates() {
       (item) => `
         <article class="certificate-card">
           <div class="certificate-icon certificate-icon-${item.providerKey}">
-            <img src="${item.logo}" alt="${item.provider} logo" loading="lazy" />
+          <img src="${fallbackImage(item.logo)}" alt="${item.provider} logo" loading="lazy" />
           </div>
           <div class="certificate-copy">
-            <span>${item.provider} certificate</span>
+            <span>${item.provider} ${ui.certificate}</span>
             <h3>${item.title}</h3>
             <p>${item.note}</p>
           </div>
-          <a class="button button-light certificate-link" href="${item.file}" target="_blank" rel="noopener">
-            Open certificate
+          <a class="button button-light certificate-link" href="${fallbackImage(item.file)}" target="_blank" rel="noopener">
+            ${ui.openCertificate}
           </a>
         </article>
       `
@@ -390,7 +700,7 @@ function renderSites() {
           data-detail-id="${slugify(site.title)}"
           tabindex="0"
           role="button"
-          aria-label="Open ${site.title} website details"
+          aria-label="${currentLanguage === "fr" ? "Ouvrir les détails du site" : "Open website details for"} ${site.title}"
         >
           <img src="${fallbackImage(site.image)}" alt="${site.title}" loading="lazy" />
           <div class="site-copy">
@@ -410,14 +720,14 @@ function renderStack() {
   const filteredStack = getFilteredStack();
 
   if (results) {
-    results.textContent = `${filteredStack.length} item${filteredStack.length === 1 ? "" : "s"} shown`;
+    results.textContent = `${filteredStack.length} ${filteredStack.length === 1 ? ui.item : ui.items} ${ui.shown}`;
   }
 
   if (!filteredStack.length) {
     container.innerHTML = `
       <article class="stack-empty">
-        <strong>No matches found.</strong>
-        <p>Try another keyword or tap the active filter again to reset the full list.</p>
+        <strong>${ui.noMatches}</strong>
+        <p>${ui.noMatchesText}</p>
       </article>
     `;
     return;
@@ -428,7 +738,7 @@ function renderStack() {
       (item) => `
         <article class="stack-item" data-stack-type="${item.type}">
           <div class="stack-item-icon${item.iconClass ? ` ${item.iconClass}` : ""}" aria-hidden="true">
-            <img src="${item.icon}" alt="" loading="lazy" />
+            <img src="${fallbackImage(item.icon)}" alt="" loading="lazy" />
           </div>
           <span class="stack-item-name">${item.name}</span>
         </article>
@@ -506,7 +816,7 @@ function showDetailPage({ kicker, title, media, body, link, linkLabel }) {
 
   if (link) {
     linkElement.href = link;
-    linkElement.textContent = linkLabel || "Visit website";
+    linkElement.textContent = linkLabel || ui.visitWebsite;
     linkElement.hidden = false;
   } else {
     linkElement.hidden = true;
@@ -539,30 +849,30 @@ function openProjectDetails(index, updateHash = true) {
     title: project.title,
     media: createImage(fallbackImage(project.image), project.title),
     link: project.url,
-    linkLabel: "View repo",
+    linkLabel: ui.viewRepo,
     description: project.summary,
     body: `
       <p class="lightbox-summary">${project.summary}</p>
       <div class="detail-grid">
         <div>
-          <span>Year</span>
+          <span>${ui.year}</span>
           <strong>${project.year}</strong>
         </div>
         <div>
-          <span>Role</span>
+          <span>${ui.role}</span>
           <strong>${project.role}</strong>
         </div>
       </div>
       <div class="detail-block">
-        <h4>Problem</h4>
+        <h4>${ui.problem}</h4>
         <p>${project.problem}</p>
       </div>
       <div class="detail-block">
-        <h4>Approach</h4>
+        <h4>${ui.approach}</h4>
         <p>${project.approach}</p>
       </div>
       <div class="detail-block">
-        <h4>Result</h4>
+        <h4>${ui.result}</h4>
         <p>${project.result}</p>
       </div>
       ${renderChipList(project.stack)}
@@ -581,16 +891,16 @@ function openSiteDetails(id, updateHash = true) {
     title: site.title,
     media: createImage(fallbackImage(site.image), site.title),
     link: site.url,
-    linkLabel: "Visit website",
+    linkLabel: ui.visitWebsite,
     body: `
       <p class="detail-page-summary">${escapeHtml(site.summary)}</p>
       <div class="detail-grid">
         <div>
-          <span>Category</span>
+          <span>${ui.category}</span>
           <strong>${escapeHtml(site.category)}</strong>
         </div>
         <div>
-          <span>Role</span>
+          <span>${ui.role}</span>
           <strong>${escapeHtml(site.role)}</strong>
         </div>
       </div>
@@ -621,14 +931,14 @@ function openCardDetails(type, id, updateHash = true) {
       <p class="detail-page-summary">${escapeHtml(description)}</p>
       <div class="detail-grid">
         <div>
-          <span>Organisation</span>
+          <span>${ui.organisation}</span>
           <strong>${escapeHtml(company)}</strong>
         </div>
         <div>
-          <span>Dates</span>
+          <span>${ui.dates}</span>
           <strong>${escapeHtml(date)}</strong>
         </div>
-        ${location ? `<div><span>Context</span><strong>${escapeHtml(location)}</strong></div>` : ""}
+        ${location ? `<div><span>${ui.context}</span><strong>${escapeHtml(location)}</strong></div>` : ""}
       </div>
     `
   });
@@ -666,7 +976,7 @@ function hideDetailPage() {
 
   main.hidden = false;
   page.hidden = true;
-  document.title = "Adam Lachkar | AI, Data Science, EdTech, Web Products";
+  document.title = ui.title;
 }
 
 function setActiveSection(section, shouldScroll = false) {
@@ -851,6 +1161,7 @@ function initImages() {
 }
 
 function init() {
+  applyStaticLocale();
   renderProofPoints();
   renderProjectFilters();
   renderProjects();
