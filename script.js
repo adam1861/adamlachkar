@@ -169,14 +169,6 @@ const baseSites = [
     summary: "Commercial web presence shaped for clarity, speed, and stronger trust."
   },
   {
-    title: "Auramaking",
-    image: "assets/images/sites/auramaking.png",
-    url: "https://www.auramaking.com/",
-    category: "Client website",
-    role: "Brand presentation and polish",
-    summary: "Brand-led site work built around presentation, credibility, and cleaner storytelling."
-  },
-  {
     title: "Icodex Academy",
     image: "assets/images/sites/icodex.png",
     url: "https://icodex-frontend.onrender.com/",
